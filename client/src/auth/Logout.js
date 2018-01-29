@@ -4,7 +4,7 @@ class Logout extends Component {
   handleLogout = (e) => {
     e.preventDefault();
     //Delete token from local storage
-    localStorage.removeItem('mernToken');
+    localStorage.removeItem('dreamToken');
     //Go back to home page
     this.props.updateUser();
   }

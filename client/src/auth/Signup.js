@@ -29,7 +29,7 @@ class Signup extends Component {
       email: this.state.email,
       password: this.state.password
     }).then(result => {
-      localStorage.setItem('mernToken', result.data.token);
+      localStorage.setItem('dreamToken', result.data.token);
       this.props.updateUser();
     }).catch(error => {
       console.log(error.response);

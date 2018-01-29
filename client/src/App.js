@@ -1,14 +1,14 @@
 // REACT
 import React, { Component } from 'react';
 // STYLE
-import './App.css';
+import './style/App.css';
 // MODULES
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
 import Flash from './layout/Flash.js';
 // MAIN PAGES
 import Home from './main/Home.js';
-import Profile from './Profile.js';
+import Profile from './user/Profile.js';
 // LAYOUT
 import Nav from './layout/Nav.js';
 import Footer from './layout/Footer.js';
@@ -17,6 +17,8 @@ import Login from './auth/Login.js';
 import Signup from './auth/Signup.js';
 // CUSTOM ROUTES
 import Form from './main/Form.js';
+import DreamLog from './user/DreamLog.js';
+import DreamResult from './main/DreamResult.js';
 
 
 
@@ -33,9 +35,9 @@ class App extends Component {
 
   getUser = () => {
     // If there is a token in localStorage
-    let token = localStorage.getItem('mernToken');
+    let token = localStorage.getItem('dreamToken');
     if (token === 'undefined' || token === null || token === '' || token === undefined) {
-      localStorage.removeItem('mernToken');
+      localStorage.removeItem('dreamToken');
       this.setState({
         token: '',
         user: null
@@ -46,7 +48,7 @@ class App extends Component {
         token: token
       }).then(response => {
         //   Store the token and user
-        localStorage.setItem('mernToken', response.data.token);
+        localStorage.setItem('dreamToken', response.data.token);
         this.setState({
           token: response.data.token,
           user: response.data.user
@@ -94,6 +96,8 @@ class App extends Component {
                 () => (<Profile user={this.state.user} setFlash={this.setFlash} />)} />
               {/* CUSTOM ROUTES */}
               <Route path="/form" component={Form} />
+              <Route path="/dreamlog" component={DreamLog} />
+              <Route path="/dreamresult" component={DreamResult} />
 
             </div>
           </div>

@@ -25,7 +25,7 @@ class Login extends Component {
       email: this.state.email,
       password: this.state.password
     }).then((result) => {
-      localStorage.setItem('mernToken', result.data.token);
+      localStorage.setItem('dreamToken', result.data.token);
       this.setState({ success: true });
       this.props.updateUser();
     }).catch((error) => {
