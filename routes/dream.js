@@ -11,6 +11,13 @@ router.post('/', function(req,res,next){
 	res.send(req.body);
 });
 
+//Delete route
+router.delete('/12345', function(req,res){
+	console.log(req.body);
+	res.send(req.body);
+})
+
+module.exports = router;
 
 
 
