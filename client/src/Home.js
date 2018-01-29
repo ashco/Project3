@@ -4,7 +4,7 @@ class Home extends Component {
   render(){
     return (
         <p>Dream Home Page</p>
-      );
+    );
   }
 }
 

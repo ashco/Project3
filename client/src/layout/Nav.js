@@ -29,6 +29,7 @@ class Nav extends Component {
           <header className="App-header">
             <h1 className="App-title">Welcome to the app of your Dreams!</h1>
           </header>
+
         </div>
       );
   }
