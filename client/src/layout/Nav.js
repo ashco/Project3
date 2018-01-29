@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from '../logo.svg';
 import Logout from '../auth/Logout.js';
 import { Link } from 'react-router-dom';
 
@@ -28,8 +27,7 @@ class Nav extends Component {
             {links}
           </nav>
           <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <h1 className="App-title">Welcome to MERN Stack Boilerplate!</h1>
+            <h1 className="App-title">Welcome to the app of your Dreams!</h1>
           </header>
         </div>
       );
