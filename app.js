@@ -8,7 +8,7 @@ var app = express();
 
 // Mongoose stuff
 var mongoose = require('mongoose');
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/MERN', {useMongoClient: true});
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/dream_app_db', {useMongoClient: true});
 
 // Set up middleware
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));

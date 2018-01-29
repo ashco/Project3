@@ -1,14 +1,24 @@
+// REACT
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+// STYLE
 import './App.css';
+// MODULES
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
 import Flash from './layout/Flash.js';
-import Footer from './layout/Footer.js';
-import Home from './Home.js';
-import Nav from './layout/Nav.js';
-import Login from './auth/Login.js';
+// MAIN PAGES
+import Home from './main/Home.js';
 import Profile from './Profile.js';
+// LAYOUT
+import Nav from './layout/Nav.js';
+import Footer from './layout/Footer.js';
+// AUTH
+import Login from './auth/Login.js';
 import Signup from './auth/Signup.js';
+// CUSTOM ROUTES
+import Form from './main/Form.js';
+
+
 
 class App extends Component {
   constructor(props){
@@ -82,6 +92,9 @@ class App extends Component {
                 () => (<Signup user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
               <Route path="/profile" component={
                 () => (<Profile user={this.state.user} setFlash={this.setFlash} />)} />
+              {/* CUSTOM ROUTES */}
+              <Route path="/form" component={Form} />
+
             </div>
           </div>
         </Router>

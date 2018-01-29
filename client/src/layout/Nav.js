@@ -15,6 +15,7 @@ class Nav extends Component {
     else {
       links = (
         <span>
+          <Link to="/form">Form</Link>
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
         </span>);
@@ -26,10 +27,6 @@ class Nav extends Component {
             <a href="/">Home</a>
             {links}
           </nav>
-          <header className="App-header">
-            <h1 className="App-title">Welcome to the app of your Dreams!</h1>
-          </header>
-
         </div>
       );
   }
