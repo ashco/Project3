@@ -95,9 +95,14 @@ class App extends Component {
               <Route path="/profile" component={
                 () => (<Profile user={this.state.user} setFlash={this.setFlash} />)} />
               {/* CUSTOM ROUTES */}
+<<<<<<< HEAD
               <Route path="/form" component={Form} />
               <Route path="/dreamlog" component={DreamLog} />
               <Route path="/dreamresult" component={DreamResult} />
+=======
+              <Route path="/form" component={
+                () => (<Form user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+>>>>>>> stubout
 
             </div>
           </div>
