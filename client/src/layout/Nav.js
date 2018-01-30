@@ -8,9 +8,9 @@ class Nav extends Component {
     if(this.props.user){
       links = (
         <span>
-          <Link to="/dreamlog">Dream Log</Link>
-          <Link to="/dreamresult">Dream Result</Link>
           <Link to="/form">Form</Link>
+          <Link to="/dreamresult">Dream Result</Link>
+          <Link to="/dreamlog">Dream Log</Link>
           <Link to="/profile">Profile</Link>
           <Logout updateUser={this.props.updateUser} />
         </span>);
@@ -18,9 +18,9 @@ class Nav extends Component {
     else {
       links = (
         <span>
-          <Link to="/dreamlog">Dream Log</Link>
-          <Link to="/dreamresult">Dream Result</Link>
           <Link to="/form">Form</Link>
+          <Link to="/dreamresult">Dream Result</Link>
+          <Link to="/dreamlog">Dream Log</Link>
           <Link to="/login">Login</Link>
           <Link to="/signup">Sign Up</Link>
         </span>);
