@@ -37,7 +37,8 @@ router.post('/', async function(req, res, next){
 		console.log("No user to add to datbase");
 	}
 	
-	let dreamAnalysis = Object.assign(sentiment, descriptions);
+	let dreamAnalysis = [];
+	dreamAnalysis.push(sentiment, descriptions);
 
 	res.send(dreamAnalysis);
 
