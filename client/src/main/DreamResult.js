@@ -10,14 +10,14 @@ class DreamResult extends Component {
 			<div className="DreamResult">
 
 				<Title text="Here is your dream analysis" style="DreamResult__title" />
-		
-				<DreamScore />
 				
+				<DreamScore score="87" />
+
 				<div className="DreamResult__box">
-					<DreamKey />
-					<DreamKey />
-					<DreamKey />
-					<DreamKey />
+					<DreamKey keys="Tiger" />
+					<DreamKey keys="Jungle" />
+					<DreamKey keys="Spooky" />
+					<DreamKey keys="Pepe" />
 				</div>
 			</div>
 		);
