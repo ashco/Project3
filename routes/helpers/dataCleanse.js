@@ -1,5 +1,5 @@
 module.exports = {
-	dataFormat: function(results){
+	keywordFormat: function(results){
 		// REMOVE WORDS
 		let removeWords = ['a', 'the', 'my', 'of', 'in', 'to', 'for', 'with','on', 'at', 'from', 'by', 'about', 'as', 'into', 'like']
 						
@@ -33,5 +33,16 @@ module.exports = {
 		var result = [keyWords, keyWordsValuePairs]
 		return result;
 
+	},
+
+	sentimentFormat: function(sentiment){
+		let sentimentEntry = {
+	  		sentiment: sentiment.Sentiment.toLowerCase(),
+	  		score_positive: Number((sentiment.SentimentScore.Positive).toFixed(3)),
+	  		score_negative: Number((sentiment.SentimentScore.Negative).toFixed(3)),
+	  		score_neutral: Number((sentiment.SentimentScore.Neutral).toFixed(3)),
+			score_mixed: Number((sentiment.SentimentScore.Mixed).toFixed(3)),
+		}
+		return sentimentEntry;
 	}
 }

@@ -15,13 +15,6 @@ router.post('/', async function(req, res, next){
 	
 	let content = req.body.content;
 
-	let postData = {
-		user_id: req.body.user.id,
-		date: req.body.date,
-		content: content
-	}
-	console.log(postData,"postData");
-
 	let params = {
 		LanguageCode: 'en',
 		Text: content
@@ -29,30 +22,21 @@ router.post('/', async function(req, res, next){
 
 	let keywords = await textAnalysis.keyPhrase(params);
 	let sentiment = await textAnalysis.detectSentiment(params);
-	let database = await databaseAddition.addEntry(postData, sentiment, keywords[1]);
-	
+	let descriptions = await dreamScraper.scrapeData(keywords[0]);
+	//TODO: Data cleanse sentiment in cleansing file
 
-	// await Dream.create(database, function(err, dream){
-	// 	if(err){
-	// 		console.log(err);
-	// 	}
-	// 	else {
-	// 		console.log("Adding to db", dream);
-	// 	}
-	// });
-
-	// console.log('keywords', keywords);
-	// console.log('sentiment', sentiment);	
-	// console.log('other random things', user_id, date, content);
-
-	// END FNC IF NO USER LOGIN
-	if (!req.body.user.id){
-		return console.log('No user: all done');
+	if(!req.body.user === null) {
+		var postData = {
+			user_id: req.body.user.id,
+			date: req.body.date,
+			content: content
+		}
+		let database = await databaseAddition.addEntry(postData, sentiment, keywords[1]);
 	}
+	
+	let dreamAnalysis = Object.assign(sentiment, descriptions);
 
-	res.send(database);
-
-	// DATABASE POST EN ROUTE..
+	res.send(dreamAnalysis);
 
 });
 

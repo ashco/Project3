@@ -16,7 +16,7 @@ module.exports = {
 					reject(err); 
 					return;
 				}  
-				resolve(dataCleanse.dataFormat(data)); // Successful Response	
+				resolve(dataCleanse.keywordFormat(data)); // Successful Response	
 			});
 		});
 	},
@@ -29,7 +29,7 @@ module.exports = {
 					reject(err);
 					return; 
 				}
-				resolve(data); // Successful Response
+				resolve(dataCleanse.sentimentFormat(data)); // Successful Response
 			});
 		});
 	}
