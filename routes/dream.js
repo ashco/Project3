@@ -9,30 +9,59 @@ AWS.config.update({region: 'us-west-2'});
 var comprehend = new AWS.Comprehend();
 // REQUIRE DREAM MODEL
 
+var dataCleanse = require('./helpers/dataCleanse.js')
 
+
+
+// TEXT ANALYSIS
+function keyPhrase(params){ // Key Phrase Check
+	comprehend.detectKeyPhrases(params, function(err, data) {	
+		if (err) console.log(err, err.stack); // an error occurred
+		// else     console.log(data);           // successful response
+		var keyWords = dataCleanse.dataFormat(data)
+		console.log(keyWords);
+	});
+}
+
+function detectSentiment(params){ //Sentiment check
+	comprehend.detectSentiment(params, function(err, data) { 
+		if (err) console.log(err, err.stack); // an error occurred
+		else     console.log(data);           // successful response
+		
+	});
+}
+
+// function resolveAfter2Seconds() {
+//   return new Promise(resolve => {
+//     setTimeout(() => {
+// 			resolve('resolved');
+// 			console.log('This triggered');
+//     }, 2000);
+//   });
+// }
 
 
 // Post route
-router.post('/', function(req,res,next){
+router.post('/', async function(req,res,next){
 	// USER INPUT
 	var params = {
 		LanguageCode: 'en', /* required */
 		Text: req.body.content
 	}
 
-	// console.log('/', req.body);
-	// res.send(req.body);
-	// AWS COMPREHEND API
-	// Key Phrase Check
-	comprehend.detectKeyPhrases(params, function(err, data) {
-		if (err) console.log(err, err.stack); // an error occurred
-		else     console.log(data);           // successful response
-	});
-	//Sentiment check
-	comprehend.detectSentiment(params, function(err, data) {
-		if (err) console.log(err, err.stack); // an error occurred
-		else     console.log(data);           // successful response
-	});
+	await keyPhrase(params);
+	// await resolveAfter2Seconds();
+	await detectSentiment(params);
+
+
+		// DATABASE POST
+		// await dreamDbPost ()
+
+
+
+
+	
+	
 });
 
 //Delete route
