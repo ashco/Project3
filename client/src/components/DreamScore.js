@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class DreamScore extends Component {
-  render(){
-    return(
-			<div className="DreamScore__box box">
-				<h1 className="DreamScore__text">78</h1>
-			</div>
-		);
-  }
+const DreamScore = (props) => {
+	return(
+		<div className="DreamScore__box box">
+			<h1 className="DreamScore__text">{props.score}</h1>
+		</div>
+	);
 }
 
 export default DreamScore;

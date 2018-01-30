@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class DreamKey extends Component {
-  render(){
-    return(
-			<div className="DreamKey__box box">
-				<p className="DreamKey__text">Key</p>	
-			</div>
-		);
-  }
+const DreamKey = (props) => {
+	return(
+		<div className="DreamKey__box box">
+			<p className="DreamKey__text">{props.keys}</p>	
+		</div>
+	);
 }
 
 export default DreamKey;
