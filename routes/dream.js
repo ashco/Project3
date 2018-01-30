@@ -2,47 +2,42 @@ require('dotenv').config();
 var express = require('express');
 var router = express.Router();
 var mongoose = require('mongoose');
+// REQUIRE MODELS
 var User = require('../models/user');
-//AWS API REQUIREMENT
+var Dream = require('../models/dream');
+// REQUIRE AWS API
 var AWS = require('aws-sdk');
 AWS.config.update({region: 'us-west-2'});
 var comprehend = new AWS.Comprehend();
-// REQUIRE DREAM MODEL
-
+// REQUIRE HELPER FUNCTIONS
 var dataCleanse = require('./helpers/dataCleanse.js')
 
-
-
-// TEXT ANALYSIS
+var keywords;
+var sentiment;
+// TEXT ANALYSIS FNCS
 function keyPhrase(params){ // Key Phrase Check
 	comprehend.detectKeyPhrases(params, function(err, data) {	
 		if (err) console.log(err, err.stack); // an error occurred
 		// else     console.log(data);           // successful response
-		var keyWords = dataCleanse.dataFormat(data)
-		console.log(keyWords);
+		keywords = dataCleanse.dataFormat(data)
+		
 	});
 }
 
 function detectSentiment(params){ //Sentiment check
 	comprehend.detectSentiment(params, function(err, data) { 
 		if (err) console.log(err, err.stack); // an error occurred
-		else     console.log(data);           // successful response
+		else sentiment = data;
 		
 	});
 }
 
-// function resolveAfter2Seconds() {
-//   return new Promise(resolve => {
-//     setTimeout(() => {
-// 			resolve('resolved');
-// 			console.log('This triggered');
-//     }, 2000);
-//   });
-// }
-
+// before post
+// var dataObject = {userId, setiment, keywords}
 
 // Post route
 router.post('/', async function(req,res,next){
+	
 	// USER INPUT
 	var params = {
 		LanguageCode: 'en', /* required */
@@ -50,18 +45,23 @@ router.post('/', async function(req,res,next){
 	}
 
 	await keyPhrase(params);
-	// await resolveAfter2Seconds();
 	await detectSentiment(params);
-
-
+	console.log('keywords', keywords);
+	console.log('sentiment', sentiment);
 		// DATABASE POST
 		// await dreamDbPost ()
 
+		if (!req.body.user.id){
+			console.log('done');
+		}
 
+		var user_id = req.body.user.id;
+		var date = req.body.date;
+		var content = req.body.content;
 
+		console.log('other random things', user_id, date, content);
 
-	
-	
+		
 });
 
 //Delete route
