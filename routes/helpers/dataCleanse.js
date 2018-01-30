@@ -21,14 +21,11 @@ module.exports = {
 		if (keyWords.length > 5){
 		keyWords = keyWords.splice(0, 5);
 		}		
-	
-		var keyWordsFinal = new Array();
-
-		for(var i=0;i<keyWords.length;i++){
-			var tmp = keyWords[i]
-			var label = 'keyword'.concat(i+1);
-			keyWordsFinal[label]=tmp
-		}
-		return keyWordsFinal;
+		return keyWords;
 	}
 }
+
+
+
+
+
