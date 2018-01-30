@@ -14,6 +14,7 @@ var databaseAddition = require('./helpers/databaseAddition.js')
 router.post('/', async function(req, res, next){
 	
 	let content = req.body.content;
+	let user = req.body.user;
 
 	let params = {
 		LanguageCode: 'en',
@@ -23,15 +24,16 @@ router.post('/', async function(req, res, next){
 	let keywords = await textAnalysis.keyPhrase(params);
 	let sentiment = await textAnalysis.detectSentiment(params);
 	let descriptions = await dreamScraper.scrapeData(keywords[0]);
-	//TODO: Data cleanse sentiment in cleansing file
 
-	if(!req.body.user === null) {
+	if(req.body.user) {
 		var postData = {
-			user_id: req.body.user.id,
+			user_id: user.id,
 			date: req.body.date,
 			content: content
 		}
 		let database = await databaseAddition.addEntry(postData, sentiment, keywords[1]);
+	} else {
+		console.log("No user to add to datbase");
 	}
 	
 	let dreamAnalysis = Object.assign(sentiment, descriptions);
