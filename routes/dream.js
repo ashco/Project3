@@ -24,8 +24,8 @@ router.post('/', async function(req, res, next){
 	let sentiment = await textAnalysis.detectSentiment(params);
 	let descriptions = await dreamScraper.scrapeData(keywords[0]);
 	//TODO: Data cleanse sentiment in cleansing file
-
-	if(!req.body.user === null) {
+	console.log('user', req.body.user);
+	if(req.body.user != null) {
 		var postData = {
 			user_id: req.body.user.id,
 			date: req.body.date,
