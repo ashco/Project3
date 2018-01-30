@@ -9,37 +9,6 @@ var Dream = require('../models/dream');
 var textAnalysis = require('./helpers/textAnalysis.js');
 
 
-// TEXT ANALYSIS FNCS
-// function keyPhrase(params){ // Key Phrase Check
-// 	return new Promise((resolve, reject) => {
-// 		comprehend.detectKeyPhrases(params, function(err, data) {	
-// 			if (err) {
-// 				reject(err); 
-// 				return;
-// 			}  
-// 			resolve(dataCleanse.dataFormat(data)); // Successful Response	
-// 		});
-// 	});
-// }
-
-
-// function detectSentiment(params){ //Sentiment Check
-// 	return new Promise((resolve, reject) => {
-// 		comprehend.detectSentiment(params, function(err, data) { 
-// 			if (err) {
-// 				reject(err);
-// 				return; 
-// 			}
-// 			resolve(data); // Successful Response
-// 		});
-// 	});
-// }
-
-
-
-
-
-
 // POST ROUTE
 router.post('/', async function(req, res, next){
 	let user_id = req.body.user.id;
@@ -53,6 +22,7 @@ router.post('/', async function(req, res, next){
 	let keywords = await textAnalysis.keyPhrase(params);
 	let sentiment = await textAnalysis.detectSentiment(params);
 	
+
 	console.log('keywords', keywords);
 	console.log('sentiment', sentiment);	
 	console.log('other random things', user_id, date, content);
