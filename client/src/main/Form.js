@@ -35,7 +35,7 @@ class Form extends Component {
 			<div className="Form">
 				<Title text="Have you been dreaming?"  style="Form__title"/>
 
-				<form onSubmit={this.handleSubmit}>
+				<form className="Form__box box" onSubmit={this.handleSubmit}>
 					<input name="date" type="date" onChange={this.handleChange}/>
 					<textarea name="content" cols="30" rows="10" onChange={this.handleChange}/>
 					<input className="Form__btn" type="submit"/>

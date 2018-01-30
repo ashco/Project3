@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import Title from '../layout/Title.js';
+import DreamLogItem from '../components/DreamLogItem.js';
 import axios from 'axios';
+
+
+
+
+
+
+
 
 class DreamLog extends Component {
 	constructor(props){
@@ -33,10 +41,14 @@ class DreamLog extends Component {
 
 					<div className="DreamLog__listbox">
 						<ul>
-							<li>Dream 1<a href="#" className="dream-log__delete-btn" onClick={this.handleDelete}>X</a></li>
-							<li>Dream 2<a href="#" className="dream-log__delete-btn" onClick={this.handleDelete}>X</a></li>
-							<li>Dream 3<a href="#" className="dream-log__delete-btn" onClick={this.handleDelete}>X</a></li>
-							<li>Dream 4<a href="#" className="dream-log__delete-btn" onClick={this.handleDelete}>X</a></li>
+							<DreamLogItem />
+							<DreamLogItem />
+							<DreamLogItem />
+							<DreamLogItem />
+							{/* <li>Dream 1<a href="#" className="DreamLog__delete-btn" onClick={this.handleDelete}>X</a></li>
+							<li>Dream 2<a href="#" className="DreamLog__delete-btn" onClick={this.handleDelete}>X</a></li>
+							<li>Dream 3<a href="#" className="DreamLog__delete-btn" onClick={this.handleDelete}>X</a></li> */}
+							{/* <li>Dream 4<a href="#" className="DreamLog__delete-btn" onClick={this.handleDelete}>X</a></li> */}
 						</ul>
 					</div>
         </div>);
