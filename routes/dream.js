@@ -12,6 +12,8 @@ var comprehend = new AWS.Comprehend();
 // REQUIRE HELPER FUNCTIONS
 var dataCleanse = require('./helpers/dataCleanse.js')
 
+
+//
 var keywords;
 var sentiment;
 // TEXT ANALYSIS FNCS
@@ -20,7 +22,7 @@ function keyPhrase(params){ // Key Phrase Check
 		if (err) console.log(err, err.stack); // an error occurred
 		// else     console.log(data);           // successful response
 		keywords = dataCleanse.dataFormat(data)
-		
+		console.log('keyPhrase trigger')
 	});
 }
 
@@ -28,40 +30,45 @@ function detectSentiment(params){ //Sentiment check
 	comprehend.detectSentiment(params, function(err, data) { 
 		if (err) console.log(err, err.stack); // an error occurred
 		else sentiment = data;
-		
+		console.log('detectSentiment trigger')
 	});
 }
+
+function resolveAfter8Seconds() {
+	setTimeout(() => {
+		console.log("timeout up")
+	}, 8000);
+}
+
 
 // before post
 // var dataObject = {userId, setiment, keywords}
 
 // Post route
 router.post('/', async function(req,res,next){
-	
-	// USER INPUT
+	// POST INFO
+	var user_id = req.body.user.id;
+	var date = req.body.date;
+	var content = req.body.content;
 	var params = {
-		LanguageCode: 'en', /* required */
-		Text: req.body.content
+		LanguageCode: 'en',
+		Text: content
 	}
 
 	await keyPhrase(params);
-	await detectSentiment(params);
+	await resolveAfter8Seconds()
+  await detectSentiment(params);
+	
+	if (!req.body.user.id){
+		console.log('done');
+	}
+		
 	console.log('keywords', keywords);
 	console.log('sentiment', sentiment);
-		// DATABASE POST
-		// await dreamDbPost ()
+	console.log('other random things', user_id, date, content);
+	
+	// DATABASE POST
 
-		if (!req.body.user.id){
-			console.log('done');
-		}
-
-		var user_id = req.body.user.id;
-		var date = req.body.date;
-		var content = req.body.content;
-
-		console.log('other random things', user_id, date, content);
-
-		
 });
 
 //Delete route
