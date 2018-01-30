@@ -22,15 +22,16 @@ module.exports = {
 		keyWords = keyWords.splice(0, 5);
 		}		
 	
-		var keyWordsValuePairs = new Array();
+		var keyWordsValuePairs = {};
 
 		for(var i=0;i<keyWords.length;i++){
 		  var tmp = keyWords[i]
 		  var label = 'keyword'.concat(i+1);
-		  keyWordsValuePairs[label]=tmp
+		  keyWordsValuePairs[label] = tmp
 		}
 
 		var result = [keyWords, keyWordsValuePairs]
 		return result;
+
 	}
 }
