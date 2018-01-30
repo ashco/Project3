@@ -1,18 +1,23 @@
 import React, { Component } from 'react';
+import Title from '../layout/Title.js';
+import DreamScore from '../components/DreamScore.js';
+import DreamKey from '../components/DreamKey.js';
+
 
 class DreamResult extends Component {
   render(){
     return(
-			<div className="form">
-				<h1>Your dreams are weird!</h1>
-				<div className="sentiment">
-					<h1>78</h1>
-				</div>
-				<div className="keys">
-					<div className="key">Key 1</div>
-					<div className="key">Key 2</div>
-					<div className="key">Key 3</div>
-					<div className="key">Key 4</div>
+			<div className="DreamResult">
+
+				<Title text="Here is your dream analysis" style="DreamResult__title" />
+		
+				<DreamScore />
+				
+				<div className="DreamResult__box">
+					<DreamKey />
+					<DreamKey />
+					<DreamKey />
+					<DreamKey />
 				</div>
 			</div>
 		);

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Title from '../layout/Title.js';
 import axios from 'axios';
 
 class DreamLog extends Component {
@@ -28,8 +29,9 @@ class DreamLog extends Component {
 		// if(this.props.user && this.props.user.name){
       return (
 				<div>
-          <h1>See what dreams are made of</h1>
-					<div className="dream-log__list">
+					<Title text="Dream Log Entries" style="DreamLog__title" />
+
+					<div className="DreamLog__listbox">
 						<ul>
 							<li>Dream 1<a href="#" className="dream-log__delete-btn" onClick={this.handleDelete}>X</a></li>
 							<li>Dream 2<a href="#" className="dream-log__delete-btn" onClick={this.handleDelete}>X</a></li>
