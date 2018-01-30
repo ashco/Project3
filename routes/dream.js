@@ -7,6 +7,9 @@ var User = require('../models/user');
 var Dream = require('../models/dream');
 // REQUIRE HELPER FUNCTIONS
 var textAnalysis = require('./helpers/textAnalysis.js');
+var dreamScraper = require('./helpers/dreamScraper.js');
+
+
 
 
 // POST ROUTE
@@ -21,8 +24,8 @@ router.post('/', async function(req, res, next){
 
 	let keywords = await textAnalysis.keyPhrase(params);
 	let sentiment = await textAnalysis.detectSentiment(params);
+	// let 
 	
-
 	console.log('keywords', keywords);
 	console.log('sentiment', sentiment);	
 	console.log('other random things', user_id, date, content);
