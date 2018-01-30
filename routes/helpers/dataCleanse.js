@@ -21,11 +21,17 @@ module.exports = {
 		if (keyWords.length > 5){
 		keyWords = keyWords.splice(0, 5);
 		}		
-		return keyWords;
+	
+		var keyWordsValuePairs = {};
+
+		for(var i=0;i<keyWords.length;i++){
+		  var tmp = keyWords[i]
+		  var label = 'keyword'.concat(i+1);
+		  keyWordsValuePairs[label] = tmp
+		}
+
+		var result = [keyWords, keyWordsValuePairs]
+		return result;
+
 	}
 }
-
-
-
-
-
