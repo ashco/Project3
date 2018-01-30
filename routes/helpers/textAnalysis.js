@@ -1,9 +1,17 @@
 // REQUIRE AWS API
 var AWS = require('aws-sdk');
-AWS.config.update({region: 'us-west-2'});
+// AWS.config.update({region: 'us-west-2'});
+AWS.config.loadFromPath('./awsconfig.json');
 var comprehend = new AWS.Comprehend();
+
+
+
+
+
 // REQUIRE HELPER FUNCTIONS
 var dataCleanse = require('./dataCleanse.js');
+
+
 
 // TEXT ANALYSIS FNCS
 module.exports = {
