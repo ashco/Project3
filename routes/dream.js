@@ -1,3 +1,4 @@
+
 require('dotenv').config();
 var express = require('express');
 var router = express.Router();
@@ -14,65 +15,90 @@ var dataCleanse = require('./helpers/dataCleanse.js')
 
 
 //
-var keywords;
-var sentiment;
+// var keywords;
+// var sentiment;
+
+// // TEXT ANALYSIS FNCS
+// async function keyPhrase(params){ // Key Phrase Check
+// 	return new Promise((resolve, reject) => {
+// 		comprehend.detectKeyPhrases(params, function(err, data) {	
+// 			if (err) console.log(err, err.stack); // an error occurred
+// 			// else     console.log(data);           // successful response
+// 			console.log('keyPhrase trigger') //TEST
+// 			return dataCleanse.dataFormat(data)
+// 		});
+// 	});
+// }
+
 // TEXT ANALYSIS FNCS
-function keyPhrase(params){ // Key Phrase Check
-	comprehend.detectKeyPhrases(params, function(err, data) {	
-		if (err) console.log(err, err.stack); // an error occurred
-		// else     console.log(data);           // successful response
-		keywords = dataCleanse.dataFormat(data)
-		console.log('keyPhrase trigger')
+async function keyPhrase(params){ // Key Phrase Check
+	return new Promise((resolve, reject) => {
+		comprehend.detectKeyPhrases(params, function(err, data) {	
+			if (err) {
+				reject(err); 
+				return;
+			}  
+			resolve(dataCleanse.dataFormat(data)); // Successful Response	
+		});
 	});
 }
 
-function detectSentiment(params){ //Sentiment check
-	comprehend.detectSentiment(params, function(err, data) { 
-		if (err) console.log(err, err.stack); // an error occurred
-		else sentiment = data;
-		console.log('detectSentiment trigger')
+function detectSentiment(params){ //Sentiment Check
+	return new Promise((resolve, reject) => {
+		comprehend.detectSentiment(params, function(err, data) { 
+			if (err) {
+				reject(err, err.stack);
+				return; 
+			}
+			resolve(data); // Successful Response
+		});
 	});
 }
 
-function resolveAfter8Seconds() {
-	setTimeout(() => {
-		console.log("timeout up")
-	}, 8000);
-}
+// //TEST FNC
+// function resolveAfter8Seconds() {
+// 	setTimeout(() => {
+// 		console.log("timeout up")
+// 		console.log('keywords', keywords);
+// 		console.log('sentiment', sentiment);
+// 	}, 8000);
+// }
 
 
 // before post
 // var dataObject = {userId, setiment, keywords}
 
 // Post route
-router.post('/', async function(req,res,next){
+router.post('/', async function(req, res, next){
 	// POST INFO
-	var user_id = req.body.user.id;
-	var date = req.body.date;
-	var content = req.body.content;
-	var params = {
+	let user_id = req.body.user.id;
+	let date = req.body.date;
+	let content = req.body.content;
+	let params = {
 		LanguageCode: 'en',
 		Text: content
 	}
 
-	await keyPhrase(params);
-	await resolveAfter8Seconds()
-  await detectSentiment(params);
+	let keywords = await keyPhrase(params);
+	let sentiment = await detectSentiment(params);
 	
-	if (!req.body.user.id){
-		console.log('done');
-	}
-		
 	console.log('keywords', keywords);
-	console.log('sentiment', sentiment);
+	console.log('sentiment', sentiment);	
 	console.log('other random things', user_id, date, content);
-	
-	// DATABASE POST
 
+	// END FNC IF NO USER LOGIN
+	if (!req.body.user.id){
+		return console.log('No user: all done');
+	}
+
+	// DATABASE POST EN ROUTE..
+	console.log('finished')
 });
 
+
+
 //Delete route
-router.delete('/12345', function(req,res){
+router.delete('/12345', function(req, res){
 	console.log(req.body);
 	res.send(req.body);
 })

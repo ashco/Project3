@@ -24,6 +24,7 @@ class Form extends Component {
 			user: base.props.user
 		}).then((result) => {
 			console.log('dream post results', result);
+			console.log('######################');
 		}).catch((error) => {
 			console.log('error returned', error.response.data);
 		});
