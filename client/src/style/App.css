@@ -22,7 +22,7 @@ body {
 /* BOXES */
 .box {
   text-align: center;
-  background: #ddd;
+  /* background: #ddd; */
 }
 
 /* NAV */
