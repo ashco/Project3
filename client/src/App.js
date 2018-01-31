@@ -100,7 +100,6 @@ class App extends Component {
                 <Route path="/analyze" component={
                   () => (<Analyze user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
               </div>
-            {/* <Footer /> */}
             </div>
           </Router>
         </MuiThemeProvider>
