@@ -96,7 +96,8 @@ class App extends Component {
               {/* CUSTOM ROUTES */}
               <Route path="/analyze" component={
                 () => (<Analyze user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
-
+              <Route path="/log" component={
+                () => (<DreamLog user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
             </div>
           </div>
         </Router>
