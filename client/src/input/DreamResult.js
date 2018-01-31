@@ -9,6 +9,7 @@ class DreamResult extends Component {
   render(){
  
   	const sentiment = this.props.analysis.data[0]
+  	const overallSentiment = this.props.analysis.data[1].sentiment
   	const keywords = this.props.analysis.data[1].map(word => {
   		return(<DreamKey keys={word} />)
   	})
@@ -18,7 +19,8 @@ class DreamResult extends Component {
 
 				<Title text="Here is your dream analysis" style="DreamResult__title" />
 				
-				<DreamScore score="87" />
+				<DreamScore data={sentiment}/>
+				<h1>{overallSentiment}</h1>
 
 				<div className="DreamResult__box">
 					{keywords}
