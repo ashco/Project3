@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
-import Title from '../layout/Title.js';
 import axios from 'axios';
+import Title from '../layout/Title.js';
+import Form from './Form.js';
+import DreamResult from './DreamResult.js'
 
-class Form extends Component {
+class Analyze extends Component {
 	constructor(props){
 		super(props);
 		this.state = {
-			date: '2018-01-30',
-			content: ''
+			date: '',
+			content: '',
+			data: ''
 		}
 	}
 
@@ -24,25 +27,23 @@ class Form extends Component {
 			user: base.props.user
 		}).then((result) => {
 			console.log('dream post results', result);
+			base.setState({
+				data: result
+			})
 		}).catch((error) => {
 			console.log('error returned', error.response.data);
 		});
 	}
 
-
   render(){
     return(
-			<div className="Form">
-				<Title text="Have you been dreaming?"  style="Form__title"/>
-
-				<form className="Form__box box" onSubmit={this.handleSubmit}>
-					<input name="date" type="date" onChange={this.handleChange}/>
-					<textarea name="content" cols="30" rows="10" onChange={this.handleChange}/>
-					<input className="Form__btn" type="submit"/>
-				</form>
+			<div>
+				<Form handleSubmit={this.handleSumbit.bind(this)} handleChange={this.handleChange.bind(this)} />
+				Form or Result will be toggled into this div
+				<DreamResult />
 			</div>
 		);
   }
 }
 
-export default Form;
+export default Analyze;

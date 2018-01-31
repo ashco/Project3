@@ -16,10 +16,8 @@ import Footer from './layout/Footer.js';
 import Login from './auth/Login.js';
 import Signup from './auth/Signup.js';
 // CUSTOM ROUTES
-import Form from './main/Form.js';
+import Analyze from './input/Analyze.js';
 import DreamLog from './user/DreamLog.js';
-import DreamResult from './main/DreamResult.js';
-
 
 
 class App extends Component {
@@ -96,10 +94,8 @@ class App extends Component {
               <Route path="/profile" component={
                 () => (<Profile user={this.state.user} setFlash={this.setFlash} />)} />
               {/* CUSTOM ROUTES */}
-              <Route path="/dreamlog" component={DreamLog} />
-              <Route path="/dreamresult" component={DreamResult} />
-              <Route path="/form" component={
-                () => (<Form user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+              <Route path="/analyze" component={
+                () => (<Analyze user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
 
             </div>
           </div>
