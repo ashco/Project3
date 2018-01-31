@@ -10,38 +10,47 @@ class Analyze extends Component {
 		this.state = {
 			date: '',
 			content: '',
-			data: ''
+			data: '',
+			display: ''
 		}
 
-		this.handleChange = this.handleChange.bind(this);
-		this.handleSubmit = this.handleSubmit.bind(this);
+		
+		this.handleInput = this.handleInput.bind(this);
 	}
 
-	handleChange = (event) => {
-		this.setState({[event.target.name]:event.target.value})
-	}
+	// function to handle for input
+	// input is from handleSUbmit in the form component 
+	// axios call and state update at the end of this function
 
-	handleSubmit = (event) => {
-		event.preventDefault();
+	handleInput = (date, content) => {
 		let base = this;
+
 		axios.post('/dream', {
-			date: base.state.date,
-			content: base.state.content,
+			date: date,
+			content: content,
 			user: base.props.user
 		}).then((result) => {
 			console.log('dream post results', result);
 			base.setState({
+				date: date,
+				content: content,
 				data: result
 			})
 		}).catch((error) => {
 			console.log('error returned', error.response.data);
 		});
+
 	}
+
+	// handleSubmit = (event) => {
+	// 	event.preventDefault();
+
+	// }
 
   render(){
     return(
 			<div>
-				<Form handleSubmit={this.handleSumbit} handleChange={this.handleChange} />
+				<Form handleInput={this.handleInput} />
 				Form or Result will be toggled into this div
 				<DreamResult />
 			</div>
