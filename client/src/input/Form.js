@@ -47,15 +47,14 @@ class Form extends Component {
 				<div className="Form__box box">
 				{/* <form className="Form__box box" onSubmit={this.handleSubmit}> */}
 					{/* DATE */}
-					<DatePicker hintText="Controlled Date Input"
+					<DatePicker hintText="Dream date"
 											name="date"
 											mode="landscape"
         							value={this.state.date}
         							onChange={this.handleDateChange} />
 					{/* TEXT */}
 					<TextField name="content"
-										 hintText="What do you dream of?"
-										 floatingLabelText="MultiLine and FloatingLabel"
+										 floatingLabelText="Text"
       							 multiLine={true}
       							 rows={10}
 										 onChange={this.handleContentChange} />

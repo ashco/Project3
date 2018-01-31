@@ -101,7 +101,7 @@ class App extends Component {
                   () => (<Analyze user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
 
               </div>
-            <Footer />
+            {/* <Footer /> */}
             </div>
           </Router>
         </MuiThemeProvider>

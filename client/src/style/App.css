@@ -13,10 +13,13 @@
     color: var(--main-color);
 }*/
 
-body {
-  background-color: var(--background-color);
+* {
   font: var(--font-color);
   font-family: Helvetica;
+}
+
+body {
+  background-color: var(--background-color);
 }
 
 /* BOXES */
@@ -39,9 +42,9 @@ nav a {
   color: #4ff;
 }
 
-nav a:hover {
+/* nav a:hover {
   color: #7f4dd2;
-}
+} */
 
 
 
