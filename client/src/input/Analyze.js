@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Title from '../layout/Title.js';
 import Form from './Form.js';
-import DreamResult from './DreamResult.js'
+import DreamResult from './DreamResult.js';
+import Loading from './Loading.js';
 
 class Analyze extends Component {
 	constructor(props){
@@ -11,19 +12,16 @@ class Analyze extends Component {
 			date: '',
 			content: '',
 			data: '',
-			display: ''
+			display: 'form'
 		}
-
 		
 		this.handleInput = this.handleInput.bind(this);
 	}
 
-	// function to handle for input
-	// input is from handleSUbmit in the form component 
-	// axios call and state update at the end of this function
-
 	handleInput = (date, content) => {
 		let base = this;
+
+		base.setState({display: 'loading'});
 
 		axios.post('/dream', {
 			date: date,
@@ -34,27 +32,34 @@ class Analyze extends Component {
 			base.setState({
 				date: date,
 				content: content,
-				data: result
+				data: result,
+				display: 'result'
 			})
 		}).catch((error) => {
 			console.log('error returned', error.response.data);
 		});
-
 	}
 
-	// handleSubmit = (event) => {
-	// 	event.preventDefault();
 
-	// }
 
   render(){
-    return(
-			<div>
-				<Form handleInput={this.handleInput} />
-				Form or Result will be toggled into this div
-				<DreamResult />
-			</div>
-		);
+  	console.log('this state', this.state);
+  	const displayState = this.state.display;
+  	let display = null;
+
+  	if(displayState === 'form'){
+	  display = <Form handleInput={this.handleInput} />
+  	} else if (displayState === 'loading') {
+  		display = <Loading />
+  	}
+  	else if (displayState === 'result') {
+	  	display = <DreamResult />
+  	}
+  	return (
+  		<div>
+  		{display}
+  		</div>
+  	)
   }
 }
 
