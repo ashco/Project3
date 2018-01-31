@@ -7,6 +7,10 @@ import RaisedButton from 'material-ui/RaisedButton';
 
 class Nav extends Component {
   render(){
+    const style = {
+      margin: 8,
+    }; 
+
     let leftLinks = <span />;
     let rightLinks = <span />;
     
@@ -35,8 +39,8 @@ class Nav extends Component {
       );
       rightLinks = (
         <span>
-          <Link to="/login"><RaisedButton label="Login" primary={true} /></Link>
-          <Link to="/signup"><RaisedButton label="Sign Up" primary={true} /></Link>
+          <Link to="/login"><RaisedButton label="Login" primary={true} style={style} /></Link>
+          <Link to="/signup"><RaisedButton label="Sign Up" primary={true} style={style} /></Link>
         </span>
       );
     }

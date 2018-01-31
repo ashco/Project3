@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+// COMPONENTS
+import Title from '../layout/Title.js';
 // MATERIAL UI
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -47,11 +49,12 @@ class Signup extends Component {
     }
     else {
       form = (
-        <div>
+        <div className="Signup__box box">
           <div>
             <TextField name="name"
                        type="text"
                        floatingLabelText="Name"
+                       fullWidth={true}
                        value={this.state.name}
                        onChange={this.handleNameChange}/><br />
           </div>
@@ -59,6 +62,7 @@ class Signup extends Component {
             <TextField name="email"
                        type="email"
                        floatingLabelText="Email"
+                       fullWidth={true}
                        value={this.state.email}
                        onChange={this.handleEmailChange}/><br />
           </div>
@@ -66,6 +70,7 @@ class Signup extends Component {
             <TextField name="password"
                        type="password"
                        floatingLabelText="Password"
+                       fullWidth={true}
                        value={this.state.password}
                        onChange={this.handlePasswordChange}/><br />
           </div>
@@ -75,6 +80,7 @@ class Signup extends Component {
     }
     return (
       <div>
+        <Title text="Sign Up"  style="Signup__title"/>
         {form}
         {this.props.user ? <Redirect to="/profile" /> : ''}
       </div>

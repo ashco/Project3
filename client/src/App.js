@@ -21,7 +21,6 @@ import './style/App.css';
 // MATERIAL UI
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
-
 class App extends Component {
   constructor(props){
     super(props);
@@ -29,6 +28,7 @@ class App extends Component {
       user: {}
     }
   }
+
   componentDidMount = () => {
     this.getUser();
   }
@@ -99,7 +99,6 @@ class App extends Component {
                 {/* CUSTOM ROUTES */}
                 <Route path="/analyze" component={
                   () => (<Analyze user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
-
               </div>
             {/* <Footer /> */}
             </div>
