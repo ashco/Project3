@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Title from '../layout/Title.js';
 // import DreamLogItem from '../components/DreamLogItem.js';
 import axios from 'axios';
+import DreamEntry from './DreamEntry.js'
+import WaitingState from './WaitingState.js'
 
 
 
@@ -9,7 +11,8 @@ class DreamLog extends Component {
 	constructor(props){
 		super(props);
         this.state = {
-          dreams: ''
+          dreams: [],
+          dreamState: false
         }
 	}
 
@@ -27,7 +30,8 @@ class DreamLog extends Component {
 			console.log(result);
 			let foundDreams = result;
 			base.setState({
-				dreams: foundDreams
+				dreams: foundDreams,
+				dreamState: true
 			})
 			console.log("State",base.state.dreams);
 		}).catch((error) => {
@@ -54,23 +58,21 @@ class DreamLog extends Component {
 	}
 
   render(){
-		const DreamLogItem = () => {
-			return <p>Test</p>
-		}
+  	const displayState = this.state.dreamState;
+  	let display = null;
 
 
-  		return (
-			<div>
-				<Title text="Dream Log Entries" style="DreamLog__title" />
-				<div className="DreamLog__listbox">
-					{DreamLogItem}
-				</div>
-        	</div>
-        );
+  	if(displayState === false ){
+  		display = <WaitingState />
+  	} else if (displayState === true ) {
+  		display = <DreamEntry dreams={this.state.dreams}/>
+    }
+    return (
+    	<div>
+    	{display}
+    	</div>
+    )
   }
 }
-
-
-
 
 export default DreamLog;
