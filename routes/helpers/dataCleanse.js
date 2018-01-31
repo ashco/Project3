@@ -1,7 +1,7 @@
 module.exports = {
 	keywordFormat: function(results){
 		// REMOVE WORDS
-		let removeWords = ['a', 'the', 'my', 'of', 'in', 'to', 'for', 'with','on', 'at', 'from', 'by', 'about', 'as', 'into', 'like']
+		let removeWords = ['a', 'the', 'my', 'of', 'in', 'to', 'for', 'with','on', 'at', 'from', 'by', 'about', 'as', 'into', 'like', 'this']
 						
 		let rawData = results.KeyPhrases;
 		let keyWords = [];

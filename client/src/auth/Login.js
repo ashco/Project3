@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+// COMPONENTS
+import Title from '../layout/Title.js';
+// MATERIAL UI
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Login extends Component {
   constructor(props) {
@@ -40,27 +45,31 @@ class Login extends Component {
       return (<Redirect to="/profile" />);
     }
     else {
-      form = (<form onSubmit={this.handleSubmit}>
-                <div>
-                  <input name="Email"
-                       placeholder="Enter your email"
+      form = (
+        <div className="Login__box box">
+          <div>
+            <TextField name="email"
+                       type="email"
+                       floatingLabelText="Email"
+                       fullWidth={true}
                        value={this.state.email}
-                       onChange={this.handleEmailChange}
-                  />
-                </div>
-                <div>
-                  <input name="Password"
-                       placeholder="Enter your password"
+                       onChange={this.handleEmailChange}/><br />
+          </div>
+          <div>
+            <TextField name="password"
                        type="password"
+                       floatingLabelText="Password"
+                       fullWidth={true}
                        value={this.state.password}
-                       onChange={this.handlePasswordChange}
-                  />
-                </div>
-                <input type="submit" value="Login" className="btn-primary" />
-              </form>);
+                       onChange={this.handlePasswordChange}/><br />
+          </div>
+          <RaisedButton label="Login" primary={true} onClick={this.handleSubmit} />
+        </div>
+      );
     }
     return (
       <div>
+        <Title text="Login"  style="Login__title"/>
         {form}
       </div>
     );

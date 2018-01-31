@@ -56,8 +56,8 @@ class Analyze extends Component {
 	  	display = <DreamResult analysis = {this.state.data}/>
   	}
   	return (
-  		<div>
-  		{display}
+  		<div className="content__box">
+  			{display}
   		</div>
   	)
   }

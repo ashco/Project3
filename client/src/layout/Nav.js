@@ -1,37 +1,62 @@
 import React, { Component } from 'react';
 import Logout from '../auth/Logout.js';
 import { Link } from 'react-router-dom';
+// MATERIAL UI
+import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Nav extends Component {
   render(){
-    let links = <span />;
+    const style = {
+      margin: 8,
+    }; 
+
+    let leftLinks = <span />;
+    let rightLinks = <span />;
+    
     if(this.props.user){
-      links = (
+      leftLinks = (
         <span>
-          <Link to="/analyze">Analyze</Link>
-          <Link to="/dreamlog">Dream Log</Link>
-          <Link to="/profile">Profile</Link>
+          <Link to="/"><ToolbarTitle text="DreamApp" /></Link>
+          <Link to="/analyze"><ToolbarTitle text="Analyze" /></Link>
+        </span>
+      )
+      rightLinks = (
+        <span>
+          <Link to="/dreamlog"><ToolbarTitle text="Dream Log" /></Link>
+          <Link to="/profile"><ToolbarTitle text="Profile" /></Link>
+          <ToolbarSeparator />
           <Logout updateUser={this.props.updateUser} />
-        </span>);
+        </span>
+      );
     }
     else {
-      links = (
+      leftLinks = (
         <span>
-          <Link to="/analyze">Analyze</Link>
-          <Link to="/dreamlog">Dream Log</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/signup">Sign Up</Link>
-        </span>);
+          <Link to="/"><ToolbarTitle text="DreamApp" /></Link>
+          <Link to="/analyze"><ToolbarTitle text="Analyze" /></Link>
+        </span>
+      );
+      rightLinks = (
+        <span>
+          <Link to="/login"><RaisedButton label="Login" primary={true} style={style} /></Link>
+          <Link to="/signup"><RaisedButton label="Sign Up" primary={true} style={style} /></Link>
+        </span>
+      );
     }
 
     return(
-        <div>
-          <nav className="nav">
-            <a href="/">Home</a>
-            {links}
-          </nav>
-        </div>
-      );
+      <Toolbar>
+        {/* LEFT SIDE */}
+        <ToolbarGroup firstChild={true}>
+          {leftLinks}
+        </ToolbarGroup>
+        {/* RIGHT SIDE */}
+        <ToolbarGroup lastChild={true}>
+          {rightLinks}
+        </ToolbarGroup>
+      </Toolbar>
+    );
   }
 }
 
