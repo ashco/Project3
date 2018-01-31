@@ -53,11 +53,11 @@ class Form extends Component {
         							value={this.state.date}
         							onChange={this.handleDateChange} />
 					{/* TEXT */}
-					<TextField hintText="What do you dream of?"
-										 multiLine={true}
-										 name="content"
-										 rows={10}
-										 rowsMax={10}
+					<TextField name="content"
+										 hintText="What do you dream of?"
+										 floatingLabelText="MultiLine and FloatingLabel"
+      							 multiLine={true}
+      							 rows={10}
 										 onChange={this.handleContentChange} />
 
 					{/* <textarea name="content" cols="30" rows="10" onChange={this.handleChange}/> */}

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+// MATERIAL UI
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Login extends Component {
   constructor(props) {
@@ -12,10 +15,14 @@ class Login extends Component {
   }
 
   handleEmailChange = (e) => {
+    console.log(e)
+    console.log(this.state)
     this.setState({email: e.target.value});
   }
 
   handlePasswordChange = (e) => {
+      console.log(e)
+      console.log(this.state)
     this.setState({password: e.target.value});
   }
 
@@ -40,24 +47,25 @@ class Login extends Component {
       return (<Redirect to="/profile" />);
     }
     else {
-      form = (<form onSubmit={this.handleSubmit}>
-                <div>
-                  <input name="Email"
-                       placeholder="Enter your email"
+      form = (
+        <div>
+          <div>
+            <TextField name="email"
+                       type="email"
+                       floatingLabelText="Email"
                        value={this.state.email}
-                       onChange={this.handleEmailChange}
-                  />
-                </div>
-                <div>
-                  <input name="Password"
-                       placeholder="Enter your password"
+                       onChange={this.handleEmailChange}/><br />
+          </div>
+          <div>
+            <TextField name="password"
                        type="password"
+                       floatingLabelText="Password"
                        value={this.state.password}
-                       onChange={this.handlePasswordChange}
-                  />
-                </div>
-                <input type="submit" value="Login" className="btn-primary" />
-              </form>);
+                       onChange={this.handlePasswordChange}/><br />
+          </div>
+          <RaisedButton label="Login" primary={true} onClick={this.handleSubmit} />
+        </div>
+      );
     }
     return (
       <div>
