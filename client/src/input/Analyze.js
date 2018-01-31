@@ -53,7 +53,7 @@ class Analyze extends Component {
   		display = <Loading />
   	}
   	else if (displayState === 'result') {
-	  	display = <DreamResult />
+	  	display = <DreamResult analysis = {this.state.data}/>
   	}
   	return (
   		<div>
