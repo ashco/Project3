@@ -1,11 +1,18 @@
 import React, { Component } from 'react';
 import Title from '../layout/Title.js';
-import DreamScore from '../components/DreamScore.js';
-import DreamKey from '../components/DreamKey.js';
+import DreamScore from './resultComponents/DreamScore.js';
+import DreamKey from './resultComponents/DreamKey.js';
 
 
 class DreamResult extends Component {
+
   render(){
+ 
+  	const sentiment = this.props.analysis.data[0]
+  	const keywords = this.props.analysis.data[1].map(word => {
+  		return(<DreamKey keys={word} />)
+  	})
+
     return(
 			<div className="DreamResult">
 
@@ -14,10 +21,7 @@ class DreamResult extends Component {
 				<DreamScore score="87" />
 
 				<div className="DreamResult__box">
-					<DreamKey keys="Tiger" />
-					<DreamKey keys="Jungle" />
-					<DreamKey keys="Spooky" />
-					<DreamKey keys="Pepe" />
+					{keywords}
 				</div>
 			</div>
 		);
