@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import Title from '../layout/Title.js';
-import DreamLogItem from '../components/DreamLogItem.js';
+// import DreamLogItem from '../components/DreamLogItem.js';
 import axios from 'axios';
 
 
-
-
-
-
-
+const DreamLogItem = () => {
+  return (
+    <li>Dream 1<a href="#" className="DreamLog__delete-btn" onClick={this.handleDelete}>X</a></li>
+  );
+}
 
 class DreamLog extends Component {
 	constructor(props){
