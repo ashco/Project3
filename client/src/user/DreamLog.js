@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const DreamLogItem = () => {
   return (
-    <li>Dream 1<a href="#" className="DreamLog__delete-btn" onClick={this.handleDelete}>X</a></li>
+    <li>Dream Log Item<a href="#" className="DreamLog__delete-btn" onClick={this.handleDelete}>X</a></li>
   );
 }
 

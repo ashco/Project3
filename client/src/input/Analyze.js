@@ -12,6 +12,9 @@ class Analyze extends Component {
 			content: '',
 			data: ''
 		}
+
+		this.handleChange = this.handleChange.bind(this);
+		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
 	handleChange = (event) => {
@@ -38,7 +41,7 @@ class Analyze extends Component {
   render(){
     return(
 			<div>
-				<Form handleSubmit={this.handleSumbit.bind(this)} handleChange={this.handleChange.bind(this)} />
+				<Form handleSubmit={this.handleSumbit} handleChange={this.handleChange} />
 				Form or Result will be toggled into this div
 				<DreamResult />
 			</div>
