@@ -49,7 +49,7 @@ class Form extends Component {
         							onChange={this.handleDateChange} />
 					{/* TEXT */}
 					<TextField name="content"
-										 floatingLabelText="Text"
+										//  floatingLabelText="Text"
 										 multiLine={true}
 										 fullWidth={true}
       							 rows={10}
