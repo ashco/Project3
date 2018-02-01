@@ -20,13 +20,14 @@ class Form extends Component {
 	}
 
 	handleDateChange = (event, date) => {
-    this.setState({date: date,
+    	this.setState({date: date,
     });
   };
 
-	handleContentChange = (event) => {
-		this.setState({content:event.target.value})
-	}
+	handleContentChange = (event, content) => {
+		this.setState({content: content,
+    });
+  }
 
 	handleSubmit = (event) => {
 		event.preventDefault();
