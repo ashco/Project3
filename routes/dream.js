@@ -55,7 +55,18 @@ router.delete('/:id', function(req, res){
 	})
 })
 
-//PUT ROUTE - edit previous forms 
+//EDIT GET ROUTE - load form to edit dream
+router.get('/edit/:id', function(req, res){
+	console.log("Reached edit route form generation");
+	res.send(200);
+});
+
+//EDIT PUT ROUTE - submits form to edit dream
+//Likely need to re-analyze here
+router.put('/:id', function(req, res){
+	console.log("Reached put route submission");
+	res.send(200);
+});
 
 
 module.exports = router;

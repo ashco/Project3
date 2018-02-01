@@ -13,6 +13,7 @@ class DreamLog extends Component {
           dreamState: false
         }
         this.handleDelete = this.handleDelete.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
 	}
 
 	fetchDreams = () => {
@@ -59,7 +60,24 @@ class DreamLog extends Component {
 		}).catch((error) => {
 			console.log('error returned', error.response.data);
 		})
+	}
 
+	handleEdit = (dream_id) => {
+		console.log(dream_id,"is the info we got from clicking the edit button in dream entry component");
+		let dreamUrl = '/dream/edit/' + dream_id;
+		let base = this;
+		axios({
+			method: 'get',
+			url: dreamUrl,
+			data: {
+				id: dream_id,
+				user: base.props.user
+			}
+		}).then((result) => {
+			console.log(result);
+		}).catch((error) => {
+			console.log('error returned', error.response.data);
+		})
 	}
 
   render(){
@@ -71,7 +89,7 @@ class DreamLog extends Component {
   	} else if (displayState === true ) {
   		display = this.state.dreams.map((dream, index) => {
   			if(dream._id) {
-  				return <DreamEntry key={index} dream={dream} handleDelete={this.handleDelete} />
+  				return <DreamEntry key={index} dream={dream} handleDelete={this.handleDelete} handleEdit={this.handleEdit} />
   			}
     	})
     }
