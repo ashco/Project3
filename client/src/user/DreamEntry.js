@@ -5,24 +5,12 @@ import moment from 'moment';
 class DreamEntry extends Component{
 	constructor(props){
 		super(props);
+		this.deleteDream = this.deleteDream.bind(this);
 	}
 
-	handleDelete = () => {
-		console.log("got to delete handler");
+	deleteDream = () => {
 		console.log(this.props.dream._id,"is the id we get from button");
-	
-		// axios({
-		// 	method: 'delete',
-		// 	url: '/dream/12345',
-		// 	data: {
-		// 		id: 12345
-		// 	}
-		// }).then((result) => {
-		// 	console.log(result);
-
-		// }).catch((error) => {
-		// 	console.log('error returned', error.response.data);
-		// })
+		this.props.handleDelete(this.props.dream._id);
 	}
 
 	render(){
@@ -32,7 +20,7 @@ class DreamEntry extends Component{
 			<h5>{this.props.dream.sentiment}</h5>
 			<p>{this.props.dream.content}</p>
 			<p>
-				<button type="button" id={this.props.dream._id} onClick={this.handleDelete}>Delete</button>
+				<button type="button" id={this.props.dream._id} onClick={this.deleteDream}>Delete</button>
 			</p>
 		</div>
 	)
