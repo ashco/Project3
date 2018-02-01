@@ -41,7 +41,7 @@ class DreamEntry extends Component{
 	}
 
 	render(){
-		const dreamDate = moment(this.props.dream.date).format('MM DD, YYYY');   
+		const dreamDate = moment(this.props.dream.date).format('MMMM D, YYYY');   
 	return(
 		<div className="DreamKey__box box">
 			<h3>{dreamDate}</h3>
