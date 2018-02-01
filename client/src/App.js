@@ -1,7 +1,5 @@
 // REACT
 import React, { Component } from 'react';
-// STYLE
-import './style/App.css';
 // MODULES
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import axios from 'axios';
@@ -18,7 +16,10 @@ import Signup from './auth/Signup.js';
 // CUSTOM ROUTES
 import Analyze from './input/Analyze.js';
 import DreamLog from './user/DreamLog.js';
-
+// STYLE
+import './style/App.css';
+// MATERIAL UI
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 class App extends Component {
   constructor(props){
@@ -27,6 +28,7 @@ class App extends Component {
       user: {}
     }
   }
+
   componentDidMount = () => {
     this.getUser();
   }
@@ -80,28 +82,29 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router>
-          <div>
-            <Nav user={this.state.user} updateUser={this.getUser} />
-            <div className="space">
-              <Flash flashType={this.state.flashType} flash={this.state.flash} setFlash={this.setFlash} cancelFlash={this.cancelFlash} />
-            
-              <Route exact path="/" component={Home} />
-              <Route path="/login" component={
-                () => (<Login user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
-              <Route path="/signup" component={
-                () => (<Signup user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
-              <Route path="/profile" component={
-                () => (<Profile user={this.state.user} setFlash={this.setFlash} />)} />
-              {/* CUSTOM ROUTES */}
-              <Route path="/analyze" component={
-                () => (<Analyze user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
-              <Route path="/log" component={
-                () => (<DreamLog user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+        <MuiThemeProvider>
+          <Router>
+            <div>
+              <Nav user={this.state.user} updateUser={this.getUser} />
+              <div className="space">
+                <Flash flashType={this.state.flashType} flash={this.state.flash} setFlash={this.setFlash} cancelFlash={this.cancelFlash} />
+              
+                <Route exact path="/" component={Home} />
+                <Route path="/login" component={
+                  () => (<Login user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                <Route path="/signup" component={
+                  () => (<Signup user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                <Route path="/profile" component={
+                  () => (<Profile user={this.state.user} setFlash={this.setFlash} />)} />
+                {/* CUSTOM ROUTES */}
+                <Route path="/analyze" component={
+                  () => (<Analyze user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                <Route path="/log" component={
+                  () => (<DreamLog user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+              </div>
             </div>
-          </div>
-        </Router>
-        <Footer />
+          </Router>
+        </MuiThemeProvider>
       </div>
     );
   }

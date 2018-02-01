@@ -13,16 +13,13 @@
     color: var(--main-color);
 }*/
 
-body {
-  background-color: var(--background-color);
+* {
   font: var(--font-color);
   font-family: Helvetica;
 }
 
-/* BOXES */
-.box {
-  text-align: center;
-  background: #ddd;
+body {
+  background-color: var(--background-color);
 }
 
 /* NAV */
@@ -36,18 +33,42 @@ nav a {
   margin: 10px;
   text-decoration: none;
   font-size: 18px;
-  color: #4ff;
 }
 
-nav a:hover {
-  color: #7f4dd2;
+.space {
+  /* display: flex; */
+  margin: 15px 0;
+}
+
+.content__box {
+  display: flex;
+  justify-content: center;
+  /* height: auto; */
+
 }
 
 
+/* BOXES */
+.box {
+  text-align: center;
+  background: var(--light-grey-color);
+}
 
+/* FORM */
+.Form__box {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 500px;
+  background-color: var(--light-grey-color);
+}
+
+.Login__box, .Signup__box {
+  width: 500px;
+}
 
 /* FOOTER */
-.footer {
+/* .footer {
   background-color: #555;
   position: absolute;
   bottom: 0;
@@ -58,11 +79,8 @@ nav a:hover {
 .footer-text {
   color: #fff;
   font-size: 10px;
-}
+} */
 
-.space {
-  margin: 15px 0;
-}
 
 
 /* BTN */

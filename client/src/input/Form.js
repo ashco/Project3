@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Title from '../layout/Title.js';
 import axios from 'axios';
+// MATERIAL UI
+import DatePicker from 'material-ui/DatePicker';
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Form extends Component {
 	constructor(props){
@@ -10,13 +14,18 @@ class Form extends Component {
 			content: ''
 		}
 
-		this.handleChange = this.handleChange.bind(this);
+		this.handleDateChange = this.handleDateChange.bind(this);
+		this.handleContentChange = this.handleContentChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+	handleDateChange = (event, date) => {
+    this.setState({date: date,
+    });
+  };
 
-	handleChange = (event) => {
-		this.setState({[event.target.name]:event.target.value})
+	handleContentChange = (event) => {
+		this.setState({content:event.target.value})
 	}
 
 	handleSubmit = (event) => {
@@ -29,12 +38,23 @@ class Form extends Component {
     return(
 			<div className="Form">
 				<Title text="Have you been dreaming?"  style="Form__title"/>
-
-				<form className="Form__box box" onSubmit={this.handleSubmit}>
-					<input name="date" type="date" onChange={this.handleChange}/>
-					<textarea name="content" cols="30" rows="10" onChange={this.handleChange}/>
-					<input className="Form__btn" type="submit"/>
-				</form>
+				<div className="Form__box box">
+					{/* DATE */}
+					<DatePicker hintText="Dream date"
+											name="date"
+											mode="landscape"
+											fullWidth={true}
+        							value={this.state.date}
+        							onChange={this.handleDateChange} />
+					{/* TEXT */}
+					<TextField name="content"
+										 floatingLabelText="Text"
+										 multiLine={true}
+										 fullWidth={true}
+      							 rows={10}
+										 onChange={this.handleContentChange} />
+					<RaisedButton label="Submit" primary={true} onClick={this.handleSubmit} />
+				</div>
 			</div>
 		);
   }

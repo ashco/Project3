@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+// COMPONENTS
+import Title from '../layout/Title.js';
+// MATERIAL UI
+import TextField from 'material-ui/TextField';
+import RaisedButton from 'material-ui/RaisedButton';
 
 class Signup extends Component {
   constructor(props) {
@@ -43,32 +48,39 @@ class Signup extends Component {
       return (<Redirect to="/profile" />);
     }
     else {
-      form = (<form onSubmit={this.handleSubmit}>
-                <div>
-                  <input name="Name"
-                       placeholder="What is your first name?"
+      form = (
+        <div className="Signup__box box">
+          <div>
+            <TextField name="name"
+                       type="text"
+                       floatingLabelText="Name"
+                       fullWidth={true}
                        value={this.state.name}
-                       onChange={this.handleNameChange}
-                  />
-                </div>
-                <div>
-                  <input name="Email"
-                       placeholder="What is your email?"
+                       onChange={this.handleNameChange}/><br />
+          </div>
+          <div>
+            <TextField name="email"
+                       type="email"
+                       floatingLabelText="Email"
+                       fullWidth={true}
                        value={this.state.email}
-                       onChange={this.handleEmailChange} />
-               </div>
-               <div>
-                  <input name="Password"
-                     placeholder="Choose a password"
-                     type="password"
-                     value={this.state.password}
-                     onChange={this.handlePasswordChange} />
-                 </div>
-                 <input type="submit" value="Sign up!" className="btn-primary" />
-              </form>);
+                       onChange={this.handleEmailChange}/><br />
+          </div>
+          <div>
+            <TextField name="password"
+                       type="password"
+                       floatingLabelText="Password"
+                       fullWidth={true}
+                       value={this.state.password}
+                       onChange={this.handlePasswordChange}/><br />
+          </div>
+          <RaisedButton label="Login" primary={true} onClick={this.handleSubmit} />
+        </div>
+      );
     }
     return (
       <div>
+        <Title text="Sign Up"  style="Signup__title"/>
         {form}
         {this.props.user ? <Redirect to="/profile" /> : ''}
       </div>
