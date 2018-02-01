@@ -62,19 +62,23 @@ class DreamLog extends Component {
 		})
 	}
 
-	handleEdit = (dream_id) => {
-		console.log(dream_id,"is the info we got from clicking the edit button in dream entry component");
+	handleEdit = (dream_id, date, content) => {
+		//Add content, date in here
+		console.log("Got to main level dreamlog edit component",dream_id,date,content);
 		let dreamUrl = '/dream/edit/' + dream_id;
 		let base = this;
 		axios({
-			method: 'get',
+			method: 'put',
 			url: dreamUrl,
 			data: {
+				user: base.props.user,
 				id: dream_id,
-				user: base.props.user
+				date: date,
+				content: content
 			}
 		}).then((result) => {
 			console.log(result);
+			base.fetchDreams();
 		}).catch((error) => {
 			console.log('error returned', error.response.data);
 		})

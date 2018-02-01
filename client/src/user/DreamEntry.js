@@ -11,12 +11,35 @@ import RaisedButton from 'material-ui/RaisedButton';
 class EditDream extends Component{
 	constructor(props){
 		super(props);
+		this.state = {
+			date: this.props.dream.date,
+			content: this.props.dream.content
+		}
 		this.editDream = this.editDream.bind(this);
+		this.handleChange = this.handleChange.bind(this);
 	}
 
-	editDream = () => {
-		console.log(this.props.dream._id,"is the id we get from edit submission button");
-		// this.props.handleEdit(this.props.dream._id);
+	handleDateChange = (event, date) => {
+    	this.setState({date: date,
+    });
+  };
+
+	handleContentChange = (event, content) => {
+		this.setState({content: content,
+    });
+  }
+
+	handleChange = (event) => {
+		this.setState(
+			{[event.target.name]: event.target.value}
+		)
+		console.log(this.state);
+	}
+
+	editDream = (event) => {
+		event.preventDefault();
+		console.log(this.state.date,this.state.content,"EditDream form component");
+		this.props.editDream(this.state.date, this.state.content);
 	}
 
 	render(){
@@ -29,14 +52,16 @@ class EditDream extends Component{
 												name="date"
 												// mode="landscape"
 												fullWidth={true}
-	        							value={this.props.dream.date} />
+										onChange={this.handleDateChange} 
+	        							value={this.state.date} />
 						{/* TEXT */}
 						<TextField name="content"
 											floatingLabelText="Text"
 											multiLine={true}
 											fullWidth={true}
 	      							 		rows={10}
-	      							 		value={this.props.dream.content} />
+	      							 		onChange={this.handleContentChange} 
+	      							 		value={this.state.content} />
 						<RaisedButton label="Edit" primary={true} onClick={this.editDream} />
 					</div>
 				</div>
@@ -58,10 +83,17 @@ class DreamEntry extends Component{
 		}
 		this.deleteDream = this.deleteDream.bind(this);
 		this.toggleEditDream = this.toggleEditDream.bind(this);
+		this.editDream = this.editDream.bind(this);
 	}
 
 	deleteDream = () => {
 		this.props.handleDelete(this.props.dream._id);
+	}
+
+	editDream = (date, content) => {
+		console.log("Dream entry component edit",date, content);
+		this.props.handleEdit(this.props.dream._id, date, content);
+		this.toggleEditDream();
 	}
 
 	toggleEditDream = () => {
@@ -88,7 +120,7 @@ class DreamEntry extends Component{
 				<button type="button" onClick={this.deleteDream}>Delete</button>
 				<button type="button" onClick={this.toggleEditDream}>Edit</button>
 			</p>
-			<EditDream dream={this.props.dream} editing={this.state.editing} />
+			<EditDream editDream={this.editDream} dream={this.props.dream} editing={this.state.editing} />
 		</div>
 	)
 	}
