@@ -38,45 +38,17 @@ class DreamLog extends Component {
 		})
 	}
 
-	handleDelete = (event) => {
-		event.preventDefault();
-		let base = this;
-
-		axios({
-			method: 'delete',
-			url: '/dream/12345',
-			data: {
-				id: 12345
-			}
-		}).then((result) => {
-			console.log(result);
-
-		}).catch((error) => {
-			console.log('error returned', error.response.data);
-		})
-	}
-
   render(){
   	const displayState = this.state.dreamState;
-  	const dreamsData = this.state.dreams.data;
-
-  	const arrayofDreams = [];
-  	arrayofDreams.push(dreamsData);
-
-  	console.log('typeof arrayofDreams', Array.isArray(arrayofDreams));
-  	console.log('here is some array of arrayofDreams', arrayofDreams);
-
-
-  	const dreams = this.state.dreams;
   	let display = null;
-
 
   	if(displayState === false ){
   		display = <WaitingState />
   	} else if (displayState === true ) {
-  		display = <DreamEntry dreams={this.state.dreams}/>
+  		display = this.state.dreams.map(function (dream, index) {
+			return <DreamEntry key={index} dream={dream} />
+    	})
     }
-   // console.log('state inside render', this.state.dreams)
     return (
     	<div>
     		{display}
