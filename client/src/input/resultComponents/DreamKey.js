@@ -7,16 +7,16 @@ import RaisedButton from 'material-ui/RaisedButton';
 class DreamKey extends Component{
 	state = {
 		open: false,
-		// disabled: false
+		disabled: false
   };
 
-	// componentDidMount() {
-	// 	if(this.props.keys.description == null){
-	// 		this.setState({disabled: true});
-	// 		console.log('#####################################', this.props.keys.name);
-	// 		console.log('#####################################', this.state.disabled);
-	// 	}
-	// }
+	componentDidMount() {
+		if(this.props.keys.description == null){
+			this.setState({disabled: true});
+			console.log('#####################################', this.props.keys.name);
+			console.log('#####################################', this.state.disabled);
+		}
+	}
 
   handleOpen = () => {
     this.setState({open: true});
@@ -38,13 +38,15 @@ class DreamKey extends Component{
 		
 		return(
 			<div>
-				<FlatButton label={this.props.keys.name} onClick={this.handleOpen} />
+				<FlatButton 
+					label={this.props.keys.name} 
+					onClick={this.handleOpen} 
+					disabled={this.state.disabled} />
 				<Dialog
 					title={this.props.keys.name}
 					actions={actions}
 					modal={false}
 					open={this.state.open}
-					// disabled={this.state.disabled}
 					onRequestClose={this.handleClose}
 				>
 					{this.props.keys.description}
