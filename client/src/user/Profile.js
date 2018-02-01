@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import Title from '../layout/Title.js';
+import SentimentTrends from './profileComponents/sentimentTrends.js'
 import axios from 'axios';
+import {sentimentByDate} from '../scripts/profileDataCleansing.js'
 
 class Profile extends Component {
     constructor(props){
     super(props);
         this.state = {
           data: [],
+          sentimentData: [],
           dataState: false
         }
   }
@@ -25,9 +28,11 @@ class Profile extends Component {
       console.log('result.data', result.data);
       let userData = [];
       let rawData = result.data;
+      let sentimentData = sentimentByDate(rawData);
       rawData.forEach(function(data){userData.push(data)});
       base.setState({
         data: userData,
+        sentimentData: sentimentData,
         dataState: true
       })
     }).catch((error) => {
@@ -38,9 +43,8 @@ class Profile extends Component {
   render(){
     // LOGGED IN
     const dataState = this.state.dataState;
-    console.log('state of the data in render function', this.state.data);
-    console.log('typeof data in render funciton', typeof this.state.data);
-    console.log('check to see if data is an array', Array.isArray(this.state.data));
+    console.log('Sentiment Data', this.state.data);
+
     // Logged in with data loaded
     if(this.props.user && this.props.user.name){
       return (
@@ -48,6 +52,7 @@ class Profile extends Component {
           <Title text="Profile" style="Profile__title" />
           <h2>HELLO AGAIN {this.props.user.name}!</h2>
           <h4>Your email is {this.props.user.email}</h4>
+          <SentimentTrends data={this.state.sentimentData} />
         </div>
       );
     } 
