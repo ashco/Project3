@@ -9,6 +9,7 @@ class DreamEntry extends Component{
 
 	handleDelete = () => {
 		console.log("got to delete handler");
+		console.log(this.props.dream._id,"is the id we get from button");
 	
 		// axios({
 		// 	method: 'delete',
