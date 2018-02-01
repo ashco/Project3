@@ -12,12 +12,13 @@ class DreamLog extends Component {
           dreams: [],
           dreamState: false
         }
+        this.handleDelete = this.handleDelete.bind(this);
+        this.handleEdit = this.handleEdit.bind(this);
 	}
 
-    componentDidMount() {
-      let userId= this.props.user.id;
-      let base = this;
-
+	fetchDreams = () => {
+		let userId= this.props.user.id;
+      	let base = this;	
 		axios({
 			method: 'get',
 			url: '/user/log',
@@ -38,6 +39,47 @@ class DreamLog extends Component {
 		})
 	}
 
+    componentDidMount() {
+      this.fetchDreams();
+	}
+
+	handleDelete = (dream_id) => {
+		console.log(dream_id,"is the info we got from the dreamentry component");
+		let dreamUrl = '/dream/' + dream_id;
+		let base = this;
+		axios({
+			method: 'delete',
+			url: dreamUrl,
+			data: {
+				id: dream_id,
+				user: base.props.user
+			}
+		}).then((result) => {
+			console.log(result);
+			base.fetchDreams();
+		}).catch((error) => {
+			console.log('error returned', error.response.data);
+		})
+	}
+
+	handleEdit = (dream_id) => {
+		console.log(dream_id,"is the info we got from clicking the edit button in dream entry component");
+		let dreamUrl = '/dream/edit/' + dream_id;
+		let base = this;
+		axios({
+			method: 'get',
+			url: dreamUrl,
+			data: {
+				id: dream_id,
+				user: base.props.user
+			}
+		}).then((result) => {
+			console.log(result);
+		}).catch((error) => {
+			console.log('error returned', error.response.data);
+		})
+	}
+
   render(){
   	const displayState = this.state.dreamState;
   	let display = null;
@@ -45,8 +87,10 @@ class DreamLog extends Component {
   	if(displayState === false ){
   		display = <WaitingState />
   	} else if (displayState === true ) {
-  		display = this.state.dreams.map(function (dream, index) {
-			return <DreamEntry key={index} dream={dream} />
+  		display = this.state.dreams.map((dream, index) => {
+  			if(dream._id) {
+  				return <DreamEntry key={index} dream={dream} handleDelete={this.handleDelete} handleEdit={this.handleEdit} />
+  			}
     	})
     }
     return (

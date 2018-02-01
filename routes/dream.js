@@ -24,7 +24,6 @@ router.post('/', async function(req, res, next){
 	let keywords = await textAnalysis.keyPhrase(params);
 	let sentiment = await textAnalysis.detectSentiment(params);
 	let descriptions = await dreamScraper.scrapeData(keywords[0]);
-	//TODO: Data cleanse sentiment in cleansing file
 
 	if(req.body.user) {
 		var postData = {
@@ -44,26 +43,31 @@ router.post('/', async function(req, res, next){
 
 });
 
-
-
-
-
 //DELETE ROUTE
-router.delete('/12345', function(req, res){
+router.delete('/:id', function(req, res){
 	console.log(req.body);
-	res.send(req.body);
+	Dream.remove({ _id: req.body.id, user_id: req.body.user.id }, function(err, dream){
+		if(err){
+			console.log(err);
+		}
+		console.log("deleted in db");
+		res.send(200);
+	})
 })
 
+//EDIT GET ROUTE - load form to edit dream
+router.get('/edit/:id', function(req, res){
+	console.log("Reached edit route form generation");
+	res.send(200);
+});
 
+//EDIT PUT ROUTE - submits form to edit dream
+//Likely need to re-analyze here
+router.put('/:id', function(req, res){
+	console.log("Reached put route submission");
+	res.send(200);
+});
 
-
-
-//PUT ROUTE - edit previous forms 
 
 module.exports = router;
-
-
-
-
-
 
