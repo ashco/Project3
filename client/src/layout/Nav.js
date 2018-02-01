@@ -23,7 +23,7 @@ class Nav extends Component {
       )
       rightLinks = (
         <span>
-          <Link to="/dreamlog"><ToolbarTitle text="Dream Log" /></Link>
+          <Link to="/log"><ToolbarTitle text="Dream Log" /></Link>
           <Link to="/profile"><ToolbarTitle text="Profile" /></Link>
           <ToolbarSeparator />
           <Logout updateUser={this.props.updateUser} />
