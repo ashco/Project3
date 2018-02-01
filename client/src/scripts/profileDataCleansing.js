@@ -60,6 +60,8 @@ export function sentimentByDate(data){
 
 export function overallTrends(data){
 
+    var total = data.length;
+
     var uniqueSentiments = ['neutral', 'positive', 'negative', 'mixed'];
 
     var sentimentData = [];
@@ -78,6 +80,7 @@ export function overallTrends(data){
         sentiment: uniqueSentiments[i],
         index: 1,
         actualValue: actualCount,
+        percentOfTotal: Math.round(((actualCount/total)*100)),
         value: count
       }
       sentimentData.push(child);
