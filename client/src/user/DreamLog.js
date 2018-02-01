@@ -5,8 +5,6 @@ import axios from 'axios';
 import DreamEntry from './DreamEntry.js'
 import WaitingState from './WaitingState.js'
 
-
-
 class DreamLog extends Component {
 	constructor(props){
 		super(props);
@@ -28,7 +26,8 @@ class DreamLog extends Component {
 			}
 		}).then((result) => {
 			console.log(result);
-			let foundDreams = result;
+			let foundDreams = result.data.concat([result]);
+
 			base.setState({
 				dreams: foundDreams,
 				dreamState: true
@@ -59,6 +58,16 @@ class DreamLog extends Component {
 
   render(){
   	const displayState = this.state.dreamState;
+  	const dreamsData = this.state.dreams.data;
+
+  	const arrayofDreams = [];
+  	arrayofDreams.push(dreamsData);
+
+  	console.log('typeof arrayofDreams', Array.isArray(arrayofDreams));
+  	console.log('here is some array of arrayofDreams', arrayofDreams);
+
+
+  	const dreams = this.state.dreams;
   	let display = null;
 
 
@@ -67,9 +76,10 @@ class DreamLog extends Component {
   	} else if (displayState === true ) {
   		display = <DreamEntry dreams={this.state.dreams}/>
     }
+   // console.log('state inside render', this.state.dreams)
     return (
     	<div>
-    	{display}
+    		{display}
     	</div>
     )
   }
