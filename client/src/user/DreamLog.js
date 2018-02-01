@@ -5,8 +5,6 @@ import axios from 'axios';
 import DreamEntry from './DreamEntry.js'
 import WaitingState from './WaitingState.js'
 
-
-
 class DreamLog extends Component {
 	constructor(props){
 		super(props);
@@ -28,7 +26,8 @@ class DreamLog extends Component {
 			}
 		}).then((result) => {
 			console.log(result);
-			let foundDreams = result;
+			let foundDreams = result.data.concat([result]);
+
 			base.setState({
 				dreams: foundDreams,
 				dreamState: true
@@ -39,37 +38,20 @@ class DreamLog extends Component {
 		})
 	}
 
-	handleDelete = (event) => {
-		event.preventDefault();
-		let base = this;
-
-		axios({
-			method: 'delete',
-			url: '/dream/12345',
-			data: {
-				id: 12345
-			}
-		}).then((result) => {
-			console.log(result);
-
-		}).catch((error) => {
-			console.log('error returned', error.response.data);
-		})
-	}
-
   render(){
   	const displayState = this.state.dreamState;
   	let display = null;
 
-
   	if(displayState === false ){
   		display = <WaitingState />
   	} else if (displayState === true ) {
-  		display = <DreamEntry dreams={this.state.dreams}/>
+  		display = this.state.dreams.map(function (dream, index) {
+			return <DreamEntry key={index} dream={dream} />
+    	})
     }
     return (
     	<div>
-    	{display}
+    		{display}
     	</div>
     )
   }
