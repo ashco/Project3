@@ -13,6 +13,7 @@ import Footer from './layout/Footer.js';
 // AUTH
 import Login from './auth/Login.js';
 import Signup from './auth/Signup.js';
+import UserAuth from './auth/UserAuth.js';
 // CUSTOM ROUTES
 import Analyze from './input/Analyze.js';
 import DreamLog from './user/DreamLog.js';
@@ -92,6 +93,8 @@ class App extends Component {
                 <Route exact path="/" component={Home} />
                 <Route path="/login" component={
                   () => (<Login user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                <Route path="/userauth" component={
+                  () => (<UserAuth user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
                 <Route path="/signup" component={
                   () => (<Signup user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
                 <Route path="/profile" component={

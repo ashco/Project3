@@ -42,7 +42,7 @@ class Form extends Component {
 					{/* DATE */}
 					<DatePicker hintText="Dream date"
 											name="date"
-											mode="landscape"
+											// mode="landscape"
 											fullWidth={true}
         							value={this.state.date}
         							onChange={this.handleDateChange} />

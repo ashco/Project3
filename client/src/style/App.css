@@ -15,11 +15,17 @@
 
 * {
   font: var(--font-color);
-  font-family: Helvetica;
+  font-family: 'Quicksand', sans-serif;
 }
 
 body {
   background-color: var(--background-color);
+}
+
+.space {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
 }
 
 /* NAV */
@@ -35,10 +41,6 @@ nav a {
   font-size: 18px;
 }
 
-.space {
-  /* display: flex; */
-  margin: 15px 0;
-}
 
 .content__box {
   display: flex;
@@ -63,8 +65,15 @@ nav a {
   background-color: var(--light-grey-color);
 }
 
-.Login__box, .Signup__box {
-  width: 500px;
+
+.Loading {
+  text-align: center;
+  width: 90%;
+}
+
+/* AUTH */
+.UserAuth__box, .Login__box, .Signup__box {
+  width: 600px;
 }
 
 /* FOOTER */
