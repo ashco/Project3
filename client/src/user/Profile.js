@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import Title from '../layout/Title.js';
+// Profile Components 
 import SentimentTrends from './profileComponents/sentimentTrends.js'
+import CallToAction from './profileComponents/CallToAction.js'
 import OverallStats from './profileComponents/overallStats.js'
+import KeywordTrends from './profileComponents/KeywordTrends.js'
+
 import axios from 'axios';
-import {sentimentByDate} from '../scripts/profileDataCleansing.js'
+// Data Cleansing Functions
+import {sentimentByDate, overallTrends} from '../scripts/profileDataCleansing.js'
 
 class Profile extends Component {
     constructor(props){
@@ -11,6 +16,7 @@ class Profile extends Component {
         this.state = {
           data: [],
           sentimentData: [],
+          overallStats: [],
           dataState: false
         }
   }
@@ -35,11 +41,12 @@ class Profile extends Component {
       // Push each elment of user data into 
       rawData.forEach(function(data){userData.push(data)});
       let sentimentData = sentimentByDate(userData);
-      let overallStats = [];
+      let overallStats = overallTrends(userData);
 
       base.setState({
         data: userData,
         sentimentData: sentimentData,
+        overallStats: overallStats,
         dataState: true
       })
     }).catch((error) => {
@@ -48,9 +55,8 @@ class Profile extends Component {
   }
 
   render(){
-    // LOGGED IN
-    const dataState = this.state.dataState;
-    console.log('Sentiment Data', this.state.data);
+    const totalDreams = (this.state.data.length)
+    console.log('totalDreams', totalDreams);
 
     // Logged in with data loaded
     if(this.props.user && this.props.user.name){
@@ -60,7 +66,9 @@ class Profile extends Component {
           <h2>HELLO AGAIN {this.props.user.name}!</h2>
           <h4>Your email is {this.props.user.email}</h4>
           <SentimentTrends data={this.state.sentimentData} />
-          <OverallStats />
+          <CallToAction />
+          <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
+          <KeywordTrends />
 
         </div>
       );

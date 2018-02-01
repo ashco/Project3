@@ -56,3 +56,35 @@ export function sentimentByDate(data){
   
   return aggregatedData;
 }
+
+
+export function overallTrends(data){
+
+    var total = data.length;
+
+    var uniqueSentiments = ['neutral', 'positive', 'negative', 'mixed'];
+
+    var sentimentData = [];
+    for(let i=0; i < uniqueSentiments.length; i++){
+      var count = 1;
+      var actualCount = 0;
+      for(let j=0; j<data.length; j++){
+        if(data[j].sentiment === uniqueSentiments[i]){
+            actualCount ++;
+            count ++;
+        }
+      }
+      
+      
+      var child = {
+        sentiment: uniqueSentiments[i],
+        index: 1,
+        actualValue: actualCount,
+        percentOfTotal: Math.round(((actualCount/total)*100)),
+        value: count
+      }
+      sentimentData.push(child);
+    }
+    
+  return sentimentData;
+}
