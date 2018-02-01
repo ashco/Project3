@@ -49,25 +49,29 @@ router.delete('/:id', function(req, res){
 	Dream.remove({ _id: req.body.id, user_id: req.body.user.id }, function(err, dream){
 		if(err){
 			console.log(err);
+			res.send(500);
 		}
 		console.log("deleted in db");
 		res.send(200);
 	})
 })
 
-//EDIT GET ROUTE - load form to edit dream
-router.get('/edit/:id', function(req, res){
-	console.log("Reached edit route form generation");
-	res.send(200);
+//EDIT PUT ROUTE - load form to edit dream
+router.put('/edit/:id', function(req, res){
+	console.log("Reached edit put route");
+	Dream.update(
+		{ _id: req.body.id, user_id: req.body.user.id }, {$set: { 
+			date: req.body.date, 
+			content: req.body.content 
+		}}, function(err, dream){
+			if(err){
+				console.log(err);
+				res.send(500);
+			}
+			console.log("edited in db",dream);
+			res.send(200);
+	})
 });
-
-//EDIT PUT ROUTE - submits form to edit dream
-//Likely need to re-analyze here
-router.put('/:id', function(req, res){
-	console.log("Reached put route submission");
-	res.send(200);
-});
-
 
 module.exports = router;
 
