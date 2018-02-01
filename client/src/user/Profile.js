@@ -8,7 +8,7 @@ import KeywordTrends from './profileComponents/KeywordTrends.js'
 
 import axios from 'axios';
 // Data Cleansing Functions
-import {sentimentByDate, overallTrends} from '../scripts/profileDataCleansing.js'
+import {sentimentByDate, overallTrends, keywordStats} from '../scripts/profileDataCleansing.js'
 
 class Profile extends Component {
     constructor(props){
@@ -17,6 +17,7 @@ class Profile extends Component {
           data: [],
           sentimentData: [],
           overallStats: [],
+          keywordData: [],
           dataState: false
         }
   }
@@ -42,11 +43,13 @@ class Profile extends Component {
       rawData.forEach(function(data){userData.push(data)});
       let sentimentData = sentimentByDate(userData);
       let overallStats = overallTrends(userData);
+      let keywordData = keywordStats(userData);
 
       base.setState({
         data: userData,
         sentimentData: sentimentData,
         overallStats: overallStats,
+        keywordData: keywordData,
         dataState: true
       })
     }).catch((error) => {
@@ -68,7 +71,7 @@ class Profile extends Component {
           <SentimentTrends data={this.state.sentimentData} />
           <CallToAction />
           <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
-          <KeywordTrends />
+          <KeywordTrends data={this.state.keywordData}/>
 
         </div>
       );
