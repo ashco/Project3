@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import { ResponsiveContainer, PieChart, Pie, Sector, Cell,  Tooltip } from 'recharts';
-//import { LineChart, Line } from 'recharts';
-
-//import {RadialBarChart, RadialBar, Tooltip, Legend} from 'recharts';
 import {doughnutChartData} from '../../scripts/dataCleansing.js'
 import './PieChart.css';
 

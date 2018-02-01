@@ -1,47 +1,48 @@
 export function sentimentByDate(data){
-  var totalEntries = data.length;
-
-  var finalData = [];
+  
+  var formattedData = [];
   
   for(let i=0; i<data.length; i++){
-    var date = data[i].date.slice(0,10)
-    var child = {
+    let date = data[i].date.slice(0,10)
+    let child = {
       date: date,
       positive: data[i].score_positive,
       negative: data[i].score_negative,
       neutral: data[i].score_neutral,
       mixed: data[i].score_mixed,
     }
-    finalData.push(child)
+    formattedData.push(child)
   }
   
   var uniqueDates = [];
-  finalData.forEach(function(item){
+  
+  formattedData.forEach(function(item){
     if(!uniqueDates.includes(item.date)){
       uniqueDates.push(item.date)
     }
   });
   
-  var finalData2= [];
+  var aggregatedData= [];
   
-  for(var i =0; i < uniqueDates.length; i++){
+  for(let i =0; i < uniqueDates.length; i++){
+    
     var count = 0;
     var positive = 0;
     var negative = 0;
     var neutral =0;
     var mixed=0;
     
-    for(var j=0; j<finalData.length; j++){
-      if(finalData[j].date === uniqueDates[i]){
-       positive = positive + finalData[j].positive;
-       negative = negative + finalData[j].negative;
-       neutral = neutral + finalData[j].neutral;
-       mixed = mixed + finalData[j].mixed;
+    for(let j=0; j<formattedData.length; j++){
+      if(formattedData[j].date === uniqueDates[i]){
+       positive = positive + formattedData[j].positive;
+       negative = negative + formattedData[j].negative;
+       neutral = neutral + formattedData[j].neutral;
+       mixed = mixed + formattedData[j].mixed;
       }
       count++;
     }
     
-    var child2 = {
+    let child = {
       date: uniqueDates[i],
       positive: positive/count,
       negative: negative/count,
@@ -49,10 +50,9 @@ export function sentimentByDate(data){
       mixed:mixed/count
     };
     
-    finalData2.push(child2)
+    aggregatedData.push(child)
     
   }
   
-  return finalData2;
-  
+  return aggregatedData;
 }

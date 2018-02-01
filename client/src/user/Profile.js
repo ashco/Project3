@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Title from '../layout/Title.js';
 import SentimentTrends from './profileComponents/sentimentTrends.js'
+import OverallStats from './profileComponents/overallStats.js'
 import axios from 'axios';
 import {sentimentByDate} from '../scripts/profileDataCleansing.js'
 
@@ -26,10 +27,16 @@ class Profile extends Component {
       }
     }).then((result) => {
       console.log('result.data', result.data);
-      let userData = [];
+
+      // Retrieve user data
       let rawData = result.data;
-      let sentimentData = sentimentByDate(rawData);
+      // Declare empty array to fill with user data
+      let userData = [];
+      // Push each elment of user data into 
       rawData.forEach(function(data){userData.push(data)});
+      let sentimentData = sentimentByDate(userData);
+      let overallStats = [];
+
       base.setState({
         data: userData,
         sentimentData: sentimentData,
@@ -53,6 +60,8 @@ class Profile extends Component {
           <h2>HELLO AGAIN {this.props.user.name}!</h2>
           <h4>Your email is {this.props.user.email}</h4>
           <SentimentTrends data={this.state.sentimentData} />
+          <OverallStats />
+
         </div>
       );
     } 
