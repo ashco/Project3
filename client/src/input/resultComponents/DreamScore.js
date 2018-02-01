@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
-import { PieChart, Pie, Sector, Cell } from 'recharts';
+import { ResponsiveContainer, PieChart, Pie, Sector, Cell,  Tooltip } from 'recharts';
 //import { LineChart, Line } from 'recharts';
 
-import {RadialBarChart, RadialBar, Legend} from 'recharts';
+//import {RadialBarChart, RadialBar, Tooltip, Legend} from 'recharts';
 import {doughnutChartData} from '../../scripts/dataCleansing.js'
-
+import './PieChart.css';
 
 
 class DreamScore extends Component {
@@ -22,7 +22,9 @@ class DreamScore extends Component {
 
   	return (
   		<div className="DreamScore__box box">
-  		<PieChart width={800} height={400} onMouseEnter={this.onPieEnter}>
+      <ResponsiveContainer width={600} height="80%">
+  		<PieChart width={600} height={600} onMouseEnter={this.onPieEnter}>
+        
         <Pie
           data={data} 
           cx={120} 
@@ -37,7 +39,7 @@ class DreamScore extends Component {
           }
         </Pie>
       </PieChart>
-  		
+      </ResponsiveContainer>
   		</div>
     );
   }

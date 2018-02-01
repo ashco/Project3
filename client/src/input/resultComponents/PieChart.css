@@ -1,0 +1,21 @@
+/*GLOBAL VARIABLES - COLORS*/
+:root {
+  --background-color: #EFF1F0; 
+  --font-color: #444952;
+  --light-grey-color: #B4C1CA;
+  --blue-color: #A1D4E3;
+  --pink-color: #F98285;
+  --purple-color: #BD70B3;
+  --yellow-color: #E9CC84;
+}
+/* Here's how to reference these variables in the css */
+/*  #foo h1 {
+    color: var(--main-color);
+}*/
+
+
+.DreamScore__box {
+  width: 400px;
+  margin: 0 auto;
+
+}
