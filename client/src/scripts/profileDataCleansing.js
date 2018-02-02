@@ -69,7 +69,15 @@ export function sortbyDate(data){
   return data;
 }
 
+export function totalValues (data){
+  var total = 0;
 
+  data.forEach(function(item){
+    total = total + item.value
+  });
+
+  return total;
+}
 
 
 export function overallTrends(data){
@@ -92,7 +100,6 @@ export function overallTrends(data){
       
       var child = {
         sentiment: uniqueSentiments[i],
-        index: 1,
         actualValue: actualCount,
         percentOfTotal: Math.round(((actualCount/total)*100)),
         value: count
@@ -152,8 +159,8 @@ export function keywordStats(data){
   });
   
   
-  if(keywordTotals.length > 10){
-    keywordTotals = keywordTotals.slice(0,10)
+  if(keywordTotals.length > 5){
+    keywordTotals = keywordTotals.slice(0,5)
   }
  
   return keywordTotals;

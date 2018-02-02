@@ -1,59 +1,63 @@
 import React, { Component } from 'react';
-import {ResponsiveContainer, ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, Cell, Legend} from 'recharts';
+import {totalValues} from '../../scripts/profileDataCleansing.js'
 import '../../style/Charts.css';
 
 class OverallStats extends Component {
 	render(){
 		const data = this.props.data;
-		const parseDomain = () => {
-		  return [
-		    0,
-		    Math.max.apply(null, [
-		      ...data.map(entry => entry.value)
-		    ])
-		  ];
-		};
+		const total = totalValues(data);
+		const neutral = String((data[0].value/total).toFixed(2)+"em");
+		const positive = String((data[1].value/total).toFixed(2)+"em");
+		const negative = String((data[2].value/total).toFixed(2)+"em");
+		const mixed = String((data[3].value/total).toFixed(2)+"em");
 
+		// Colors for: neutral, positive, negative, mixed
 		const COLORS = ['#BD70B3', '#A1D4E3', '#F98285', '#E9CC84'];
 
-		const renderTooltip = (props) => {
-			const { active, payload } = props;
-		    if (active && payload && payload.length) {
-		      const data = payload[0].payload;
+		const neturalStyle = {
+				backgroundColor: COLORS[0],
+				width: neutral,
+				height: neutral,
+				borderRadius: "50%"
+			}
 
-		      return (
-		        <div className="customizedToolTip">
-		          <p className="ToolTipTitle">Dreams: {data.actualValue}</p>
-		        </div>
-		      );
-		    }
+		const positiveStyle = {
+				backgroundColor: COLORS[1],
+				width: positive,
+				height: positive,
+				borderRadius: "50%"
 		}
 
-		const domain = parseDomain();
-    	const range = [16, 225];
+		const negativeStyle = {
+			backgroundColor: COLORS[2],
+			width: negative,
+			height: negative,
+			borderRadius: "50%"
+		}
 
+		const mixedStyle = {
+			backgroundColor: COLORS[3],
+			width: mixed,
+			height: mixed,
+			borderRadius: "50%"
+		}
 
 		return(
 			<div>
 			<div className="TotalDreams">
 				<h1 className="TotalDreamTitle">Total Dreams Logged: {this.props.totalDreams} </h1>
 			</div>
-			<ResponsiveContainer height={60} >
-	        <ScatterChart margin={{top: 10, right: 0, bottom: 0, left: 0}}>
-	          <XAxis type="category" dataKey="sentiment" name="sentiment" interval={0} tickLine={false} axisLine={false}/>
-	          <YAxis type="number" dataKey="index" height={10} width={80} tick={false} tickLine={false} axisLine={false} />
-	          <ZAxis type="number" dataKey="value" domain={domain} range={range} />
-	          <Tooltip cursor={{strokeDasharray: '3 3'}} wrapperStyle={{ zIndex: 100 }} content={renderTooltip} />
-	         
-	          <Scatter data={data} fill="#ff7300" margin={{top: 60}}>
-              {
-                data.map((entry, index) => {
-                  return <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                })
-              }
-            </Scatter>
-	        </ScatterChart>
-	        </ResponsiveContainer>
+			<div className="dataVisualBubbles">
+				<div className="neutralDreams" style={neturalStyle}>
+				</div>
+				<div className="positiveDreams" style={positiveStyle}>
+				</div>
+				<div className="negativeDreams" style={negativeStyle}>
+				</div>
+				<div className="mixedDreams" style={mixedStyle}>
+				</div>
+			</div>
+
 	        </div>
 		)
 	}
