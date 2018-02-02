@@ -9,14 +9,16 @@ class Home extends Component {
 
     const style = {
       margin: 12,
+      background: '#BD70B3'
     };    
 
     return (
       <div className="home">
         <Title text="dream" style="Home__title" />
+        <h2>Lorem ipsum about analyzing your dreams.</h2>
         <div className="login-box">
-          <Link to="/login"><RaisedButton label="Login" primary={true} style={style} /></Link>
-          <Link to="/signup"><RaisedButton label="Sign Up" primary={true} style={style} /></Link>
+          <Link to="/userauth"><RaisedButton label="Login" primary={false} backgroundColor="#F98285" style={style} /></Link>
+          <Link to="/analyze"><RaisedButton label="Analyze" primary={false} style={style} /></Link>
         </div>
       </div>
     );
