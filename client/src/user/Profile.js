@@ -76,11 +76,16 @@ class Profile extends Component {
           <CallToAction />
           <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <KeywordTrends data={this.state.keywordData}/>
 
 =======
           <KeywordTrends />
 >>>>>>> 4e10560bb76b531238873d3ab6af71c98f4c0e27
+=======
+          <KeywordTrends data={this.state.keywordData}/>
+
+>>>>>>> 9ba14fd7acb38d7d0a448ca10a514eed20c76343
         </div>
       );
     } 
