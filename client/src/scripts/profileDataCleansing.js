@@ -88,3 +88,60 @@ export function overallTrends(data){
     
   return sentimentData;
 }
+
+export function keywordStats(data){
+    
+    var keywords = [];
+  
+    data.forEach(function(item){
+      if(item.keyword1){
+        keywords.push(item.keyword1)
+      } 
+      if(item.keyword2){
+        keywords.push(item.keyword2)
+      } 
+      if(item.keyword3){
+        keywords.push(item.keyword3)
+      } 
+      if(item.keyword4){
+        keywords.push(item.keyword4)
+      } 
+      if(item.keyword5){
+        keywords.push(item.keyword5)
+      } 
+    });
+  
+    var keywordTotals = [];
+    
+    // copy original array of keywords
+    var copy = keywords.slice(0);
+ 
+    for (let i = 0; i < keywords.length; i++) {
+      var count = 0;  
+      for (var j = 0; j < copy.length; j++) {
+        if (keywords[i] == copy[j]) {
+          count++;
+          delete copy[j];
+        }
+      }
+ 
+    if (count > 0) {
+      var a = new Object();
+      a.keyword = keywords[i];
+      a.value = count;
+      keywordTotals.push(a);
+    }
+  }
+  
+  keywordTotals.sort(function(a, b) {
+        return b.value - a.value ;
+  });
+  
+  
+  if(keywordTotals.length > 10){
+    keywordTotals = keywordTotals.slice(0,10)
+  }
+ 
+  return keywordTotals;
+
+}
