@@ -1,7 +1,7 @@
 /*GLOBAL VARIABLES - COLORS*/
 :root {
   --background-color: #EFF1F0; 
-  --font-color: #444952;
+  --font-color: rgba(68, 73, 82, .9);
   --light-grey-color: #B4C1CA;
   --blue-color: #A1D4E3;
   --pink-color: #F98285;
@@ -16,7 +16,7 @@
 }*/
 
 * {
-  font: var(--font-color);
+  color: var(--font-color);
   font-family: var(--main-font);
 }
 
@@ -44,14 +44,14 @@ h1 {
 /* NAV */
 nav {
   width: 100%;
-  background-color: var(--light-grey-color);
   padding: 10px 0;
 }
 
 nav a {
-  margin: 10px;
-  text-decoration: none;
-  font-size: 18px;
+  margin: 10px 30px !important;
+  text-decoration: none !important;
+  font-weight: 700 !important;
+  color: var(--purple-color) !important;
 }
 
 
@@ -64,8 +64,9 @@ nav a {
 
 /* HOME PAGE */
 .home {
+  margin-top: -60px;
   flex: 1 100%;
-  padding: 100px;
+  padding: 150px;
   align-items: stretch;
   background: url('../img/pexels-photo-671658.jpeg') no-repeat;
   background-size: cover;
@@ -78,7 +79,6 @@ nav a {
 /* BOXES */
 .box {
   text-align: center;
-  background: var(--light-grey-color);
 }
 
 /* FORM */
@@ -87,7 +87,6 @@ nav a {
   flex-direction: column;
   align-self: center;
   width: 500px;
-  background-color: var(--light-grey-color);
 }
 
 
@@ -109,43 +108,20 @@ nav a {
 
 .footer-text {
   font-size: 10px;
-  color: white;
+  color: var(--background-color);
 } 
-
-/* BTN */
-.btn-primary {
-  color: #fff;
-  background-color: #11f;
-  border-radius: 2px;
-  border: none;
-  padding: 3px;
-}
-
-.btn-primary:hover {
-  background-color: #77f;
-}
-
-
 
 /* ALERTS */
 .error {
-  background-color: pink;
-  color: red;
-  border: 1px solid red;
-  border-radius: 2px;
+  background-color: var(--yellow-color);
+  color: white;
   padding: 10px 30px;
-  width: 75%;
-  margin: 10px auto;
 }
 
 .success {
-  background-color: #ceffce;
-  color: green;
-  border: 1px solid green;
-  border-radius: 2px;
+  background-color: var(--blue-color);
+  color: white;
   padding: 10px 30px;
-  width: 75%;
-  margin: 10px auto;
 }
 
 .no-flash {
@@ -156,8 +132,8 @@ nav a {
 }
 
 .x-button {
-  background-color: red;
-  color: white;
-  border-radius: 2px;
+  background-color: var(--font-color);
+  color: var(--background-color);
+  border-radius: 10px;
   float: right;
 }
