@@ -13,7 +13,7 @@ class Home extends Component {
 
     return (
       <div className="home">
-        <Title text="Dream Home Page" style="Home__title" />
+        <Title text="dream" style="Home__title" />
         <div className="login-box">
           <Link to="/login"><RaisedButton label="Login" primary={true} style={style} /></Link>
           <Link to="/signup"><RaisedButton label="Sign Up" primary={true} style={style} /></Link>
