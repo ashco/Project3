@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, Cell, Legend} from 'recharts';
+import {ResponsiveContainer, ScatterChart, Scatter, XAxis, YAxis, ZAxis, CartesianGrid, Tooltip, Cell, Legend} from 'recharts';
 import '../../style/Charts.css';
 
 class OverallStats extends Component {
@@ -30,15 +30,15 @@ class OverallStats extends Component {
 		}
 
 		const domain = parseDomain();
-    	const range = [200, 800];
+    	const range = [1500, 2000];
 
 		return(
 			<div>
 			<div className="TotalDreams">
-				<h1>Total Dreams Logged: </h1>
-				<h2>{this.props.totalDreams} </h2>
+				<h1>Total Dreams Logged: {this.props.totalDreams} </h1>
 			</div>
-	        <ScatterChart width={800} height={200} margin={{top: 20, right: 0, bottom: 0, left: 0}}>
+			<ResponsiveContainer height={200} >
+	        <ScatterChart margin={{top: 20, right: 0, bottom: 0, left: 0}}>
 	          <XAxis type="category" dataKey="sentiment" name="sentiment" interval={0} tickLine={false} axisLine={false}/>
 	          <YAxis type="number" dataKey="index" height={30} width={200} tick={false} tickLine={false} axisLine={false} />
 	          <ZAxis type="number" dataKey="value" domain={domain} range={range} />
@@ -52,6 +52,7 @@ class OverallStats extends Component {
               }
             </Scatter>
 	        </ScatterChart>
+	        </ResponsiveContainer>
 	        </div>
 		)
 	}

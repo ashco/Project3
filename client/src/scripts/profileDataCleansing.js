@@ -133,14 +133,14 @@ export function keywordStats(data){
     for (let i = 0; i < keywords.length; i++) {
       var count = 0;  
       for (var j = 0; j < copy.length; j++) {
-        if (keywords[i] == copy[j]) {
+        if (keywords[i] === copy[j]) {
           count++;
           delete copy[j];
         }
       }
  
     if (count > 0) {
-      var a = new Object();
+      var a = {};
       a.keyword = keywords[i];
       a.value = count;
       keywordTotals.push(a);
