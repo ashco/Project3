@@ -52,20 +52,26 @@ nav {
 
 #root > div > div > nav > div > div > span > a > span {
   margin: 10px 30px !important;
-  font-size: .75em;
+  font-size: 1em !important;
   text-decoration: none !important;
   font-weight: 700 !important;
   transition: all 1s;
   text-transform: lowercase;
   height: inherit;
+  bottom: 5px;
+}
+
+#root > div > div > nav > div > div > span  {
+  color: var(--purple-color) !important;
 }
 
 #root > div > div > nav > div > div > span > a  {
+  color: var(--purple-color) !important;
   text-decoration: none;
 }
 
 #root > div > div > nav > div > div > span > a > span:hover {
-  color: var(--purple-color) !important;
+  color: var(--pink-color) !important;
 }
 
 .content__box {
@@ -91,20 +97,27 @@ nav {
 
 /* BUTTON */
 
-#root a div button {
-  border-radius: 0;
+.primaryCTA {
+  background: var(--pink-color);
+  border: 3px solid var(--pink-color);
+  font-weight: 500;
+  color: white;
+  padding: 10px 25px;
+  outline: 0;
 }
 
-#root > div > div > div > div.home > div.login-box > a > div > button > div > div {
-  border-radius: 0;
+.secondaryCTA {
+  background: none;
+  border: 3px solid var(--font-color);
+  color: var(--font-color);
+  font-weight: 500;
+  padding: 10px 25px;
+  outline: 0;
 }
 
-#root > div > div > div > div.home > div.login-box > a > div > button > div > div:hover {
-  background-image: linear-gradient(120deg, #ffdabf 0%, #F98285 100%);
-}
-
-#root > div > div > div > div.home > div.login-box > a > div > button > div > div:hover {
-  background: var(--main-font) !important;
+.secondaryCTA:active, .primaryCTA:active {
+  outline: none;
+  background: var(--orange-color);
 }
 
 
@@ -113,12 +126,52 @@ nav {
   text-align: center;
 }
 
+.DreamResult {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+
 .DreamKey__box {
   text-align: left;
-  padding: 50px;
   margin: 0 auto;
   display: inline-block;
-  width: 40%;
+  box-sizing: border-box;
+  width: 50%;
+  flex: 50%;
+  padding: 40px;
+}
+
+.DreamResult__box {
+  text-align: left;
+  margin: 0 auto;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 40px;
+}
+
+.DreamScore__box {
+  text-align: left;
+  margin: 0 auto;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 40px;
+}
+
+.Analyze__background {
+  
+}
+
+.Loading__box {
+
+}
+
+h1 span.neutral, h1 span.negative, h1 span.positive, h1 span.mixed {
+  color: purple;
 }
 
 /* FORM */
@@ -180,8 +233,9 @@ nav {
 
 
 /* RESPONSIVE */
+
 @media all and (min-width: 600px) {
-  /* We tell both sidebars to share a row */
   .DreamKey__box { 
     width: 100%;
+  }
 }
