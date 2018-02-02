@@ -18,12 +18,8 @@ class DreamResult extends Component {
 
     return(
 			<div className="DreamResult">
-
-				<Title text="Here is your dream analysis" style="DreamResult__title" />
-				
+				<h1>Your dream was <span className={overallSentiment}>{overallSentiment}</span>.</h1>
 				<DreamScore data={sentiment}/>
-				<h1>{overallSentiment}</h1>
-
 				<div className="DreamResult__box box">
 					{keywords}
 				</div>

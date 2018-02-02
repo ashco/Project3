@@ -22,25 +22,73 @@ import './style/App.css';
 // MATERIAL UI
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
+
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
       user: {},
-      selectedDream: null
+      selected_dream_id: null
 
-    }
+    } 
 
-    
+    this.handleGet = this.handleGet.bind(this);
   }
 
-  getDream = (data) => { 
+  // fetchDreams = () => {
+	// 	// let userId = this.props.user.id;
+	// 	// let base = this;	
+		
+	// 	axios({
+	// 		method: 'get',
+	// 		url: '/user/log',
+	// 		params: {
+	// 			user: userId
+	// 		}
+	// 	}).then((result) => {
+	// 		console.log(result);
+	// 		let rawData = result.data.concat([result]);
+	// 		let foundDreams = sortbyDate(rawData);
+	// 		// let foundDreams = result.data.concat([result]);
+	// 		base.setState({
+	// 			dreams: foundDreams,
+	// 			dreamState: true
+	// 		});
+
+	// 		console.log("State",base.state.dreams);
+	// 	}).catch((error) => {
+	// 		console.log("An error occured",error.response.data);
+	// 	})
+	// }
+
+  handleGet = (dream_id) => { 
     this.setState({ 
-      selectedDream: data
+      selected_dream_id: dream_id
     });
-    console.log('Value:', data);
-    console.log('State data:', this.state.selectedDream);
+    console.log('Value:', dream_id);
+    console.log('State data:', this.state.selected_dream_id);
   } 
+    
+    
+    
+    
+  //   // GET REQUIRED VARIABLES FOR AXIOS CALL
+  //   let userId = this.props.user.id;
+  //   let base = this;
+  //   let dreamURL = '/user/log/' + dream_id;
+  //   // AXIOS STUFF
+  //   axios({
+	// 		method: 'get',
+	// 		url: dreamURL,
+	// 		params: {
+	// 			user: userId
+	// 		}
+	// 	}).then((result) => {
+  //     console.log('Result: ', result);
+  //   }).catch((error) => {
+	// 		console.log('error returned:', error.response.data);
+  //   });
+  // }
 
   componentDidMount = () => {
     this.getUser();
@@ -94,7 +142,6 @@ class App extends Component {
 
 
 
-
   render() {
     return (
       <div className="App">
@@ -118,7 +165,7 @@ class App extends Component {
                 <Route path="/analyze" component={
                   () => (<Analyze user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
                 <Route path="/log" component={
-                  () => (<DreamLog user={this.state.user} viewDream={this.getDream} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                  () => (<DreamLog user={this.state.user} handleGet={this.handleGet} setFlash={this.setFlash} updateUser={this.getUser} />)} />
                 <Footer />
               </div>
             </div>

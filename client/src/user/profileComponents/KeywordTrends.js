@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Cell, CartesianGrid, Tooltip, Legend} from 'recharts';
+import {ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Cell, CartesianGrid, Tooltip,LabelList, Legend} from 'recharts';
 
 
 class KeywordTrends extends Component {
@@ -7,22 +7,22 @@ class KeywordTrends extends Component {
 		const data = this.props.data;
 		console.log('barchart data', data);
 
-		const CustomizedLabel = () => {
-			    const {x, y, fill, value} = this.props;
-			   	return <text 
-			               x={x} 
-			               y={y} 
-			               dy={-4} 
-			               fontSize='16' 
-			               fontFamily='sans-serif'
-			               fill={fill}
-			               textAnchor="middle">{value}%</text>
+    const renderTooltip = (props) => {
+          const { active, payload } = props;
+            if (active && payload && payload.length) {
+              const data = payload[0].payload;
 
-		};
+              return (
+                <div className="customizedToolTip">
+                  <p className="ToolTipTitle">{data.keyword}: {data.value}</p>
+                </div>
+              );
+            }
+        }
 
 		return(
+    <ResponsiveContainer height={260}>
     	<BarChart 
-    	width={900} height={260} 
             data={data}
             margin={{top: 5, right: 0, left: 0, bottom: 25}}>
        <XAxis 
@@ -31,6 +31,7 @@ class KeywordTrends extends Component {
            tickSize
            dy='25'/>
        <YAxis hide/>
+       <Tooltip  content={renderTooltip}/>
        <CartesianGrid 
            vertical={false}
            stroke="#ebf3f0"
@@ -39,10 +40,11 @@ class KeywordTrends extends Component {
            dataKey="value" 
            barSize ={170}
            fontFamily="sans-serif"
-           label={<CustomizedLabel />}
-           fill="#8884d8" />
-        
+           fill="#8884d8" >
+           <LabelList dataKey="keyword" fill="#FFFFFF" position="insideBottom" />
+        </Bar>
       </BarChart>
+      </ResponsiveContainer>
 		)
 	}
 }

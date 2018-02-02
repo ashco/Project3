@@ -4,6 +4,7 @@ import Title from '../layout/Title.js';
 import axios from 'axios';
 import DreamEntry from './DreamEntry.js'
 import WaitingState from './WaitingState.js'
+import {sortbyDate} from '../scripts/profileDataCleansing.js'
 
 class DreamLog extends Component {
 	constructor(props){
@@ -14,23 +15,26 @@ class DreamLog extends Component {
 					
 					// selectedDream: null
         }
-        // this.getDream = this.getDream.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
+
+				// this.handleGet = this.handleGet.bind(this);
+				
+
+
         this.handleEdit = this.handleEdit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
 	}
 
 
+	// View dream
+  // getDream = (value) => { 
+  //   this.setState({ 
+  //     selectedDream: value
+  //   });
+  //   console.log('Value:', value);
+  //   console.log('State data:', this.state.selectedDream);
+  // } 
 
-  getDream = (value) => { 
-    this.setState({ 
-      selectedDream: value
-    });
-    console.log('Value:', value);
-    console.log('State data:', this.state.selectedDream);
-  } 
-
-
-
+	// Loads / refreshes page
 	fetchDreams = () => {
 		let userId = this.props.user.id;
 		let base = this;	
@@ -43,8 +47,9 @@ class DreamLog extends Component {
 			}
 		}).then((result) => {
 			console.log(result);
-			let foundDreams = result.data.concat([result]);
-
+			let rawData = result.data.concat([result]);
+			let foundDreams = sortbyDate(rawData);
+			// let foundDreams = result.data.concat([result]);
 			base.setState({
 				dreams: foundDreams,
 				dreamState: true
@@ -60,27 +65,7 @@ class DreamLog extends Component {
     this.fetchDreams();
 	}
 
-
-
-	handleDelete = (dream_id) => {
-		console.log(dream_id, "is the info we got from the dreamentry component");
-		let dreamUrl = '/dream/' + dream_id;
-		let base = this;
-		axios({
-			method: 'delete',
-			url: dreamUrl,
-			data: {
-				id: dream_id,
-				user: base.props.user
-			}
-		}).then((result) => {
-			console.log(result);
-			base.fetchDreams();
-		}).catch((error) => {
-			console.log('error returned', error.response.data);
-		})
-	}
-
+	//editing db dream
 	handleEdit = (dream_id, date, content) => {
 		//Add content, date in here
 		console.log("Got to main level dreamlog edit component", dream_id,date,content);
@@ -103,6 +88,27 @@ class DreamLog extends Component {
 		})
 	}
 
+	//Delete specific dream from db
+	handleDelete = (dream_id) => {
+		console.log(dream_id, "is the info we got from the dreamentry component");
+		let dreamUrl = '/dream/' + dream_id;
+		let base = this;
+		axios({
+			method: 'delete',
+			url: dreamUrl,
+			data: {
+				id: dream_id,
+				user: base.props.user
+			}
+		}).then((result) => {
+			console.log(result);
+			base.fetchDreams();
+		}).catch((error) => {
+			console.log('error returned', error.response.data);
+		})
+	}
+
+
   render(){
   	const displayState = this.state.dreamState;
   	let display = null;
@@ -118,18 +124,10 @@ class DreamLog extends Component {
 						dream={dream} 
 						
 
-
-
-
-
-						getDream={(data) => this.getDream(data)} 
-						
-						
-
-
-
-
-						
+						//get dream id, pass up to app.js
+						// getDream={(dream_id) => this.getDream(dream_id)} 
+						handleGet={this.props.handleGet} 
+					
 						handleEdit={this.handleEdit} 
 						handleDelete={this.handleDelete}  />)
   			}

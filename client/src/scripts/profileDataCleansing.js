@@ -44,7 +44,7 @@ export function sentimentByDate(data){
     
     let child = {
       date: uniqueDates[i],
-      dateText: uniqueDates[i].slice(5,10),
+      dateText: (uniqueDates[i].slice(5,10)).replace("-", "/"),
       positive: positive/count,
       negative: negative/count,
       neutral: neutral/count,
@@ -52,10 +52,31 @@ export function sentimentByDate(data){
     };
     
     aggregatedData.push(child)
-    
   }
+
+  aggregatedData.sort(function(a,b){
+  return new Date(a.date) - new Date(b.date);
+  });
   
   return aggregatedData;
+}
+
+
+export function sortbyDate(data){
+  data.sort(function(a,b){
+  return new Date(a.date) - new Date(b.date);
+  });
+  return data;
+}
+
+export function totalValues (data){
+  var total = 0;
+
+  data.forEach(function(item){
+    total = total + item.value
+  });
+
+  return total;
 }
 
 
@@ -79,7 +100,6 @@ export function overallTrends(data){
       
       var child = {
         sentiment: uniqueSentiments[i],
-        index: 1,
         actualValue: actualCount,
         percentOfTotal: Math.round(((actualCount/total)*100)),
         value: count
@@ -120,14 +140,14 @@ export function keywordStats(data){
     for (let i = 0; i < keywords.length; i++) {
       var count = 0;  
       for (var j = 0; j < copy.length; j++) {
-        if (keywords[i] == copy[j]) {
+        if (keywords[i] === copy[j]) {
           count++;
           delete copy[j];
         }
       }
  
     if (count > 0) {
-      var a = new Object();
+      var a = {};
       a.keyword = keywords[i];
       a.value = count;
       keywordTotals.push(a);
@@ -139,8 +159,8 @@ export function keywordStats(data){
   });
   
   
-  if(keywordTotals.length > 10){
-    keywordTotals = keywordTotals.slice(0,10)
+  if(keywordTotals.length > 5){
+    keywordTotals = keywordTotals.slice(0,5)
   }
  
   return keywordTotals;

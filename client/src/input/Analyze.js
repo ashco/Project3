@@ -49,7 +49,7 @@ class Analyze extends Component {
 
   	if(displayState === 'form'){
 	  	display = (
-				<div>
+				<div className="Analyze__background">
 					<Title text="Go on, dream something.." style="Analyze__text--start" />
 					<FormModal handleInput={this.handleInput} />
 				</div>

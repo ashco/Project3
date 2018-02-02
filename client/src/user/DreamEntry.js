@@ -15,8 +15,7 @@ class DreamEntry extends Component{
 
 
 		
-		// this.onGetDream = this.onGetDream.bind(this);
-		// this.getDream = this.getDream.bind(this);
+		this.getDream = this.getDream.bind(this);
 		this.editDream = this.editDream.bind(this);
 		this.deleteDream = this.deleteDream.bind(this);
 		this.toggleEditDream = this.toggleEditDream.bind(this);
@@ -24,8 +23,10 @@ class DreamEntry extends Component{
 
 
 
-	onGetDream = () => {
-		this.props.getDream(this.state.selectedDream);
+	getDream = () => {
+		console.log(this.props.dream._id)
+		console.log(this)
+		this.props.handleGet(this.props.dream._id);
 	}
 
 
@@ -65,17 +66,10 @@ class DreamEntry extends Component{
 			<div>
 
 
-
-
-
 				{/* BUTTON REDIRECTS TO /ANALYZE */}
 				{/* RUNS VIEWDREAM ON CLICK */}
-				<button type="button" onClick={this.onGetDream}>View</button>
-				
-
-
-				
-				
+				<button type="button" onClick={this.getDream}>View</button>
+		
 				
 				<button type="button" onClick={this.toggleEditDream}>Edit</button>
 				<button type="button" onClick={this.deleteDream}>Delete</button>
