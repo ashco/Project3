@@ -40,7 +40,7 @@ class SentimentTrends extends Component {
 			<ResponsiveContainer  height={400}>
 				<AreaChart data={data} stackOffset="expand"
 		            margin={{top: 10, right: 0, left: 0, bottom: 0}} >
-			        <XAxis dataKey="date"/>
+			        <XAxis dataKey="dateText"/>
 			        <YAxis hide/>
 			        <CartesianGrid strokeDasharray="3 3"/>
 			        <Tooltip content={renderTooltipContent}/>
