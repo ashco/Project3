@@ -37,11 +37,11 @@ class DreamScore extends Component {
 
   	return (
   		<div className="DreamScore__box box">
-      <h1> Overall Sentiment: {rawData.sentiment} </h1>
+      <h1>Your dream was <span className={rawData.sentiment}>{rawData.sentiment}</span></h1>
       <ResponsiveContainer height={440}>
   		<PieChart onMouseEnter={this.onPieEnter}>
       <Tooltip content={renderTooltipContent}/>
-        <Legend verticalAlign="top" height={36}/>
+        <Legend verticalAlign="top" wrapperStyle={{ top: 0, left: 0 }} height={36}/>
         <Pie
           data={data} 
           cx={200} 
@@ -50,7 +50,7 @@ class DreamScore extends Component {
           outerRadius={180}
           labelLine={false}
           fill="#8884d8"
-          paddingAngle={.5}
+          paddingAngle={0}
         >
         	{
           	data.map((entry, index) => <Cell fill={COLORS[index % COLORS.length]}/>)

@@ -45,7 +45,7 @@ class DreamEntry extends Component{
 	return(
 		<div className="DreamKey__box box">
 			<h3>{dreamDate}</h3>
-			<h5>{this.props.dream.sentiment}</h5>
+			<h5 className={this.props.dream.sentiment}>{this.props.dream.sentiment}</h5>
 			<p>{this.props.dream.content}</p>
 			<p>
 				<button type="button" onClick={this.deleteDream}>Delete</button>

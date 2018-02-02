@@ -50,7 +50,6 @@ class Analyze extends Component {
   	if(displayState === 'form'){
 	  	display = (
 				<div className="Analyze__background">
-					<Title text="Go on, dream something.." style="Analyze__text--start" />
 					<FormModal handleInput={this.handleInput} />
 				</div>
 			);
@@ -62,10 +61,7 @@ class Analyze extends Component {
   	}
   	else if (displayState === 'result') {
 	  	display = (
-				<div>
-					<Title text="Analysis" style="Analyze__text--data" />
-					<DreamResult analysis = {this.state.data}/>
-				</div>
+				<DreamResult analysis = {this.state.data}/>
 			);
   	}
   	return (
