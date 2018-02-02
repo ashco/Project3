@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
-
+import {ResponsiveContainer, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip} from 'recharts';
+import '../../style/Charts.css';
 
 class SentimentTrends extends Component {
 	render() {
@@ -15,40 +15,41 @@ class SentimentTrends extends Component {
 			return `${(decimal * 100).toFixed(fixed)}%`;
 		};
 
-		// const renderTooltipContent = (o) => {
-		// 	const { payload, label } = o;
-		// 	const total = payload.reduce((result, entry) => (result + entry.value), 0);
+		const renderTooltipContent = (props) => {
+			const { payload, label } = props;
+			const total = payload.reduce((result, entry) => (result + entry.value), 0);
 		  
-		//   	return (
-		//   		<div className="customized-tooltip-content">
-		//     		<p className="total">{`${label} (Total: ${total})`}</p>
-		//       	<ul className="list">
-		//       		{
-		//         		payload.map((entry, index) => (
-		//           		<li key={`item-${index}`} style={{color: entry.color}}>
-		//             		{`${entry.name}: ${entry.value}(${getPercent(entry.value, total)})`}
-		//             	</li>
-		//           	))
-		//         	}
-		//       	</ul>
-		//     	</div>
-		//   	);
-		// };
+		  	return (
+		  		<div className="customizedToolTip" style={{ backgroundColor: '#fff', border: '1px solid #999', margin: 0, padding: 10 }}>
+		    		<p className="total">{`${label}`}</p>
+		      	<ul className="ToolTiplist">
+		      		{
+		        		payload.map((entry, index) => (
+		          		<li key={`item-${index}`} style={{color: entry.color}}>
+		            		{`${entry.name}: (${getPercent(entry.value, total)})`}
+		            	</li>
+		          	))
+		        	}
+		      	</ul>
+		    	</div>
+		  	);
+		};
 
 		return(
-			<div className="AreaChart_box">
-				<AreaChart width={600} height={400} data={data} stackOffset="expand"
-		            margin={{top: 10, right: 30, left: 0, bottom: 0}} >
+			
+			<ResponsiveContainer  height={400}>
+				<AreaChart data={data} stackOffset="expand"
+		            margin={{top: 10, right: 0, left: 0, bottom: 0}} >
 			        <XAxis dataKey="date"/>
-			        <YAxis tickFormatter={toPercent}/>
+			        <YAxis hide/>
 			        <CartesianGrid strokeDasharray="3 3"/>
-
-			        <Area type='monotone' dataKey='positive' stackId="1" stroke='#FFFFFF' fill='#A1D4E3' />
-			        <Area type='monotone' dataKey='negative' stackId="1" stroke='#FFFFFF' fill='#F98285' />
-			        <Area type='monotone' dataKey='neutral' stackId="1" stroke='#FFFFFF' fill='#BD70B3' />
-			        <Area type='monotone' dataKey='mixed' stackId="1" stroke='#FFFFFF' fill='#E9CC84' />
+			        <Tooltip content={renderTooltipContent}/>
+			        <Area type='monotone' dataKey='positive' stackId="1" stroke='#A1D4E3' fill='#A1D4E3' />
+			        <Area type='monotone' dataKey='negative' stackId="1" stroke='#F98285' fill='#F98285' />
+			        <Area type='monotone' dataKey='neutral' stackId="1" stroke='#BD70B3' fill='#BD70B3' />
+			        <Area type='monotone' dataKey='mixed' stackId="1" stroke='#E9CC84' fill='#E9CC84' />
 			    </AreaChart>
-			</div>
+			</ResponsiveContainer>
 		)
 	}
 }

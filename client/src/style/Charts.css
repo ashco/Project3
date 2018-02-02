@@ -1,0 +1,11 @@
+/* Sentiment Trends Chart */
+/* Area Chart */
+
+.AreaChart_box {
+	width: 100%;
+	margin: 0;
+}
+
+.ToolTiplist {
+	list-style: none;
+}
