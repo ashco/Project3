@@ -23,6 +23,10 @@ class Profile extends Component {
   }
 
   componentDidMount(){
+    if(!this.props.user || !this.props.user.id){
+      return;
+    }
+
     let userId = this.props.user.id;
     let base = this;
 
@@ -53,7 +57,7 @@ class Profile extends Component {
         dataState: true
       })
     }).catch((error) => {
-      console.log("An error occured while fetching data from databse", error.response.data);
+      console.log("An error occured while fetching data from databse", error.response ? error.response.data : 'No error.response.data');
     })
   }
 
