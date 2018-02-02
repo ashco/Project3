@@ -20,7 +20,7 @@ class SentimentTrends extends Component {
 			const total = payload.reduce((result, entry) => (result + entry.value), 0);
 		  
 		  	return (
-		  		<div className="customizedToolTip" style={{ backgroundColor: '#fff', border: '1px solid #999', margin: 0, padding: 10 }}>
+		  		<div className="customizedToolTip">
 		    		<p className="total">{`${label}`}</p>
 		      	<ul className="ToolTiplist">
 		      		{

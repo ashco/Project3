@@ -63,23 +63,48 @@ class Profile extends Component {
 
   render(){
     const totalDreams = (this.state.data.length)
+    let dashboard = null;
     console.log('totalDreams', totalDreams);
 
+    if(totalDreams > 0) {
+      dashboard = 
+            <div>
+                <SentimentTrends data={this.state.sentimentData} />
+                <CallToAction />
+                <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
+                <KeywordTrends data={this.state.keywordData}/>
+            </div>
+    } else if (totalDreams === 0){
+      dashboard = 
+          <div>
+            <p> You need to enter dreams </p>
+            <CallToAction />
+          </div>
+    }
+    
+
     // Logged in with data loaded
-    if(this.props.user && this.props.user.name){
+    if(this.props.user && this.props.user.name && totalDreams > 0){
       return (
         <div>
           <Title text="Profile" style="Profile__title" />
           <h2>HELLO AGAIN {this.props.user.name}!</h2>
           <h4>Your email is {this.props.user.email}</h4>
-          <SentimentTrends data={this.state.sentimentData} />
+          {dashboard}
+        </div>
+      )
+    } 
+    else if (this.props.user && this.props.user.name && totalDreams === 0) {
+      return (
+        <div>
+          <Title text="Profile" style="Profile__title" />
+          <h2>HELLO AGAIN {this.props.user.name}!</h2>
+          <h4>Your email is {this.props.user.email}</h4>
+          <p> You haven't entered any dreams </p>
           <CallToAction />
-          <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
-          <KeywordTrends data={this.state.keywordData}/>
         </div>
       );
-    } 
-    // NOT LOGGED IN
+    }
     else {
       return (
         <div>
