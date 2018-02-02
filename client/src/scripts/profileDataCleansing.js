@@ -44,6 +44,7 @@ export function sentimentByDate(data){
     
     let child = {
       date: uniqueDates[i],
+      dateText: uniqueDates[i].slice(5,10),
       positive: positive/count,
       negative: negative/count,
       neutral: neutral/count,

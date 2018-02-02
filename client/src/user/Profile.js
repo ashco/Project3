@@ -76,7 +76,6 @@ class Profile extends Component {
           <CallToAction />
           <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
           <KeywordTrends data={this.state.keywordData}/>
-
         </div>
       );
     } 
