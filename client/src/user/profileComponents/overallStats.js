@@ -30,21 +30,22 @@ class OverallStats extends Component {
 		}
 
 		const domain = parseDomain();
-    	const range = [1500, 2000];
+    	const range = [16, 225];
+
 
 		return(
 			<div>
 			<div className="TotalDreams">
-				<h1>Total Dreams Logged: {this.props.totalDreams} </h1>
+				<h1 className="TotalDreamTitle">Total Dreams Logged: {this.props.totalDreams} </h1>
 			</div>
-			<ResponsiveContainer height={200} >
-	        <ScatterChart margin={{top: 20, right: 0, bottom: 0, left: 0}}>
+			<ResponsiveContainer height={60} >
+	        <ScatterChart margin={{top: 10, right: 0, bottom: 0, left: 0}}>
 	          <XAxis type="category" dataKey="sentiment" name="sentiment" interval={0} tickLine={false} axisLine={false}/>
-	          <YAxis type="number" dataKey="index" height={30} width={200} tick={false} tickLine={false} axisLine={false} />
+	          <YAxis type="number" dataKey="index" height={10} width={80} tick={false} tickLine={false} axisLine={false} />
 	          <ZAxis type="number" dataKey="value" domain={domain} range={range} />
 	          <Tooltip cursor={{strokeDasharray: '3 3'}} wrapperStyle={{ zIndex: 100 }} content={renderTooltip} />
 	         
-	          <Scatter data={data} fill="#ff7300">
+	          <Scatter data={data} fill="#ff7300" margin={{top: 60}}>
               {
                 data.map((entry, index) => {
                   return <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
