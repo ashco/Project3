@@ -26,3 +26,28 @@
 	color: #444952;
 	margin-bottom: 2;
 }
+
+/* Overall Stats */
+.TotalDreamTitle {
+
+}
+
+.dataVisualBubbles{
+	font-size: 200px;
+}
+
+.neutralDreams{
+	display: inline-block
+}
+
+.positiveDreams{
+	display: inline-block
+}
+
+.negativeDreams{
+	display: inline-block
+}
+
+.mixedDreams{
+	display: inline-block
+}
