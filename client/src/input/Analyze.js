@@ -65,6 +65,7 @@ class Analyze extends Component {
 				<div>
 					<Title text="Analysis" style="Analyze__text--data" />
 					<DreamResult analysis = {this.state.data}/>
+					{/* <FormModal handleInput={this.handleInput} /> */}
 				</div>
 			);
   	}

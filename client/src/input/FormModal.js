@@ -6,9 +6,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
 
-/**
- * Dialogs can be nested. This example opens a Date Picker from within a Dialog.
- */
 class FormModal extends React.Component {
 	constructor(props){
 		super(props)

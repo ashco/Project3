@@ -9,22 +9,26 @@ class DreamEntry extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			editing: false
+			editing: false,
+			selectedDream: 'Dragons and tigers'
 		}
+
+
+		
+		// this.onGetDream = this.onGetDream.bind(this);
+		// this.getDream = this.getDream.bind(this);
+		this.editDream = this.editDream.bind(this);
 		this.deleteDream = this.deleteDream.bind(this);
 		this.toggleEditDream = this.toggleEditDream.bind(this);
-		this.editDream = this.editDream.bind(this);
 	}
 
-	deleteDream = () => {
-		this.props.handleDelete(this.props.dream._id);
+
+
+	onGetDream = () => {
+		this.props.getDream(this.state.selectedDream);
 	}
 
-	editDream = (date, content) => {
-		console.log("Dream entry component edit",date, content);
-		this.props.handleEdit(this.props.dream._id, date, content);
-		this.toggleEditDream();
-	}
+
 
 	toggleEditDream = () => {
 		console.log("Toggle");
@@ -40,17 +44,42 @@ class DreamEntry extends Component{
 		}		
 	}
 
+	editDream = (date, content) => {
+		console.log("Dream entry component edit",date, content);
+		this.props.handleEdit(this.props.dream._id, date, content);
+		this.toggleEditDream();
+	}
+
+	deleteDream = () => {
+		this.props.handleDelete(this.props.dream._id);
+	}
+
 	render(){
-		const dreamDate = moment(this.props.dream.date).format('MMMM D, YYYY');   
+		const dreamDate = moment(this.props.dream.date).format('MMMM D, YYYY');  
+
 	return(
 		<div className="DreamKey__box box">
 			<h3>{dreamDate}</h3>
 			<h5>{this.props.dream.sentiment}</h5>
 			<p>{this.props.dream.content}</p>
-			<p>
-				<button type="button" onClick={this.deleteDream}>Delete</button>
+			<div>
+
+
+
+
+
+				{/* BUTTON REDIRECTS TO /ANALYZE */}
+				{/* RUNS VIEWDREAM ON CLICK */}
+				<button type="button" onClick={this.onGetDream}>View</button>
+				
+
+
+				
+				
+				
 				<button type="button" onClick={this.toggleEditDream}>Edit</button>
-			</p>
+				<button type="button" onClick={this.deleteDream}>Delete</button>
+			</div>
 			<EditDream editDream={this.editDream} dream={this.props.dream} editing={this.state.editing} />
 		</div>
 	)

@@ -25,6 +25,14 @@ body {
   margin: 0 auto;
 }
 
+.CSS-Test {
+  width: 50%;
+  margin: 0 auto !important;
+  border: 2px solid #FF9800 !important;
+  background-color: #ffd699 !important;
+  
+}
+
 .space {
   margin: 15px 0;
   margin: -60px auto 0 auto;

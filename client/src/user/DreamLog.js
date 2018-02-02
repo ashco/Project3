@@ -10,15 +10,31 @@ class DreamLog extends Component {
 		super(props);
         this.state = {
           dreams: [],
-          dreamState: false
+					dreamState: false
+					
+					// selectedDream: null
         }
+        // this.getDream = this.getDream.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
 	}
 
+
+
+  getDream = (value) => { 
+    this.setState({ 
+      selectedDream: value
+    });
+    console.log('Value:', value);
+    console.log('State data:', this.state.selectedDream);
+  } 
+
+
+
 	fetchDreams = () => {
-		let userId= this.props.user.id;
-      	let base = this;	
+		let userId = this.props.user.id;
+		let base = this;	
+		
 		axios({
 			method: 'get',
 			url: '/user/log',
@@ -32,19 +48,22 @@ class DreamLog extends Component {
 			base.setState({
 				dreams: foundDreams,
 				dreamState: true
-			})
+			});
+
 			console.log("State",base.state.dreams);
 		}).catch((error) => {
 			console.log("An error occured",error.response.data);
 		})
 	}
 
-    componentDidMount() {
-      this.fetchDreams();
+  componentDidMount() {
+    this.fetchDreams();
 	}
 
+
+
 	handleDelete = (dream_id) => {
-		console.log(dream_id,"is the info we got from the dreamentry component");
+		console.log(dream_id, "is the info we got from the dreamentry component");
 		let dreamUrl = '/dream/' + dream_id;
 		let base = this;
 		axios({
@@ -64,7 +83,7 @@ class DreamLog extends Component {
 
 	handleEdit = (dream_id, date, content) => {
 		//Add content, date in here
-		console.log("Got to main level dreamlog edit component",dream_id,date,content);
+		console.log("Got to main level dreamlog edit component", dream_id,date,content);
 		let dreamUrl = '/dream/edit/' + dream_id;
 		let base = this;
 		axios({
@@ -93,7 +112,26 @@ class DreamLog extends Component {
   	} else if (displayState === true ) {
   		display = this.state.dreams.map((dream, index) => {
   			if(dream._id) {
-  				return <DreamEntry key={index} dream={dream} handleDelete={this.handleDelete} handleEdit={this.handleEdit} />
+					return (
+					<DreamEntry 
+						key={index} 
+						dream={dream} 
+						
+
+
+
+
+
+						getDream={(data) => this.getDream(data)} 
+						
+						
+
+
+
+
+						
+						handleEdit={this.handleEdit} 
+						handleDelete={this.handleDelete}  />)
   			}
     	})
     }

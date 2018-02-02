@@ -2,8 +2,14 @@ const mongoose = require('mongoose');
 
 const dreamSchema = new mongoose.Schema({
 	user_id: String,
-	date: Date,
-	content: String,
+	date: {
+		type: Date,
+		required: true
+	},
+	content: {
+		type: String,
+		required: true
+	},
 	sentiment: String,
 	score_positive: Number,
 	score_negative: Number,
