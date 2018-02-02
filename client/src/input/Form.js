@@ -5,6 +5,7 @@ import axios from 'axios';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
+import FormModal from './FormModal';
 
 class Form extends Component {
 	constructor(props){
@@ -49,6 +50,8 @@ class Form extends Component {
         							onChange={this.handleDateChange} />
 					{/* TEXT */}
 					<TextField name="content"
+										//  errorText="This field is required"
+
 										//  floatingLabelText="Text"
 										 multiLine={true}
 										 fullWidth={true}
@@ -56,6 +59,8 @@ class Form extends Component {
 										 onChange={this.handleContentChange} />
 					<RaisedButton label="Submit" primary={true} onClick={this.handleSubmit} />
 				</div>
+				<br/>
+				<FormModal />
 			</div>
 		);
   }

@@ -4,6 +4,7 @@ import Title from '../layout/Title.js';
 import Form from './Form.js';
 import DreamResult from './DreamResult.js';
 import Loading from './Loading.js';
+import FormModal from './FormModal';
 
 class Analyze extends Component {
 	constructor(props){
@@ -48,7 +49,7 @@ class Analyze extends Component {
   	let display = null;
 
   	if(displayState === 'form'){
-	  display = <Form handleInput={this.handleInput} />
+	  display = <FormModal handleInput={this.handleInput} />
   	} else if (displayState === 'loading') {
   		display = <Loading />
   	}

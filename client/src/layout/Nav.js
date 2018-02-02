@@ -47,13 +47,13 @@ class Nav extends Component {
         <span>
           <Link to="/log"><ToolbarTitle text="Dream Log" /></Link>
           <Link to="/profile"><ToolbarTitle text="Profile" /></Link>
-          <Logout updateUser={this.props.updateUser} />
+          {/* <Logout updateUser={this.props.updateUser} /> */}
           {/* <ToolbarSeparator /> */}
 
 
 
           {/* User Dropdown */}
-          {/* <IconMenu 
+          <IconMenu 
             iconButtonElement={
               <IconButton touch={true}>
                 <NavigationExpandMoreIcon />
@@ -64,18 +64,16 @@ class Nav extends Component {
           >
             <MenuItem primaryText={`Hello, ${this.props.user.name}`} />
             <Divider />
+            <Logout updateUser={this.props.updateUser} />
 
-
-
-            <MenuItem 
+            {/* <MenuItem 
               primaryText="Logout" 
               onClick={this.handleLogout}
-              />
+              /> */}
 
 
 
-
-          </IconMenu> */}
+          </IconMenu>
 
 
         </span>
