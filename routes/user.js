@@ -19,16 +19,6 @@ router.get('/log', function(req, res){
 	})
 });
 
-//GET ROUTE - Individual Log
-router.get('/log:id', function(req, res){
-	console.log("Got to get route", req.query);
-	// Dream.find({ user_id: req.query.user }, function(err, dream){
-		// if(err){
-			// console.log(err);
-		// }
-		// console.log(dream);
-		// res.send(dream);
-	// })
-});
+
 
 module.exports = router;

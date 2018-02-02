@@ -21,12 +21,13 @@ class DreamEntry extends Component{
 		this.toggleEditDream = this.toggleEditDream.bind(this);
 	}
 
+	componentDidMount(){
+		console.log('########### DREAM: ', this.props.dream);
+	}
 
 
 	getDream = () => {
-		console.log(this.props.dream._id)
-		console.log(this)
-		this.props.handleGet(this.props.dream._id);
+		this.props.handleGet(this.props);
 	}
 
 

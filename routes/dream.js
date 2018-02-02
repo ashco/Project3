@@ -10,6 +10,25 @@ var textAnalysis = require('./helpers/textAnalysis.js');
 var dreamScraper = require('./helpers/dreamScraper.js');
 var databaseAddition = require('./helpers/databaseAddition.js')
 
+
+
+//GET ROUTE - Individual Dream
+router.get('/:id', function(req, res){
+	// console.log("req:", req);
+	console.log("req.query:", req.query);
+	// Dream.findById({ user_id: req.query.user }, function(err, dream){
+ 
+	// 	if(err){
+	// 		console.log(err);
+	// 	}
+	// 	console.log(dream);
+	// 	res.send(dream);
+	// })
+});
+
+
+
+
 // POST ROUTE
 router.post('/', async function(req, res, next){
 	

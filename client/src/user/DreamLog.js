@@ -12,27 +12,12 @@ class DreamLog extends Component {
         this.state = {
           dreams: [],
 					dreamState: false
-					
-					// selectedDream: null
         }
 
-				// this.handleGet = this.handleGet.bind(this);
-				
-
-
+        // this.handleGet = this.handleGet.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.handleDelete = this.handleDelete.bind(this);
 	}
-
-
-	// View dream
-  // getDream = (value) => { 
-  //   this.setState({ 
-  //     selectedDream: value
-  //   });
-  //   console.log('Value:', value);
-  //   console.log('State data:', this.state.selectedDream);
-  // } 
 
 	// Loads / refreshes page
 	fetchDreams = () => {
@@ -108,7 +93,6 @@ class DreamLog extends Component {
 		})
 	}
 
-
   render(){
   	const displayState = this.state.dreamState;
   	let display = null;
@@ -122,16 +106,12 @@ class DreamLog extends Component {
 					<DreamEntry 
 						key={index} 
 						dream={dream} 
-						
-
 						//get dream id, pass up to app.js
-						// getDream={(dream_id) => this.getDream(dream_id)} 
 						handleGet={this.props.handleGet} 
-					
 						handleEdit={this.handleEdit} 
 						handleDelete={this.handleDelete}  />)
   			}
-    	})
+    	});
     }
     return (
     	<div>

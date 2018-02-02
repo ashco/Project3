@@ -28,7 +28,7 @@ class App extends Component {
     super(props);
     this.state = {
       user: {},
-      selected_dream_id: null
+      selected_dream_data: {}
 
     } 
 
@@ -61,34 +61,36 @@ class App extends Component {
 	// 	})
 	// }
 
-  handleGet = (dream_id) => { 
-    this.setState({ 
-      selected_dream_id: dream_id
-    });
-    console.log('Value:', dream_id);
-    console.log('State data:', this.state.selected_dream_id);
-  } 
+  handleGet = (dream_data) => { 
+    // this.setState({ 
+    //   selected_dream_id: dream_id
+    // });
+    // console.log('((((((((((((((((((((this is this:', this);
+    // console.log('State:', this.state);
+    console.log('Value:', dream_data);
+  // } 
     
     
     
     
-  //   // GET REQUIRED VARIABLES FOR AXIOS CALL
-  //   let userId = this.props.user.id;
-  //   let base = this;
-  //   let dreamURL = '/user/log/' + dream_id;
-  //   // AXIOS STUFF
-  //   axios({
-	// 		method: 'get',
-	// 		url: dreamURL,
-	// 		params: {
-	// 			user: userId
-	// 		}
-	// 	}).then((result) => {
-  //     console.log('Result: ', result);
-  //   }).catch((error) => {
-	// 		console.log('error returned:', error.response.data);
-  //   });
-  // }
+    // // GET REQUIRED VARIABLES FOR AXIOS CALL
+    // let _id = this.props.dream._id;
+    // console.log('_id:', _id)
+    // let base = this;
+    // let dreamURL = '/dream/' + dream_id;
+    // // AXIOS STUFF
+    // axios({
+		// 	method: 'get',
+		// 	url: dreamURL,
+		// 	params: {
+		// 		the_id: _id
+		// 	}
+		// }).then((result) => {
+    //   console.log('Result: ', result);
+    // }).catch((error) => {
+		// 	console.log('error returned:', error.response.data);
+    // });
+  }
 
   componentDidMount = () => {
     this.getUser();
