@@ -8,12 +8,21 @@
 
 .ToolTiplist {
 	list-style: none;
-	margin-left: none;
+	padding: 0px 5px 5px 5px;
+	
 }
 
 .customizedToolTip {
 	background-color: rgba(256,256,256,.8);
 	border: 1px solid #999;
-	margin: 0;
-	padding: 5;
+	padding: 5px ;
+}
+
+
+.ToolTipTitle{
+	font-size: 16px;
+	text-align: center;
+	font-weight: bold;
+	color: #444952;
+	margin-bottom: 2;
 }
