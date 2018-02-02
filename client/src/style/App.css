@@ -7,6 +7,8 @@
   --pink-color: #F98285;
   --purple-color: #BD70B3;
   --yellow-color: #E9CC84;
+  --header-font: 'Poppins', sans-serif;
+  --main-font: 'Roboto', sans-serif;
 }
 /* Here's how to reference these variables in the css */
 /*  #foo h1 {
@@ -15,15 +17,28 @@
 
 * {
   font: var(--font-color);
-  font-family: 'Quicksand', sans-serif;
+  font-family: var(--main-font);
 }
 
 body {
   background-color: var(--background-color);
+  margin: 0 auto;
 }
 
 .space {
   margin: 15px 0;
+  margin: -60px auto 0 auto;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+h1, h2 {
+  font-family: var(--header-font);
+}
+
+h1 {
+  font-size: 2em;
 }
 
 /* NAV */
@@ -43,10 +58,22 @@ nav a {
 .content__box {
   display: flex;
   justify-content: center;
-  /* height: auto; */
-
+  flex: 1 100%;
+  align-items: stretch;
 }
 
+/* HOME PAGE */
+.home {
+  flex: 1 100%;
+  padding: 100px;
+  align-items: stretch;
+  background: url('../img/pexels-photo-671658.jpeg') no-repeat;
+  background-size: cover;
+}
+
+.Home__title {
+  font-size: 4em;
+}
 
 /* BOXES */
 .box {
@@ -75,20 +102,15 @@ nav a {
 }
 
 /* FOOTER */
-/* .footer {
-  background-color: #555;
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 20px;
+ .footer {
+  background-color: var(--font-color);
+  padding: 20px;
 }
 
 .footer-text {
-  color: #fff;
   font-size: 10px;
-} */
-
-
+  color: white;
+} 
 
 /* BTN */
 .btn-primary {
