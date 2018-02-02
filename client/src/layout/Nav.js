@@ -18,13 +18,11 @@ const UserIcon = () => { return (<i className="fas fa-user" />) }
 
 
 class Nav extends Component {
-  // LOGOUT FUNCTION
-  handleLogout = (e) => {
-    e.preventDefault();
-    //Delete token from local storage
-    localStorage.removeItem('dreamToken');
-    //Go back to home page
-    this.props.updateUser();
+  constructor(props){
+    super(props);
+    this.state = {
+      redirect: false
+    }
   }
   
   render(){
@@ -35,6 +33,8 @@ class Nav extends Component {
     let leftLinks = <span />;
     let rightLinks = <span />;
     
+
+
     // YES USER
     if(this.props.user){
       leftLinks = (
@@ -47,16 +47,15 @@ class Nav extends Component {
         <span>
           <Link to="/log"><ToolbarTitle text="Dream Log" /></Link>
           <Link to="/profile"><ToolbarTitle text="Profile" /></Link>
+          <Logout updateUser={this.props.updateUser} />
           {/* <ToolbarSeparator /> */}
-          <IconMenu
+
+
+
+          {/* User Dropdown */}
+          {/* <IconMenu 
             iconButtonElement={
               <IconButton touch={true}>
-                {/* <FontAwesome className='super-crazy-colors'
-                             name='rocket'
-                             size='2x'
-                             spin
-                             style={{ textShadow: '0 1px 0 rgba(0, 0, 0, 0.1)' }} */}
-                             {/* /> */}
                 <NavigationExpandMoreIcon />
               </IconButton>
             } 
@@ -65,10 +64,20 @@ class Nav extends Component {
           >
             <MenuItem primaryText={`Hello, ${this.props.user.name}`} />
             <Divider />
-            <MenuItem primaryText="Logout" 
-                      onClick={this.handleLogout} 
-                      />
-          </IconMenu>
+
+
+
+            <MenuItem 
+              primaryText="Logout" 
+              onClick={this.handleLogout}
+              />
+
+
+
+
+          </IconMenu> */}
+
+
         </span>
       );
     }
