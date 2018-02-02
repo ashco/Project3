@@ -1,12 +1,12 @@
 /*GLOBAL VARIABLES - COLORS*/
 :root {
-  --background-color: #EFF1F0; 
+  --background-color: #FDFFFE; 
   --font-color: rgba(68, 73, 82, .9);
   --light-grey-color: #B4C1CA;
   --blue-color: #A1D4E3;
   --pink-color: #F98285;
   --purple-color: #BD70B3;
-  --yellow-color: #E9CC84;
+  --orange-color: #ffdabf;
   --header-font: 'Poppins', sans-serif;
   --main-font: 'Roboto', sans-serif;
 }
@@ -43,17 +43,30 @@ h1 {
 
 /* NAV */
 nav {
-  width: 100%;
-  padding: 10px 0;
+  margin: 0 auto;
 }
 
-nav a {
+#root > div > div > nav > div {
+  background: none !important;
+}
+
+#root > div > div > nav > div > div > span > a > span {
   margin: 10px 30px !important;
+  font-size: .75em;
   text-decoration: none !important;
   font-weight: 700 !important;
-  color: var(--purple-color) !important;
+  transition: all 1s;
+  text-transform: lowercase;
+  height: inherit;
 }
 
+#root > div > div > nav > div > div > span > a  {
+  text-decoration: none;
+}
+
+#root > div > div > nav > div > div > span > a > span:hover {
+  color: var(--purple-color) !important;
+}
 
 .content__box {
   display: flex;
@@ -76,9 +89,36 @@ nav a {
   font-size: 4em;
 }
 
+/* BUTTON */
+
+#root a div button {
+  border-radius: 0;
+}
+
+#root > div > div > div > div.home > div.login-box > a > div > button > div > div {
+  border-radius: 0;
+}
+
+#root > div > div > div > div.home > div.login-box > a > div > button > div > div:hover {
+  background-image: linear-gradient(120deg, #ffdabf 0%, #F98285 100%);
+}
+
+#root > div > div > div > div.home > div.login-box > a > div > button > div > div:hover {
+  background: var(--main-font) !important;
+}
+
+
 /* BOXES */
 .box {
   text-align: center;
+}
+
+.DreamKey__box {
+  text-align: left;
+  padding: 50px;
+  margin: 0 auto;
+  display: inline-block;
+  width: 40%;
 }
 
 /* FORM */
@@ -107,13 +147,13 @@ nav a {
 }
 
 .footer-text {
-  font-size: 10px;
+  font-size: .75em;
   color: var(--background-color);
 } 
 
 /* ALERTS */
 .error {
-  background-color: var(--yellow-color);
+  background-color: var(--pink-color);
   color: white;
   padding: 10px 30px;
 }
@@ -136,4 +176,12 @@ nav a {
   color: var(--background-color);
   border-radius: 10px;
   float: right;
+}
+
+
+/* RESPONSIVE */
+@media all and (min-width: 600px) {
+  /* We tell both sidebars to share a row */
+  .DreamKey__box { 
+    width: 100%;
 }
