@@ -78,6 +78,8 @@ class FormModal extends React.Component {
 											value={this.state.date}
 											onChange={this.handleDateChange} />
 					<TextField name="content"
+										floatingLabelText="What do you remember?"
+
 										//  errorText="This field is required"
 
 										//  floatingLabelText="Text"

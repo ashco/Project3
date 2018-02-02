@@ -42,19 +42,31 @@ class Analyze extends Component {
 	}
 
 
-
   render(){
   	console.log('this state', this.state);
   	const displayState = this.state.display;
   	let display = null;
 
   	if(displayState === 'form'){
-	  display = <FormModal handleInput={this.handleInput} />
-  	} else if (displayState === 'loading') {
-  		display = <Loading />
+	  	display = (
+				<div>
+					<Title text="Go on, dream something.." style="Analyze__text--start" />
+					<FormModal handleInput={this.handleInput} />
+				</div>
+			);
+		} 
+		else if (displayState === 'loading') {
+  		display = (
+				<Loading />
+			);
   	}
   	else if (displayState === 'result') {
-	  	display = <DreamResult analysis = {this.state.data}/>
+	  	display = (
+				<div>
+					<Title text="Analysis" style="Analyze__text--data" />
+					<DreamResult analysis = {this.state.data}/>
+				</div>
+			);
   	}
   	return (
   		<div className="content__box">
