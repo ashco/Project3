@@ -1,12 +1,12 @@
 /*GLOBAL VARIABLES - COLORS*/
 :root {
-  --background-color: #EFF1F0; 
+  --background-color: #FDFFFE; 
   --font-color: rgba(68, 73, 82, .9);
   --light-grey-color: #B4C1CA;
   --blue-color: #A1D4E3;
   --pink-color: #F98285;
   --purple-color: #BD70B3;
-  --yellow-color: #E9CC84;
+  --orange-color: #ffdabf;
   --header-font: 'Poppins', sans-serif;
   --main-font: 'Roboto', sans-serif;
 }
@@ -43,17 +43,36 @@ h1 {
 
 /* NAV */
 nav {
-  width: 100%;
-  padding: 10px 0;
+  margin: 0 auto;
 }
 
-nav a {
+#root > div > div > nav > div {
+  background: none !important;
+}
+
+#root > div > div > nav > div > div > span > a > span {
   margin: 10px 30px !important;
+  font-size: 1em !important;
   text-decoration: none !important;
   font-weight: 700 !important;
+  transition: all 1s;
+  text-transform: lowercase;
+  height: inherit;
+  bottom: 5px;
+}
+
+#root > div > div > nav > div > div > span  {
   color: var(--purple-color) !important;
 }
 
+#root > div > div > nav > div > div > span > a  {
+  color: var(--purple-color) !important;
+  text-decoration: none;
+}
+
+#root > div > div > nav > div > div > span > a > span:hover {
+  color: var(--pink-color) !important;
+}
 
 .content__box {
   display: flex;
@@ -76,9 +95,83 @@ nav a {
   font-size: 4em;
 }
 
+/* BUTTON */
+
+.primaryCTA {
+  background: var(--pink-color);
+  border: 3px solid var(--pink-color);
+  font-weight: 500;
+  color: white;
+  padding: 10px 25px;
+  outline: 0;
+}
+
+.secondaryCTA {
+  background: none;
+  border: 3px solid var(--font-color);
+  color: var(--font-color);
+  font-weight: 500;
+  padding: 10px 25px;
+  outline: 0;
+}
+
+.secondaryCTA:active, .primaryCTA:active {
+  outline: none;
+  background: var(--orange-color);
+}
+
+
 /* BOXES */
 .box {
   text-align: center;
+}
+
+.DreamResult {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  align-content: stretch;
+}
+
+
+.DreamKey__box {
+  text-align: left;
+  margin: 0 auto;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50%;
+  flex: 50%;
+  padding: 40px;
+}
+
+.DreamResult__box {
+  text-align: left;
+  margin: 0 auto;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 40px;
+}
+
+.DreamScore__box {
+  text-align: left;
+  margin: 0 auto;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50%;
+  padding: 40px;
+}
+
+.Analyze__background {
+  
+}
+
+.Loading__box {
+
+}
+
+h1 span.neutral, h1 span.negative, h1 span.positive, h1 span.mixed {
+  color: purple;
 }
 
 /* FORM */
@@ -107,13 +200,13 @@ nav a {
 }
 
 .footer-text {
-  font-size: 10px;
+  font-size: .75em;
   color: var(--background-color);
 } 
 
 /* ALERTS */
 .error {
-  background-color: var(--yellow-color);
+  background-color: var(--pink-color);
   color: white;
   padding: 10px 30px;
 }
@@ -136,4 +229,13 @@ nav a {
   color: var(--background-color);
   border-radius: 10px;
   float: right;
+}
+
+
+/* RESPONSIVE */
+
+@media all and (min-width: 600px) {
+  .DreamKey__box { 
+    width: 100%;
+  }
 }

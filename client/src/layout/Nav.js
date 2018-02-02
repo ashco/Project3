@@ -95,6 +95,7 @@ class Nav extends Component {
     }
 
     return(
+    <nav>
       <Toolbar>
         {/* LEFT SIDE */}
         <ToolbarGroup firstChild={true}>
@@ -105,6 +106,7 @@ class Nav extends Component {
           {rightLinks}
         </ToolbarGroup>
       </Toolbar>
+    </nav>
     );
   }
 }
