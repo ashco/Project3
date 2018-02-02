@@ -23,6 +23,10 @@ class Profile extends Component {
   }
 
   componentDidMount(){
+    if(!this.props.user || !this.props.user.id){
+      return;
+    }
+
     let userId = this.props.user.id;
     let base = this;
 
@@ -53,7 +57,7 @@ class Profile extends Component {
         dataState: true
       })
     }).catch((error) => {
-      console.log("An error occured while fetching data from databse", error.response.data);
+      console.log("An error occured while fetching data from databse", error.response ? error.response.data : 'No error.response.data');
     })
   }
 
@@ -71,8 +75,12 @@ class Profile extends Component {
           <SentimentTrends data={this.state.sentimentData} />
           <CallToAction />
           <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
+<<<<<<< HEAD
           <KeywordTrends data={this.state.keywordData}/>
 
+=======
+          <KeywordTrends />
+>>>>>>> 4e10560bb76b531238873d3ab6af71c98f4c0e27
         </div>
       );
     } 
