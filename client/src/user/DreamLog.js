@@ -4,6 +4,7 @@ import Title from '../layout/Title.js';
 import axios from 'axios';
 import DreamEntry from './DreamEntry.js'
 import WaitingState from './WaitingState.js'
+import {sortbyDate} from '../scripts/profileDataCleansing.js'
 
 class DreamLog extends Component {
 	constructor(props){
@@ -27,8 +28,9 @@ class DreamLog extends Component {
 			}
 		}).then((result) => {
 			console.log(result);
-			let foundDreams = result.data.concat([result]);
-
+			let rawData = result.data.concat([result]);
+			let foundDreams = sortbyDate(rawData);
+			
 			base.setState({
 				dreams: foundDreams,
 				dreamState: true

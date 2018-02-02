@@ -44,7 +44,7 @@ export function sentimentByDate(data){
     
     let child = {
       date: uniqueDates[i],
-      dateText: uniqueDates[i].slice(5,10),
+      dateText: (uniqueDates[i].slice(5,10)).replace("-", "/"),
       positive: positive/count,
       negative: negative/count,
       neutral: neutral/count,
@@ -52,11 +52,24 @@ export function sentimentByDate(data){
     };
     
     aggregatedData.push(child)
-    
   }
+
+  aggregatedData.sort(function(a,b){
+  return new Date(a.date) - new Date(b.date);
+  });
   
   return aggregatedData;
 }
+
+
+export function sortbyDate(data){
+  data.sort(function(a,b){
+  return new Date(a.date) - new Date(b.date);
+  });
+  return data;
+}
+
+
 
 
 export function overallTrends(data){
