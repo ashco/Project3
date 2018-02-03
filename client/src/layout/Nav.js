@@ -83,7 +83,7 @@ class Nav extends Component {
     else {
       leftLinks = (
         <span>
-          <Link to="/" className="Nav__logo">DreamApp</Link>
+          <Link to="/" className="Nav__logo">Dreamstate</Link>
           <Link to="/analyze" className="Nav__link">Analyze</Link>
         </span>
       );
