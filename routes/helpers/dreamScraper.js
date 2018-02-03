@@ -39,17 +39,26 @@ module.exports = {
 				})
 			}, function() {
 
+				// remove descriptions containing links to other descriptions
+				var finalDescriptions = []
+				var substring = '*Please see '
+				descriptions.forEach(function(item){
+				if(!String(item.description).includes(substring)){
+				    finalDescriptions.push(item)
+				  }
+				})
+
 				// sort descriptions by confidence score of keyword
-				descriptions.sort(function(a, b) {
+				finalDescriptions.sort(function(a, b) {
 					return b.Score - a.Score ;
 				});
 
 				// limit descriptions to only return 5
-				if (descriptions.length > 5){
-					descriptions = descriptions.splice(0, 5);
+				if (finalDescriptions.length > 5){
+					finalDescriptions = finalDescriptions.splice(0, 5);
 				}	
 
-				resolve(descriptions);
+				resolve(finalDescriptions);
 			});
 		})
 	}
