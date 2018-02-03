@@ -322,6 +322,15 @@ h1 span.mixed {
   padding: 20px;
 }
 
+.footer-text a {
+  color: var(--blue-color);
+  transition: all 2s;
+}
+
+.footer-text a:hover {
+  color: var(--orange-color);
+}
+
 .footer-text {
   font-size: .75em;
   color: var(--background-color);
