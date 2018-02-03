@@ -5,7 +5,6 @@ module.exports = {
 		console.log('results in keywordFormat funciotn', results);				
 		let rawData = results.KeyPhrases;
 		let keyWords = [];
-
 		
 		rawData.sort(function(a, b) {
 				return b.Score - a.Score ;
@@ -21,21 +20,32 @@ module.exports = {
 					  score: item.Score});
 				}
 			}
-		});		
+		});	
 
-		if (keyWords.length > 10){
-			keyWords = keyWords.splice(0, 10);
+		// Filter data set for unique key words
+		var uniqueKeywords = [];
+	  	var keywordsFiltered = [];
+	  
+	  	keyWords.forEach(function(item){
+	    	if(!uniqueKeywords.includes(item.keyword)){
+	      		uniqueKeywords.push(item.keyword)
+	      		keywordsFiltered.push(item)
+	    	}
+	  	});
+	  
+		if (keywordsFiltered.length > 10){
+			keywordsFiltered = keywordsFiltered.splice(0, 10);
 		}		
 	
 		var keyWordsValuePairs = {};
 
-		for(var i=0;i<keyWords.length;i++){
-		  var tmp = keyWords[i].keyword
+		for(var i=0;i<keywordsFiltered.length;i++){
+		  var tmp = keywordsFiltered[i].keyword
 		  var label = 'keyword'.concat(i+1);
 		  keyWordsValuePairs[label] = tmp
 		}
 
-		var result = [keyWords, keyWordsValuePairs]
+		var result = [keywordsFiltered, keyWordsValuePairs]
 		
 		return result;
 	},
