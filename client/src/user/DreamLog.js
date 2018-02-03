@@ -113,7 +113,10 @@ class DreamLog extends Component {
 		if(this.props.user && this.props.user.name){
 			return (
 				<div>
-					{display}
+					<Title text="dream log" style="DreamLog__title" />
+					<div className="DreamLog">
+						{display}
+					</div>
 				</div>
 			)
 		}
@@ -121,18 +124,11 @@ class DreamLog extends Component {
 		else {
       return (
         <div>
-          <Title text="Dream Log" style="DreamLog__title" />
+          <Title text="dream log" style="DreamLog__title" />
           <p>You need to be logged in to view this page.</p>
         </div>
       );
     }
-
-    return (
-    	<div>
-    		<h1>Dream Log</h1>
-    		{display}
-    	</div>
-    )
   }
 }
 
