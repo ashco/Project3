@@ -108,6 +108,7 @@ class DreamLog extends Component {
     }
     return (
     	<div>
+    		<h1>Dream Log</h1>
     		{display}
     	</div>
     )
