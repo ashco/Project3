@@ -103,6 +103,7 @@ nav {
 
 /* BUTTON */
 
+/*Rename these*/
 .primaryCTA {
   background: var(--pink-color);
   border: 3px solid var(--pink-color);
@@ -112,6 +113,7 @@ nav {
   padding: 10px 25px;
   margin-right: 10px;
   outline: 0;
+  transition: all 1s;
 }
 
 .secondaryCTA {
@@ -121,7 +123,13 @@ nav {
   color: var(--font-color);
   font-weight: 500;
   padding: 10px 25px;
+  margin-right: 10px;
   outline: 0;
+  transition: all 1s;
+}
+
+.primaryCTA .small, .secondaryCTA .small {
+  font-size: .75em;
 }
 
 .secondaryCTA:hover, .primaryCTA:hover {
@@ -151,6 +159,7 @@ nav {
   align-content: stretch;
 }
 
+/* LOGS PAGE */
 .DreamKey__box {
   text-align: left;
   margin: 0 auto;
@@ -159,8 +168,44 @@ nav {
   width: 50%;
   flex: 50%;
   padding: 40px;
+  transition: all 2s;
 }
 
+.DreamKey__box:hover {
+  background-image: linear-gradient(to bottom right, var(--orange-color) 0%, var(--background-color) 100%);
+}
+
+.DreamKey__box h3 {
+  display: inline-block;
+}
+
+.DreamKey__box h5 {
+  display: inline-block;
+  background: var(--background-color);
+  padding: 8px;
+  margin: 0;
+  margin-left: 20px;
+  position: relative;
+  bottom: 2px;
+  border-radius: 15px;
+  padding: 5px 10px;
+}
+
+h5.neutral {
+  color: var(--purple-color);
+}
+
+h5.negative {
+  color: var(--pink-color);
+}
+
+h5.positive {
+  color: var(--blue-color);
+}
+
+h5.mixed {
+  background: var(--orange-color);
+}
 
 /* KEYWORDS BOX  */
 .DreamResult__box {
@@ -174,7 +219,9 @@ nav {
   position: relative;
 }
 
+div.DreamResult__box.box > div > button > div {
 
+}
 
 /* DONUT CHART */
 .DreamScore__box {
@@ -250,7 +297,7 @@ h1 span.mixed {
 
 /* AUTH */
 .UserAuth__box, .Login__box, .Signup__box {
-  width: 600px;
+  max-width: 600px;
 }
 
 /* FOOTER */

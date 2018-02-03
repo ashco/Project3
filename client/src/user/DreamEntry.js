@@ -48,8 +48,8 @@ class DreamEntry extends Component{
 			<h5 className={this.props.dream.sentiment}>{this.props.dream.sentiment}</h5>
 			<p>{this.props.dream.content}</p>
 			<p>
-				<button type="button" onClick={this.deleteDream}>Delete</button>
-				<button type="button" onClick={this.toggleEditDream}>Edit</button>
+				<button type="button" className="primaryCTA small" onClick={this.deleteDream}>Delete</button>
+				<button type="button" className="secondaryCTA small" onClick={this.toggleEditDream}>Edit</button>
 			</p>
 			<EditDream editDream={this.editDream} dream={this.props.dream} editing={this.state.editing} />
 		</div>

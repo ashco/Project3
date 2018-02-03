@@ -31,7 +31,7 @@ class DreamKey extends Component{
     const actions = [
       <RaisedButton
         label="Close"
-        primary={true}
+        primary={false}
         onClick={this.handleClose}
       />
 		];
