@@ -13,8 +13,8 @@ class DreamLog extends Component {
           dreams: [],
           dreamState: false
         }
-        this.handleDelete = this.handleDelete.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
 	}
 
 	fetchDreams = () => {
@@ -45,25 +45,7 @@ class DreamLog extends Component {
       this.fetchDreams();
 	}
 
-	handleDelete = (dream_id) => {
-		console.log(dream_id,"is the info we got from the dreamentry component");
-		let dreamUrl = '/dream/' + dream_id;
-		let base = this;
-		axios({
-			method: 'delete',
-			url: dreamUrl,
-			data: {
-				id: dream_id,
-				user: base.props.user
-			}
-		}).then((result) => {
-			console.log(result);
-			base.fetchDreams();
-		}).catch((error) => {
-			console.log('error returned', error.response.data);
-		})
-	}
-
+	
 	handleEdit = (dream_id, date, content) => {
 		//Add content, date in here
 		console.log("Got to main level dreamlog edit component",dream_id,date,content);
@@ -85,6 +67,25 @@ class DreamLog extends Component {
 			console.log('error returned', error.response.data);
 		})
 	}
+	
+	handleDelete = (dream_id) => {
+		console.log(dream_id,"is the info we got from the dreamentry component");
+		let dreamUrl = '/dream/' + dream_id;
+		let base = this;
+		axios({
+			method: 'delete',
+			url: dreamUrl,
+			data: {
+				id: dream_id,
+				user: base.props.user
+			}
+		}).then((result) => {
+			console.log(result);
+			base.fetchDreams();
+		}).catch((error) => {
+			console.log('error returned', error.response.data);
+		})
+	}
 
   render(){
   	const displayState = this.state.dreamState;
@@ -95,7 +96,13 @@ class DreamLog extends Component {
   	} else if (displayState === true ) {
   		display = this.state.dreams.map((dream, index) => {
   			if(dream._id) {
-  				return <DreamEntry key={index} dream={dream} handleDelete={this.handleDelete} handleEdit={this.handleEdit} />
+					return <DreamEntry 
+						key={index} 
+						dream={dream} 
+						handleGet={this.props.handleGet}
+						handleEdit={this.handleEdit} 
+						handleDelete={this.handleDelete} 
+					/>
   			}
     	})
     }

@@ -27,8 +27,18 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      user: {}
+      user: {},
+      selected_dream_data: {}
     }
+    this.handleGet = this.handleGet.bind(this);
+  }
+
+  // FNC POPULATES STATE FOR SELECTED DREAM
+  handleGet = (dream_data) => { 
+    this.setState({ 
+      selected_dream_data: dream_data
+    });
+    console.log('DreamState:', this.state.selected_dream_data);
   }
 
   componentDidMount = () => {
@@ -81,6 +91,8 @@ class App extends Component {
     });
   }
 
+
+
   render() {
     return (
       <div className="App">
@@ -92,19 +104,19 @@ class App extends Component {
                 <Flash flashType={this.state.flashType} flash={this.state.flash} setFlash={this.setFlash} cancelFlash={this.cancelFlash} />
               
                 <Route exact path="/" component={Home} />
-                <Route path="/login" component={
-                  () => (<Login user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                {/* <Route path="/login" component={
+                  () => (<Login user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} /> */}
                 <Route path="/userauth" component={
                   () => (<UserAuth user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
-                <Route path="/signup" component={
-                  () => (<Signup user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                {/* <Route path="/signup" component={
+                  () => (<Signup user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} /> */}
                 <Route path="/profile" component={
                   () => (<Profile user={this.state.user} setFlash={this.setFlash} />)} />
                 {/* CUSTOM ROUTES */}
                 <Route path="/analyze" component={
                   () => (<Analyze user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
                 <Route path="/log" component={
-                  () => (<DreamLog user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                  () => (<DreamLog user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} handleGet={this.handleGet} />)} />
                 <Footer />
               </div>
             </div>
