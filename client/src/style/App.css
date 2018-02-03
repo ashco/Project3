@@ -2,7 +2,7 @@
 :root {
   --background-color: #FDFFFE; 
   --font-color: rgba(68, 73, 82, .9);
-  --light-grey-color: #B4C1CA;
+  --light-grey-color: #dddddd;
   --blue-color: #A1D4E3;
   --pink-color: #F98285;
   --purple-color: #BD70B3;
@@ -159,8 +159,15 @@ nav {
 }
 
 /* LOGS PAGE */
+.DreamLog__title {
+  text-align: center;
+}
+
 .DreamLog {
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 80px 30px 80px;
 }
 
 .DreamKey__box {
@@ -175,6 +182,11 @@ nav {
   align-self: stretch;
   border: 1px solid var(--light-grey-color);
   box-shadow: 5px 5px var(--light-grey-color);
+}
+
+.DreamKey__buttons {
+  margin-top: 40px;
+  text-align: right;
 }
 
 .DreamKey__box h3 {
@@ -277,8 +289,6 @@ h1 span.mixed {
 .Loading__box {
   margin-top: -60px;
   padding: 100px;
-  background: url('../img/pexels-photo-547115.jpeg') no-repeat;
-  background-size: cover;
   display: flex;
   flex: 1 100%;
   justify-content: center;
@@ -297,7 +307,7 @@ h1 span.mixed {
 .Loading {
   display: inline-block;
   text-align: center;
-  width: 50%;
+  width: 200px;
   height: 100px;
 }
 
@@ -348,8 +358,12 @@ h1 span.mixed {
 /* RESPONSIVE */
 
 @media all and (max-width: 600px) {
+  .DreamLog {
+    padding: 10px;
+  }
   .DreamKey__box { 
     width: 100%;
+    flex: 100%;
   }
   .DreamResult__box {
   width: 100%
