@@ -39,6 +39,7 @@ h1, h2 {
 
 h1 {
   font-size: 2em;
+  display: block;
 }
 
 /* NAV */
@@ -50,28 +51,33 @@ nav {
   background: none !important;
 }
 
-#root > div > div > nav > div > div > span > a > span {
-  margin: 10px 30px !important;
-  font-size: 1em !important;
-  text-decoration: none !important;
-  font-weight: 700 !important;
+.Nav__link, .Nav__logo {
+  color: var(--font-color) !important;
+  margin: 10px 30px;
+  font-size: 1em;
+  text-decoration: none;
+  font-weight: 700;
   transition: all 1s;
   text-transform: lowercase;
   height: inherit;
+}
+
+.Nav__link {
+  color: var(--font-color) !important;
   bottom: 5px;
 }
 
-#root > div > div > nav > div > div > span  {
-  color: var(--purple-color) !important;
+.Nav__logo {
+  font-size: 1.25em;
 }
 
-#root > div > div > nav > div > div > span > a  {
-  color: var(--purple-color) !important;
-  text-decoration: none;
+.Nav__link:hover, .Nav__logo:hover {
+    color: var(--blue-color) !important;
 }
 
-#root > div > div > nav > div > div > span > a > span:hover {
-  color: var(--pink-color) !important;
+#root > div > div > nav > div > div:nth-child(2) > span > div > button > div > svg {
+  position: relative;
+  top: 6px;
 }
 
 .content__box {
@@ -100,14 +106,17 @@ nav {
 .primaryCTA {
   background: var(--pink-color);
   border: 3px solid var(--pink-color);
+  font-size: 1.25em;
   font-weight: 500;
   color: white;
   padding: 10px 25px;
+  margin-right: 10px;
   outline: 0;
 }
 
 .secondaryCTA {
   background: none;
+  font-size: 1.25em;
   border: 3px solid var(--font-color);
   color: var(--font-color);
   font-weight: 500;
@@ -115,9 +124,18 @@ nav {
   outline: 0;
 }
 
+.secondaryCTA:hover, .primaryCTA:hover {
+  outline: none;
+  border: 3px solid var(--purple-color);
+  background: var(--purple-color);
+  color: white;
+}
+
 .secondaryCTA:active, .primaryCTA:active {
   outline: none;
-  background: var(--orange-color);
+  background: var(--purple-color);
+  border: 3px solid var(--purple-color);
+  color: white;
 }
 
 
@@ -133,7 +151,6 @@ nav {
   align-content: stretch;
 }
 
-
 .DreamKey__box {
   text-align: left;
   margin: 0 auto;
@@ -144,34 +161,75 @@ nav {
   padding: 40px;
 }
 
+
+/* KEYWORDS BOX  */
 .DreamResult__box {
   text-align: left;
-  margin: 0 auto;
+  margin: 0;
   display: inline-block;
   box-sizing: border-box;
-  width: 50%;
-  padding: 40px;
+  width: 20%;
+  padding-top: 150px;
+  left: 100px;
+  position: relative;
 }
 
+
+
+/* DONUT CHART */
 .DreamScore__box {
   text-align: left;
-  margin: 0 auto;
+  margin: 0;
   display: inline-block;
   box-sizing: border-box;
-  width: 50%;
-  padding: 40px;
+  width: 80%;
+  position: relative;
+  right: 100px;
+}
+
+/* Sentiment color coded scores */
+h1 span.neutral {
+  color: var(--purple-color);
+}
+
+h1 span.negative {
+  color: var(--pink-color);
+}
+
+h1 span.positive {
+  color: var(--blue-color);
+}
+
+h1 span.mixed {
+  color: var(--orange-color);
+}
+
+/* Legend */
+#root > div > div > div > div.content__box > div > div.DreamScore__box.box > div > div.recharts-wrapper > div.recharts-legend-wrapper {
+  max-width: 400px;
 }
 
 .Analyze__background {
-  
+  padding: 200px;
+  margin-top: -60px;
+  text-align: center;
+  background: url('../img/pexels-photo-691668.jpeg') no-repeat;
+  background-size: cover;
+  display: flex;
+  flex: 1 100%;
+  justify-content: center;
+  align-items: stretch;
 }
 
 .Loading__box {
-
-}
-
-h1 span.neutral, h1 span.negative, h1 span.positive, h1 span.mixed {
-  color: purple;
+  margin-top: -60px;
+  padding: 100px;
+  background: url('../img/pexels-photo-547115.jpeg') no-repeat;
+  background-size: cover;
+  display: flex;
+  flex: 1 100%;
+  justify-content: center;
+  align-items: stretch;
 }
 
 /* FORM */
@@ -184,8 +242,10 @@ h1 span.neutral, h1 span.negative, h1 span.positive, h1 span.mixed {
 
 
 .Loading {
+  display: inline-block;
   text-align: center;
-  width: 90%;
+  width: 50%;
+  height: 100px;
 }
 
 /* AUTH */
@@ -234,8 +294,14 @@ h1 span.neutral, h1 span.negative, h1 span.positive, h1 span.mixed {
 
 /* RESPONSIVE */
 
-@media all and (min-width: 600px) {
+@media all and (max-width: 600px) {
   .DreamKey__box { 
     width: 100%;
+  }
+  .DreamResult__box {
+  width: 100%
+  }
+  .DreamScore__box {
+  width: 100%
   }
 }

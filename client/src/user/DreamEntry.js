@@ -11,13 +11,14 @@ class DreamEntry extends Component{
 		this.state = {
 			editing: false
 		}
+		this.getDream = this.getDream.bind(this);
+		this.editDream = this.editDream.bind(this);
 		this.deleteDream = this.deleteDream.bind(this);
 		this.toggleEditDream = this.toggleEditDream.bind(this);
-		this.editDream = this.editDream.bind(this);
 	}
 
-	deleteDream = () => {
-		this.props.handleDelete(this.props.dream._id);
+	getDream = () => {
+		this.props.handleGet(this.props.dream);
 	}
 
 	editDream = (date, content) => {
@@ -25,6 +26,11 @@ class DreamEntry extends Component{
 		this.props.handleEdit(this.props.dream._id, date, content);
 		this.toggleEditDream();
 	}
+
+	deleteDream = () => {
+		this.props.handleDelete(this.props.dream._id);
+	}
+
 
 	toggleEditDream = () => {
 		console.log("Toggle");
@@ -45,11 +51,12 @@ class DreamEntry extends Component{
 	return(
 		<div className="DreamKey__box box">
 			<h3>{dreamDate}</h3>
-			<h5>{this.props.dream.sentiment}</h5>
+			<h5 className={this.props.dream.sentiment}>{this.props.dream.sentiment}</h5>
 			<p>{this.props.dream.content}</p>
 			<p>
-				<button type="button" onClick={this.deleteDream}>Delete</button>
+				<button type="button" onClick={this.getDream}>View</button>
 				<button type="button" onClick={this.toggleEditDream}>Edit</button>
+				<button type="button" onClick={this.deleteDream}>Delete</button>
 			</p>
 			<EditDream editDream={this.editDream} dream={this.props.dream} editing={this.state.editing} />
 		</div>
