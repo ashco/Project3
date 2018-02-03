@@ -31,65 +31,15 @@ class App extends Component {
       selected_dream_data: {}
 
     } 
-
     this.handleGet = this.handleGet.bind(this);
   }
 
-  // fetchDreams = () => {
-	// 	// let userId = this.props.user.id;
-	// 	// let base = this;	
-		
-	// 	axios({
-	// 		method: 'get',
-	// 		url: '/user/log',
-	// 		params: {
-	// 			user: userId
-	// 		}
-	// 	}).then((result) => {
-	// 		console.log(result);
-	// 		let rawData = result.data.concat([result]);
-	// 		let foundDreams = sortbyDate(rawData);
-	// 		// let foundDreams = result.data.concat([result]);
-	// 		base.setState({
-	// 			dreams: foundDreams,
-	// 			dreamState: true
-	// 		});
-
-	// 		console.log("State",base.state.dreams);
-	// 	}).catch((error) => {
-	// 		console.log("An error occured",error.response.data);
-	// 	})
-	// }
-
+  // FNC POPULATES STATE FOR SELECTED DREAM
   handleGet = (dream_data) => { 
-    // this.setState({ 
-    //   selected_dream_id: dream_id
-    // });
-    // console.log('((((((((((((((((((((this is this:', this);
-    // console.log('State:', this.state);
-    console.log('Value:', dream_data);
-  // } 
-    
-    
-    
-    
-    // // GET REQUIRED VARIABLES FOR AXIOS CALL
-    // let _id = this.props.dream._id;
-    // console.log('_id:', _id)
-    // let base = this;
-    // let dreamURL = '/dream/' + dream_id;
-    // // AXIOS STUFF
-    // axios({
-		// 	method: 'get',
-		// 	url: dreamURL,
-		// 	params: {
-		// 		the_id: _id
-		// 	}
-		// }).then((result) => {
-    //   console.log('Result: ', result);
-    // }).catch((error) => {
-		// 	console.log('error returned:', error.response.data);
-    // });
+    this.setState({ 
+      selected_dream_data: dream_data
+    });
+    console.log('DreamState:', this.state.selected_dream_data);
   }
 
   componentDidMount = () => {
@@ -141,8 +91,6 @@ class App extends Component {
       flashType: ''
     });
   }
-
-
 
   render() {
     return (

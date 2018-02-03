@@ -9,28 +9,18 @@ class DreamEntry extends Component{
 	constructor(props){
 		super(props);
 		this.state = {
-			editing: false,
-			selectedDream: 'Dragons and tigers'
+			editing: false
 		}
 
-
-		
 		this.getDream = this.getDream.bind(this);
 		this.editDream = this.editDream.bind(this);
 		this.deleteDream = this.deleteDream.bind(this);
 		this.toggleEditDream = this.toggleEditDream.bind(this);
 	}
 
-	componentDidMount(){
-		console.log('########### DREAM: ', this.props.dream);
-	}
-
-
 	getDream = () => {
-		this.props.handleGet(this.props);
+		this.props.handleGet(this.props.dream);
 	}
-
-
 
 	toggleEditDream = () => {
 		console.log("Toggle");
