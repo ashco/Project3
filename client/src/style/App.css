@@ -159,15 +159,22 @@ nav {
 }
 
 /* LOGS PAGE */
+.DreamLog {
+  text-align: center;
+}
+
 .DreamKey__box {
   text-align: left;
-  margin: 0 auto;
+  margin: 10px;
   display: inline-block;
   box-sizing: border-box;
-  width: 50%;
-  flex: 50%;
+  width: 45%;
+  flex: 45%;
   padding: 40px;
   transition: all 2s;
+  align-self: stretch;
+  border: 1px solid var(--light-grey-color);
+  box-shadow: 5px 5px var(--light-grey-color);
 }
 
 .DreamKey__box h3 {
