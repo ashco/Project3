@@ -42,6 +42,9 @@ class DreamLog extends Component {
 	}
 
     componentDidMount() {
+			if(!this.props.user || !this.props.user.id){
+				return;
+			}
       this.fetchDreams();
 	}
 
@@ -105,12 +108,24 @@ class DreamLog extends Component {
 					/>
   			}
     	})
+		}
+		// LOGGED IN PAGE
+		if(this.props.user && this.props.user.name){
+			return (
+				<div>
+					{display}
+				</div>
+			)
+		}
+		// NOT LOGGED IN PAGE
+		else {
+      return (
+        <div>
+          <Title text="Dream Log" style="DreamLog__title" />
+          <p>You need to be logged in to view this page.</p>
+        </div>
+      );
     }
-    return (
-    	<div>
-    		{display}
-    	</div>
-    )
   }
 }
 
