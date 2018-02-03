@@ -37,7 +37,13 @@ class App extends Component {
   handleGet = (dream_data) => { 
     this.setState({ 
       selected_dream_data: dream_data
-    });
+    }
+    // , () => {
+    //   this.props.history.push({
+    //     pathname: '/analyze',
+    //   });
+    // }
+  );
     console.log('DreamState:', this.state.selected_dream_data);
   }
 

@@ -6,7 +6,7 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var app = express();
 //Heroku requirement
-var server = app.listen(process.env.PORT || 3000)
+
 
 
 // Mongoose stuff
@@ -40,3 +40,4 @@ module.exports = app;
 
 
 
+var server = app.listen(process.env.PORT || 4000);
