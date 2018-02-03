@@ -14,7 +14,7 @@ class Home extends Component {
 
     return (
       <div className="home">
-        <Title text="dream" style="Home__title" />
+        <Title text="dreamstate" style="Home__title" />
         <h2>Lorem ipsum about analyzing your dreams.</h2>
         <div className="login-box">
           <Link to="/analyze"><button className="primaryCTA">Analyze Your Dream</button></Link>

@@ -126,6 +126,13 @@ class DreamLog extends Component {
         </div>
       );
     }
+
+    return (
+    	<div>
+    		<h1>Dream Log</h1>
+    		{display}
+    	</div>
+    )
   }
 }
 
