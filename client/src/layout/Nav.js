@@ -39,14 +39,14 @@ class Nav extends Component {
     if(this.props.user){
       leftLinks = (
         <span>
-          <Link to="/"><ToolbarTitle text="DreamApp" /></Link>
-          <Link to="/analyze"><ToolbarTitle text="Analyze" /></Link>
+          <Link to="/" className="Nav__logo">DreamApp</Link>
+          <Link to="/analyze" className="Nav__link">Analyze</Link>
         </span>
       )
       rightLinks = (
         <span>
-          <Link to="/log"><ToolbarTitle text="Dream Log" /></Link>
-          <Link to="/profile"><ToolbarTitle text="Profile" /></Link>
+          <Link to="/log" className="Nav__link">Dream Log</Link>
+          <Link to="/profile" className="Nav__link">Profile</Link>
           {/* <Logout updateUser={this.props.updateUser} /> */}
           {/* <ToolbarSeparator /> */}
 
@@ -62,7 +62,7 @@ class Nav extends Component {
             anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
           >
-            <MenuItem primaryText={`Hello, ${this.props.user.name}`} />
+            <MenuItem primaryText={`${this.props.user.name}`} />
             <Divider />
             <Logout updateUser={this.props.updateUser} />
 
@@ -83,13 +83,13 @@ class Nav extends Component {
     else {
       leftLinks = (
         <span>
-          <Link to="/"><ToolbarTitle text="DreamApp" /></Link>
-          <Link to="/analyze"><ToolbarTitle text="Analyze" /></Link>
+          <Link to="/" className="Nav__logo">DreamApp</Link>
+          <Link to="/analyze" className="Nav__link">Analyze</Link>
         </span>
       );
       rightLinks = (
         <span>
-          <Link to="/userauth"><RaisedButton label="Login" primary={true} style={style} /></Link>
+          <Link to="/userauth" className="Nav__link">Login</Link>
         </span>
       );
     }

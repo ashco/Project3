@@ -63,7 +63,8 @@ class FormModal extends React.Component {
 
 		return (
 			<div>
-				<RaisedButton label="Dream Log" onClick={this.handleOpen} />
+				<br />
+				<RaisedButton label="Analyze Your Dream" onClick={this.handleOpen} />
 				<Dialog
 					title="Log your dreams"
 					actions={actions}
