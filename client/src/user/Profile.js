@@ -70,6 +70,7 @@ class Profile extends Component {
       dashboard = 
             <div>
                 <SentimentTrends data={this.state.sentimentData} />
+                <h1>{this.props.user.name}</h1>
                 <CallToAction />
                 <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
                 <KeywordTrends data={this.state.keywordData}/>
@@ -87,9 +88,6 @@ class Profile extends Component {
     if(this.props.user && this.props.user.name && totalDreams > 0){
       return (
         <div>
-          <Title text="Profile" style="Profile__title" />
-          <h2>HELLO AGAIN {this.props.user.name}!</h2>
-          <h4>Your email is {this.props.user.email}</h4>
           {dashboard}
         </div>
       )
@@ -97,9 +95,7 @@ class Profile extends Component {
     else if (this.props.user && this.props.user.name && totalDreams === 0) {
       return (
         <div>
-          <Title text="Profile" style="Profile__title" />
-          <h2>HELLO AGAIN {this.props.user.name}!</h2>
-          <h4>Your email is {this.props.user.email}</h4>
+          <Title text="{this.props.user.name}" style="Profile__title" />
           <p> You haven't entered any dreams </p>
           <CallToAction />
         </div>
@@ -109,7 +105,7 @@ class Profile extends Component {
       return (
         <div>
           <Title text="Profile" style="Profile__title" />
-          <p>This is a profile page. You need to be logged in to view it.</p>
+          <p>You need to be logged in to view this page.</p>
         </div>
       );
     }

@@ -10,9 +10,8 @@ class DreamScore extends Component {
 	console.log('raw data', rawData);
 	const data = doughnutChartData(rawData);
 	console.log('final data for chart', data);
-	    
 
-	const COLORS = ['#A1D4E3', '#F98285', '#BD70B3', '#E9CC84'];
+	const COLORS = ['#A1D4E3', '#F98285', '#BD70B3', '#ffdabf'];
 
 	const RADIAN = Math.PI / 180; 
   
