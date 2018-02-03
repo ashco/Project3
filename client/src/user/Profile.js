@@ -65,29 +65,33 @@ class Profile extends Component {
     const totalDreams = (this.state.data.length)
     let dashboard = null;
     console.log('totalDreams', totalDreams);
+
+    if(totalDreams > 1) {
+      dashboard = 
+            <div>
+                <SentimentTrends data={this.state.sentimentData} />
+                <h1>{this.props.user.name}</h1>
+                <CallToAction />
+                <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
+                <KeywordTrends data={this.state.keywordData}/>
+            </div>
+    } else if (totalDreams <= 1){
+      dashboard = 
+          <div>
+            <p> Enter more dreams to see your trends over time! </p>
+            <CallToAction />
+          </div>
+    }
     
 
     // Logged in with data loaded
-    if(this.props.user && this.props.user.name && totalDreams > 1){
+    if(this.props.user && this.props.user.name){
       return (
         <div>
-        <SentimentTrends data={this.state.sentimentData} />
-        <h1>{this.props.user}</h1>
-        <CallToAction />
-        <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
-        <KeywordTrends data={this.state.keywordData}/>
+          {dashboard}
         </div>
       )
     } 
-    else if (this.props.user && this.props.user.name && totalDreams <= 1) {
-      return (
-        <div>
-          <h1>{this.props.user.name}</h1>
-          <p> You need to enter more dreams</p>
-          <CallToAction />
-        </div>
-      );
-    }
     else {
       return (
         <div>
