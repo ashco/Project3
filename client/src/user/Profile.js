@@ -70,6 +70,7 @@ class Profile extends Component {
       dashboard = 
             <div>
                 <SentimentTrends data={this.state.sentimentData} />
+                <h1>{this.props.user.name}</h1>
                 <CallToAction />
                 <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
                 <KeywordTrends data={this.state.keywordData}/>
@@ -87,7 +88,6 @@ class Profile extends Component {
     if(this.props.user && this.props.user.name && totalDreams > 0){
       return (
         <div>
-          <Title text={this.props.user.name} style="Profile__title" />
           {dashboard}
         </div>
       )

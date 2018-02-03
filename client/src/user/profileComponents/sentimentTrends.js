@@ -45,9 +45,9 @@ class SentimentTrends extends Component {
 			        <Tooltip content={renderTooltipContent}/>
 			        <Legend verticalAlign="bottom" height={36} iconType = "square"/>
 			        <Area type='monotone' dataKey='negative' stackId="1" stroke='#F98285' fill='#F98285' />
-			        <Area type='monotone' dataKey='neutral' stackId="1" stroke='#BD70B3' fill='#BD70B3' />
 			        <Area type='monotone' dataKey='mixed' stackId="1" stroke='#E9CC84' fill='#ffdabf' />
-			       	<Area type='monotone' dataKey='positive' stackId="1" stroke='#A1D4E3' fill='#A1D4E3' />
+			        <Area type='monotone' dataKey='neutral' stackId="1" stroke='#BD70B3' fill='#BD70B3' />
+			        <Area type='monotone' dataKey='positive' stackId="1" stroke='#A1D4E3' fill='#A1D4E3' />
 			    </AreaChart>
 			</ResponsiveContainer>
 		)
