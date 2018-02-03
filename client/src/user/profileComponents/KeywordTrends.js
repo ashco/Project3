@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Cell, CartesianGrid, Tooltip,LabelList, Legend} from 'recharts';
+import {ResponsiveContainer, BarChart, Bar, XAxis, YAxis, Cell, Tooltip,LabelList, Legend} from 'recharts';
 
 
 class KeywordTrends extends Component {
@@ -32,10 +32,6 @@ class KeywordTrends extends Component {
            dy='25'/>
        <YAxis hide/>
        <Tooltip  content={renderTooltip}/>
-       <CartesianGrid 
-           vertical={false}
-           stroke="#ebf3f0"
-       />
        <Bar 
            dataKey="value" 
            barSize ={170}
