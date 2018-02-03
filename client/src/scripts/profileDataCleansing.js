@@ -79,6 +79,16 @@ export function totalValues (data){
   return total;
 }
 
+export function uniqueDate(data){
+    var uniqueValues = [];
+  
+  data.forEach(function(item){
+    if(!uniqueValues.includes(item.date)){
+      uniqueValues.push(item.date)
+    }
+  });
+}
+
 
 export function overallTrends(data){
 
