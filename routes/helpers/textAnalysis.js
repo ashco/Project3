@@ -2,9 +2,13 @@
 require('dotenv').config();
 var AWS = require('aws-sdk');
 // AWS.config.loadFromPath('./awsconfig.json');
-AWS.config.update({region: 'us-west-2'});
+AWS.config.update({
+	region: 'us-west-2',
+	accessKeyId: "AKIAINT7TT6PJ2ZS43NQ",
+	secretAccessKey: "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"
+});
 // new AWS.Credentials(process.env.AWS_KEY_ID, process.env.AWS_SECRET_KEY);
-new AWS.Credentials('AKIAINT7TT6PJ2ZS43NQ', 'eIfz/5tFO85flQRq2BKtoQhBIxH22wNrrAismyMo');
+
 
 
 var comprehend = new AWS.Comprehend();
