@@ -27,7 +27,7 @@ app.use(function(req, res, next) {
 // Controllers
 app.use('/auth', require('./routes/auth'));
 app.use('/dream', require('./routes/dream'));
-// app.use('/user', require('./routes/user'));
+app.use('/user', require('./routes/user'));
 app.use('/profile', require('./routes/profile'));
 
 app.get('*', function(req, res, next) {

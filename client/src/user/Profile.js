@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import Title from '../layout/Title.js';
+import { Redirect } from 'react-router-dom';
+import axios from 'axios';
 // Profile Components 
+import Title from '../layout/Title.js';
 import UserGreeting from './profileComponents/UserGreeting.js'
 import SentimentTrends from './profileComponents/sentimentTrends.js'
 import CallToAction from './profileComponents/CallToAction.js'
 import OverallStats from './profileComponents/overallStats.js'
 import KeywordTrends from './profileComponents/KeywordTrends.js'
-
-import axios from 'axios';
 // Data Cleansing Functions
 import {sentimentByDate, overallTrends, keywordStats} from '../scripts/profileDataCleansing.js'
 
@@ -25,7 +25,7 @@ class Profile extends Component {
 
   componentDidMount(){
     if(!this.props.user || !this.props.user.id){
-      return;
+      return ( <Redirect to="/" /> );    
     }
 
     let base = this;
@@ -92,7 +92,7 @@ class Profile extends Component {
                 <KeywordTrends data={this.state.keywordData} />
             </div>
     } 
-    else if (totalDreams <= 1){
+    else if (this.props.user && this.props.user.name && totalDreams <= 1){
       dashboard = 
             <div className="Profile__grid">
               <UserGreeting name={this.props.user.name} totalDreams={totalDreams} />

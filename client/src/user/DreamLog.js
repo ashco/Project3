@@ -31,14 +31,13 @@ class DreamLog extends Component {
 		}).then((result) => {
 			let rawData = result.data.concat([result]);
 			let foundDreams = sortbyDate(rawData);
-			
 			base.setState({
 				dreams: foundDreams,
 				dreamState: true
 			});
-			console.log("State: ",base.state.dreams);
+			console.log("State: ", base.state.dreams);
 		}).catch((error) => {
-			console.log("An error occured",error.response.data);
+			console.log("An error occured", error.response.data);
 		});
 	}
 
