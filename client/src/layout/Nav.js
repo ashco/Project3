@@ -2,19 +2,13 @@ import React, { Component } from 'react';
 import Logout from '../auth/Logout.js';
 import { Link } from 'react-router-dom';
 // MATERIAL UI
-import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
-import RaisedButton from 'material-ui/RaisedButton';
-
+import {Toolbar, ToolbarGroup} from 'material-ui/Toolbar';
 //Half of this is unneccessary 
 import MenuItem from 'material-ui/MenuItem';
 import NavigationExpandMoreIcon from 'material-ui/svg-icons/navigation/expand-more';
 import IconButton from 'material-ui/IconButton';
 import IconMenu from 'material-ui/IconMenu';
 import Divider from 'material-ui/Divider';
-import FontAwesome from 'react-fontawesome';
-
-
-const UserIcon = () => { return (<i className="fas fa-user" />) }
 
 
 class Nav extends Component {
@@ -26,15 +20,9 @@ class Nav extends Component {
   }
   
   render(){
-    const style = {
-      margin: 8,
-    }; 
-
     let leftLinks = <span />;
     let rightLinks = <span />;
     
-
-
     // YES USER
     if(this.props.user){
       leftLinks = (
@@ -47,18 +35,9 @@ class Nav extends Component {
         <span>
           <Link to="/log" className="Nav__link loggedIn">Dream Log</Link>
           <Link to="/profile" className="Nav__link loggedIn">Profile</Link>
-          {/* <Logout updateUser={this.props.updateUser} /> */}
-          {/* <ToolbarSeparator /> */}
-
-
-
           {/* User Dropdown */}
           <IconMenu 
-            iconButtonElement={
-              <IconButton touch={true}>
-                <NavigationExpandMoreIcon />
-              </IconButton>
-            } 
+            iconButtonElement={<IconButton touch={true}><NavigationExpandMoreIcon /></IconButton>} 
             anchorOrigin={{horizontal: 'right', vertical: 'bottom'}}
             targetOrigin={{horizontal: 'right', vertical: 'top'}}
           >
@@ -68,17 +47,7 @@ class Nav extends Component {
             <Link to="/log" className="Nav__mobile_link"><MenuItem primaryText="Dream Log" /></Link>
             <Link to="/profile" className="Nav__mobile_link"><MenuItem primaryText="Profile" /></Link> 
             <Logout updateUser={this.props.updateUser} />
-
-            {/* <MenuItem 
-              primaryText="Logout" 
-              onClick={this.handleLogout}
-              /> */}
-
-
-
           </IconMenu>
-
-
         </span>
       );
     }
@@ -98,18 +67,16 @@ class Nav extends Component {
     }
 
     return(
-    <nav>
-      <Toolbar>
-        {/* LEFT SIDE */}
-        <ToolbarGroup firstChild={true}>
-          {leftLinks}
-        </ToolbarGroup>
-        {/* RIGHT SIDE */}
-        <ToolbarGroup lastChild={true}>
-          {rightLinks}
-        </ToolbarGroup>
-      </Toolbar>
-    </nav>
+      <nav>
+        <Toolbar>
+          <ToolbarGroup firstChild={true}>
+            {leftLinks}
+          </ToolbarGroup>
+          <ToolbarGroup lastChild={true}>
+            {rightLinks}
+          </ToolbarGroup>
+        </Toolbar>
+      </nav>
     );
   }
 }

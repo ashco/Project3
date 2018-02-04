@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import Title from '../layout/Title.js';
 import EditDream from './EditDream.js'
-// MATERIAL UI
-import RaisedButton from 'material-ui/RaisedButton';
 
 class DreamEntry extends Component{
 	constructor(props){

@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {Tabs, Tab} from 'material-ui/Tabs';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-// COMPONENTS
-import Title from '../layout/Title.js';
 // MATERIAL UI
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
@@ -18,7 +16,6 @@ const styles = {
 };
 
 export default class UserAuth extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -77,68 +74,84 @@ export default class UserAuth extends Component {
   }
 
   render() {
-	
 		if(this.props.user){
-			// console.log('User', this.props.user)
       return (<Redirect to="/profile" />);
     }
 		
 		return (
-			// console.log('No user', this.props.user)
       <Tabs
 				className="UserAuth__box"
         value={this.state.value}
-        onChange={this.handleTabChange}>
+        onChange={this.handleTabChange}
+      >
         <Tab label="Login" value="login">
           <div>
             <h2 style={styles.headline}>Login</h2>
             <div>
-							<TextField name="email"
-												type="email"
-												floatingLabelText="Email"
-												fullWidth={true}
-												value={this.state.email}
-												onChange={this.handleEmailChange}/><br />
+              <TextField 
+                name="email"
+								type="email"
+								floatingLabelText="Email"
+								fullWidth={true}
+								value={this.state.email}
+								onChange={this.handleEmailChange}/><br 
+              />
 						</div>
 						<div>
-							<TextField name="password"
-												type="password"
-												floatingLabelText="Password"
-												fullWidth={true}
-												value={this.state.password}
-												onChange={this.handlePasswordChange}/><br />
+              <TextField 
+                name="password"
+								type="password"
+								floatingLabelText="Password"
+								fullWidth={true}
+								value={this.state.password}
+								onChange={this.handlePasswordChange}/><br 
+              />
 						</div>
-						<RaisedButton label="Login" primary={true} onClick={this.handleLoginSubmit} />
+            <RaisedButton 
+              label="Login" 
+              primary={true} 
+              onClick={this.handleLoginSubmit} 
+            />
           </div>
         </Tab>
         <Tab label="Sign Up" value="signup">
           <div>
             <h2 style={styles.headline}>Sign Up</h2>
             <div>
-							<TextField name="name"
-												type="text"
-												floatingLabelText="Name"
-												fullWidth={true}
-												value={this.state.name}
-												onChange={this.handleNameChange}/><br />
+              <TextField 
+                name="name"
+								type="text"
+								floatingLabelText="Name"
+								fullWidth={true}
+								value={this.state.name}
+								onChange={this.handleNameChange}/><br 
+              />
 						</div>
 						<div>
-							<TextField name="email"
-												type="email"
-												floatingLabelText="Email"
-												fullWidth={true}
-												value={this.state.email}
-												onChange={this.handleEmailChange}/><br />
+              <TextField 
+                name="email"
+								type="email"
+								floatingLabelText="Email"
+								fullWidth={true}
+								value={this.state.email}
+								onChange={this.handleEmailChange}/><br 
+              />
 						</div>
 						<div>
-							<TextField name="password"
-												type="password"
-												floatingLabelText="Password"
-												fullWidth={true}
-												value={this.state.password}
-												onChange={this.handlePasswordChange}/><br />
+              <TextField 
+                name="password"
+								type="password"
+								floatingLabelText="Password"
+								fullWidth={true}
+								value={this.state.password}
+								onChange={this.handlePasswordChange}/><br 
+              />
 						</div>
-						<RaisedButton label="Login" primary={true} onClick={this.handleSignupSubmit} />
+            <RaisedButton 
+              label="Login" 
+              primary={true} 
+              onClick={this.handleSignupSubmit} 
+            />
           </div>
         </Tab>
       </Tabs>

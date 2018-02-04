@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import moment from 'moment';
-import Title from '../layout/Title.js';
 // MATERIAL UI
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';

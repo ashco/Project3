@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import axios from 'axios';
-import MaterialLoad from '../layout/MaterialLoad';
+import React from 'react';
+import LinearProgress from 'material-ui/LinearProgress';
+
 
 const Loading = () => {
 	return(
 		<div className="Loading__box">
-			<MaterialLoad />
+			<LinearProgress mode="indeterminate" />
 		</div>
 	);
 }

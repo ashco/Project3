@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Title from '../layout/Title.js';
 import DreamScore from './resultComponents/DreamScore.js';
 import DreamKey from './resultComponents/DreamKey.js';
 
@@ -7,8 +6,6 @@ import DreamKey from './resultComponents/DreamKey.js';
 class DreamResult extends Component {
   render(){
 		const sentiment = this.props.analysis.data[0]
-  	const overallSentiment = this.props.analysis.data[1].sentiment //this seems like this should be checking data[0]
-		
 		const keywords = this.props.analysis.data[1].map(word => {
 				return(<DreamKey keys={word} className="DreamKey__box box" />)
 			})

@@ -1,17 +1,9 @@
 import React, { Component } from 'react';
 import Title from '../layout/Title.js';
 import { Link } from 'react-router-dom';
-// MATERIAL UI
-import RaisedButton from 'material-ui/RaisedButton';
 
 class Home extends Component {
   render(){
-
-    const style = {
-      margin: 12,
-      background: '#BD70B3'
-    };    
-
     return (
       <div className="home">
         <Title text="dreamstate" style="Home__title" />

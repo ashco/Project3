@@ -11,8 +11,8 @@ import Profile from './user/Profile.js';
 import Nav from './layout/Nav.js';
 import Footer from './layout/Footer.js';
 // AUTH
-import Login from './auth/Login.js';
-import Signup from './auth/Signup.js';
+// import Login from './auth/Login.js';
+// import Signup from './auth/Signup.js';
 import UserAuth from './auth/UserAuth.js';
 // CUSTOM ROUTES
 import Analyze from './input/Analyze.js';
@@ -113,12 +113,12 @@ class App extends Component {
                 <Flash flashType={this.state.flashType} flash={this.state.flash} setFlash={this.setFlash} cancelFlash={this.cancelFlash} />
               
                 <Route exact path="/" component={Home} />
-                <Route path="/login" component={
-                  () => (<Login user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                {/* <Route path="/login" component={
+                  () => (<Login user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} /> */}
                 <Route path="/userauth" component={
                   () => (<UserAuth user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
-                <Route path="/signup" component={
-                  () => (<Signup user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                {/* <Route path="/signup" component={
+                  () => (<Signup user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} /> */}
                 <Route path="/profile" component={
                   () => (<Profile user={this.state.user} setFlash={this.setFlash} />)} />
                 {/* CUSTOM ROUTES */}

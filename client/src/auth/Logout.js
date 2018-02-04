@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { Redirect, Link } from 'react-router-dom';
-import { ToolbarTitle } from 'material-ui/Toolbar';
+import { Redirect } from 'react-router-dom';
 import MenuItem from 'material-ui/MenuItem';
 
 
@@ -11,6 +10,7 @@ class Logout extends Component {
       redirect: false
     }
   }
+  
   handleLogout = (e) => {
     e.preventDefault();
     console.log('handle logout reached');
@@ -26,15 +26,8 @@ class Logout extends Component {
       return (<Redirect to="/" />);
     }
     else {
-      // return (
-      // <Link to='/' onClick={this.handleLogout}>
-      //   <ToolbarTitle text="Logout" />
-      // </Link>);
       return(
-        <MenuItem 
-          primaryText="Logout"
-          onClick={this.handleLogout}
-          />
+        <MenuItem primaryText="Logout" onClick={this.handleLogout} />
       );
     }
   }

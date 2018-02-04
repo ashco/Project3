@@ -55,16 +55,14 @@ export function sentimentByDate(data){
   }
 
   aggregatedData.sort(function(a,b){
-  return new Date(a.date) - new Date(b.date);
+    return new Date(a.date) - new Date(b.date);
   });
-  
   return aggregatedData;
 }
 
-
 export function sortbyDate(data){
   data.sort(function(a,b){
-  return new Date(a.date) - new Date(b.date);
+    return new Date(a.date) - new Date(b.date);
   });
   return data;
 }
@@ -83,21 +81,20 @@ export function totalValues (data){
 export function overallTrends(data){
 
     var total = data.length;
-
     var uniqueSentiments = ['neutral', 'positive', 'negative', 'mixed'];
-
     var sentimentData = [];
+
     for(let i=0; i < uniqueSentiments.length; i++){
       var count = 1;
       var actualCount = 0;
+      
       for(let j=0; j<data.length; j++){
         if(data[j].sentiment === uniqueSentiments[i]){
-            actualCount ++;
-            count ++;
+          actualCount ++;
+          count ++;
         }
       }
-      
-      
+    
       var child = {
         sentiment: uniqueSentiments[i],
         actualValue: actualCount,
@@ -105,14 +102,13 @@ export function overallTrends(data){
         value: count
       }
       sentimentData.push(child);
-    }
-    
+    }    
   return sentimentData;
 }
 
-export function keywordStats(data){
-    
-    var keywords = [];
+export function keywordStats(data){   
+
+  var keywords = [];
   
     data.forEach(function(item){
       if(item.keyword1){
@@ -162,7 +158,5 @@ export function keywordStats(data){
   if(keywordTotals.length > 5){
     keywordTotals = keywordTotals.slice(0,5)
   }
- 
   return keywordTotals;
-
 }

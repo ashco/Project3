@@ -102,7 +102,6 @@ class Profile extends Component {
               </div>
             </div>
     }
-    
 
     // Logged in with data loaded
     if(this.props.user && this.props.user.name){
