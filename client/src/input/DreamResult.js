@@ -5,9 +5,7 @@ import DreamKey from './resultComponents/DreamKey.js';
 
 
 class DreamResult extends Component {
-
   render(){
- 
 		const sentiment = this.props.analysis.data[0]
   	const overallSentiment = this.props.analysis.data[1].sentiment //this seems like this should be checking data[0]
 		
@@ -17,7 +15,7 @@ class DreamResult extends Component {
 
     return(
 			<div className="DreamResult">
-				<DreamScore data={sentiment}/>
+				<DreamScore data={sentiment} />
 				<div className="DreamResult__box box">
 					<h3>Key symbols</h3>
 					{keywords}

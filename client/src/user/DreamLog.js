@@ -3,7 +3,7 @@ import Title from '../layout/Title.js';
 // import DreamLogItem from '../components/DreamLogItem.js';
 import axios from 'axios';
 import DreamEntry from './DreamEntry.js'
-import WaitingState from './WaitingState.js'
+import Loading from '../input/Loading.js'
 import {sortbyDate} from '../scripts/profileDataCleansing.js'
 
 class DreamLog extends Component {
@@ -95,7 +95,7 @@ class DreamLog extends Component {
   	let display = null;
 
   	if(displayState === false ){
-  		display = <WaitingState />
+  		display = <Loading />
   	} 
     else if (displayState === true && this.state.dreams.length < 1) {
 		  display = <p>No dreams to log.</p>

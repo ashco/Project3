@@ -6,9 +6,7 @@ import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
 
-/**
- * Dialogs can be nested. This example opens a Date Picker from within a Dialog.
- */
+
 class FormModal extends React.Component {
 	constructor(props){
 		super(props)
@@ -24,29 +22,27 @@ class FormModal extends React.Component {
 	}
 
 	handleOpen = () => {
-		this.setState({open: true});
+		this.setState({ open: true });
 	}
 
 	handleClose = () => {
-		this.setState({open: false});
+		this.setState({ open: false });
 	}
 
 	handleDateChange = (event, date) => {
-		this.setState({date: date});
+		this.setState({ date: date });
 	}
 
 	handleContentChange = (event, content) => {
-		this.setState({content: content});
+		this.setState({ content: content });
 	}
 	
 	handleSubmit = (event) => {
 		event.preventDefault();
-		this.props.handleInput(this.state.date, this.state.content)
-		//clear state of date and content
+		this.props.handleInput(this.state.date, this.state.content);
 	}
 
 	render() {
-
 		const styles = {
 			button: {
 				width: 280,
@@ -63,10 +59,8 @@ class FormModal extends React.Component {
 			<RaisedButton
 				label="Submit"
 				primary={true}
-				// keyboardFocused={true}
 				onClick={this.handleSubmit}
-				// onClick={this.handleClose}
-			/>,
+			/>
 		];
 
 		return (
@@ -75,7 +69,8 @@ class FormModal extends React.Component {
 				<RaisedButton 
 					label="Analyze Your Dream" 
 					style={styles.button}
-					onClick={this.handleOpen} />
+					onClick={this.handleOpen} 
+				/>
 				<Dialog
 					title="Log your dreams"
 					actions={actions}
@@ -83,22 +78,21 @@ class FormModal extends React.Component {
 					open={this.state.open}
 					onRequestClose={this.handleClose}
 				>
-					<DatePicker hintText="Dream date"
-											name="date"
-											fullWidth={true}
-											// mode="landscape"
-											value={this.state.date}
-											onChange={this.handleDateChange} />
-					<TextField name="content"
-										floatingLabelText="What do you remember?"
-
-										//  errorText="This field is required"
-
-										//  floatingLabelText="Text"
-										multiLine={true}
-										fullWidth={true}
-										rows={10}
-										onChange={this.handleContentChange} />
+					<DatePicker 
+						hintText="Dream date"
+						name="date"
+						fullWidth={true}
+						value={this.state.date}
+						onChange={this.handleDateChange} 
+					/>
+					<TextField 
+						name="content"
+						floatingLabelText="What do you remember?"
+						multiLine={true}
+						fullWidth={true}
+						rows={10}
+						onChange={this.handleContentChange} 
+					/>
 				</Dialog>
 			</div>
 		);

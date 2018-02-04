@@ -12,15 +12,15 @@ import axios from 'axios';
 import {sentimentByDate, overallTrends, keywordStats} from '../scripts/profileDataCleansing.js'
 
 class Profile extends Component {
-    constructor(props){
-    super(props);
-        this.state = {
-          data: [],
-          sentimentData: [],
-          overallStats: [],
-          keywordData: [],
-          dataState: false
-        }
+  constructor(props){
+  super(props);
+    this.state = {
+      data: [],
+      sentimentData: [],
+      overallStats: [],
+      keywordData: [],
+      dataState: false
+    }
   }
 
   componentDidMount(){
@@ -28,8 +28,8 @@ class Profile extends Component {
       return;
     }
 
-    let userId = this.props.user.id;
     let base = this;
+    let userId = this.props.user.id;
 
     axios({
       method: 'get',
@@ -38,8 +38,6 @@ class Profile extends Component {
         user: userId
       }
     }).then((result) => {
-      console.log('result.data', result.data);
-
       // Retrieve user data
       let rawData = result.data;
       // Declare empty array to fill with user data
@@ -56,49 +54,48 @@ class Profile extends Component {
         overallStats: overallStats,
         keywordData: keywordData,
         dataState: true
-      })
+      });
     }).catch((error) => {
       console.log("An error occured while fetching data from databse", error.response ? error.response.data : 'No error.response.data');
-    })
+    });
   }
 
   render(){
     const totalDreams = (this.state.data.length)
     let dashboard = null; 
-    console.log('totalDreams', totalDreams);
-
     var mostDreamsIndex = this.state.overallStats.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
-    console.log("mostDreams = " + mostDreamsIndex);
-
     var mostDreamsCategory;
-      if(mostDreamsIndex == 0) {
-        mostDreamsCategory = "neutral";
-      } else if(mostDreamsIndex == 1) {
-        mostDreamsCategory = "positive";
-      } else if(mostDreamsIndex == 2) {
-        mostDreamsCategory = "negative";
-      } else if(mostDreamsIndex == 3) {
-        mostDreamsCategory = "mixed";
-      }
     
-    console.log("MostDreamsCategory" + mostDreamsCategory);
+    if(mostDreamsIndex == 0) {
+      mostDreamsCategory = "neutral";
+    } 
+    else if(mostDreamsIndex == 1) {
+      mostDreamsCategory = "positive";
+    } 
+    else if(mostDreamsIndex == 2) {
+      mostDreamsCategory = "negative";
+    } 
+    else if(mostDreamsIndex == 3) {
+      mostDreamsCategory = "mixed";
+    }
 
     if(totalDreams > 1) {
       dashboard = 
             <div>
                 <SentimentTrends data={this.state.sentimentData} />
                 <div className="Profile__grid">
-                  <UserGreeting name={this.props.user.name} totalDreams={totalDreams}/>
+                  <UserGreeting name={this.props.user.name} totalDreams={totalDreams} />
                   <CallToAction user={this.props.user.name} />
-                  <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
+                  <OverallStats data={this.state.overallStats} totalDreams={totalDreams} />
                 </div>
                 <h2 className="Profile__subhead">Your dreams are overall <span className={mostDreamsCategory}>{mostDreamsCategory}</span>.</h2>
-                <KeywordTrends data={this.state.keywordData}/>
+                <KeywordTrends data={this.state.keywordData} />
             </div>
-    } else if (totalDreams <= 1){
+    } 
+    else if (totalDreams <= 1){
       dashboard = 
             <div className="Profile__grid">
-              <UserGreeting name={this.props.user.name} totalDreams={totalDreams}/>
+              <UserGreeting name={this.props.user.name} totalDreams={totalDreams} />
               <CallToAction />
               <div className="Profile__box">
                 <p> Enter more dreams to see your trends over time.</p>
@@ -113,7 +110,7 @@ class Profile extends Component {
         <div className="Profile">
           {dashboard}
         </div>
-      )
+      );
     } 
     else {
       return (

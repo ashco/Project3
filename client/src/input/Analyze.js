@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import Title from '../layout/Title.js';
-import Form from './Form.js';
 import DreamResult from './DreamResult.js';
 import Loading from './Loading.js';
 import FormModal from './FormModal';
@@ -43,7 +42,6 @@ class Analyze extends Component {
 
 
   render(){
-  	console.log('this state', this.state);
   	const displayState = this.state.display;
   	let display = null;
 
@@ -68,7 +66,7 @@ class Analyze extends Component {
   		<div className="content__box">
   			{display}
   		</div>
-  	)
+  	);
   }
 }
 
