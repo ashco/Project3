@@ -64,8 +64,6 @@ nav {
 
 .Nav__link, #root > div > div > nav > div > div:nth-child(2) > span {
   color: var(--font-color) !important;
-  position: relative;
-  bottom: 5px;
 }
 
 /* Only visible on mobile */
@@ -112,7 +110,7 @@ nav {
 /*Rename these*/
 .primaryCTA {
   background: var(--pink-color);
-  border: 3px solid var(--pink-color);
+  border: 2px solid var(--pink-color);
   font-size: 1.25em;
   font-weight: 500;
   color: white;
@@ -126,7 +124,7 @@ nav {
 .secondaryCTA {
   background: none;
   font-size: 1.25em;
-  border: 3px solid var(--font-color);
+  border: 2px solid var(--font-color);
   color: var(--font-color);
   font-weight: 500;
   padding: 10px 25px;
@@ -142,7 +140,7 @@ nav {
 
 .secondaryCTA:hover, .primaryCTA:hover {
   outline: none;
-  border: 3px solid var(--purple-color);
+  border: 2px solid var(--purple-color);
   background: var(--purple-color);
   color: white;
 }
@@ -150,7 +148,7 @@ nav {
 .secondaryCTA:active, .primaryCTA:active {
   outline: none;
   background: var(--purple-color);
-  border: 3px solid var(--purple-color);
+  border: 2px solid var(--purple-color);
   color: white;
 }
 
@@ -262,20 +260,24 @@ div.DreamResult__box.box > div > button > div {
 }
 
 /* Sentiment color coded scores */
-h1 span.neutral {
+h1 span.neutral, h2 span.neutral {
   color: var(--purple-color);
+  font-size: 1.10em;
 }
 
-h1 span.negative {
+h1 span.negative, h2 span.negative {
   color: var(--pink-color);
+  font-size: 1.10em;
 }
 
-h1 span.positive {
+h1 span.positive, h2 span.positive {
   color: var(--blue-color);
+  font-size: 1.10em;
 }
 
-h1 span.mixed {
+h1 span.mixed, h2 span.mixed {
   color: var(--orange-color);
+  font-size: 1.10em;
 }
 
 /* Legend */
@@ -315,6 +317,18 @@ h1 span.mixed {
   display: flex;
   flex-wrap: wrap;
   padding: 10px 80px 30px 80px;
+  overflow: hidden;
+}
+
+.Profile__grid h3 {
+  text-align: center;
+}
+
+.Profile__subhead {
+  text-align: center;
+  margin-top: -40px;
+  margin-bottom: 50px;
+  padding: 20px;
 }
 
 .Profile__box {
@@ -340,19 +354,56 @@ h1 span.mixed {
   font-size: 4em;
 }
 
-.dataBubblesLabel {
-  visibility: hidden;
-  font-size: 26px !important;
+@keyframes floating {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0em, -.05em);
+  }
+  100% {
+    transform: translate(-.05em, -.10em);
+    }
 }
 
-.dataBubblesLabel:hover {
-  visibility: visible;
+.dataBubble {
+  opacity: .7;
+  margin: -5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dataBubble.neutral {
+    animation: floating 5s infinite alternate-reverse;
+}
+
+.dataBubble.positive {
+    animation: floating 4s infinite alternate;
+}
+
+.dataBubble.negative {
+    animation: floating 5s infinite alternate;
+}
+
+.dataBubble.mixed {
+    animation: floating 4s infinite alternate-reverse;
+}
+
+.dataBubble:hover {
+  transform: scale(1.2);
 }
 
 .dataVisualBubbles {
-  font-size: 20em;
-  margin: 0 auto;
-  padding: 0;
+  font-size: 25em;
+  line-height: .75em;
+  margin: -20px auto 0 auto;
+  padding: 20px;
+  width: 80%;
+  overflow: hidden;
+}
+
+#root > div > div > div > div.Profile > div > div:nth-child(4) {
+  margin-bottom: -28px;
 }
 
 /* FORM */
@@ -433,7 +484,7 @@ h1 span.mixed {
   .DreamLog {
     padding: 10px;
   }
-  .DreamKey__box { 
+  .DreamKey__box, .Profile__box { 
     width: 100%;
     flex: 100%;
   }
@@ -442,13 +493,21 @@ h1 span.mixed {
     position: inherit;
     padding-top: inherit;
     padding: 20px;
+    right: 0;
   }
   .DreamScore__box {
     width: 100%;
+    left: 0;
     text-align: center;
   }
   #root > div > div > div > div.content__box > div > div.DreamScore__box.box > div > div.recharts-wrapper > svg {
     max-width: 350px;
+  }
+  .dataVisualBubbles {
+    font-size: 15em;
+  }
+  .Profile__grid {
+    padding: 10px;
   }
   .Nav__link.loggedIn {
     display: none;

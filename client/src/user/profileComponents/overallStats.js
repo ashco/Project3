@@ -12,7 +12,7 @@ class OverallStats extends Component {
 		const mixed = String((data[3].value/total).toFixed(2)+"em");
 
 		// Colors for: neutral, positive, negative, mixed
-		const COLORS = ['#BD70B3', '#A1D4E3', '#F98285', '#E9CC84'];
+		const COLORS = ['#BD70B3', '#A1D4E3', '#F98285', '#ffdabf'];
 
 		const neturalStyle = {
 				backgroundColor: COLORS[0],
@@ -43,18 +43,16 @@ class OverallStats extends Component {
 		}
 
 		return(
-			<div className="dataVisualBubbles">
-				<div className="neutralDreams" style={neturalStyle}>
-					<span className="dataBubblesLabel">neutral</span>
-				</div>
-				<div className="positiveDreams" style={positiveStyle}>
-					<span className="dataBubblesLabel">positive</span>
-				</div>
-				<div className="negativeDreams" style={negativeStyle}>
-					<span className="dataBubblesLabel">negative</span>
-				</div>
-				<div className="mixedDreams" style={mixedStyle}>
-					<span className="dataBubblesLabel">mixed</span>
+			<div className="Profile__box">
+				<div className="dataVisualBubbles">
+					<div className="dataBubble positive" style={positiveStyle}>
+					</div>
+					<div className="dataBubble neutral" style={neturalStyle}>
+					</div>
+					<div className="dataBubble negative" style={negativeStyle}>
+					</div>
+					<div className="dataBubble mixed" style={mixedStyle}>
+					</div>
 				</div>
 			</div>
 		)

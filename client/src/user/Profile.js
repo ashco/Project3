@@ -64,8 +64,24 @@ class Profile extends Component {
 
   render(){
     const totalDreams = (this.state.data.length)
-    let dashboard = null;
+    let dashboard = null; 
     console.log('totalDreams', totalDreams);
+
+    var mostDreamsIndex = this.state.overallStats.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
+    console.log("mostDreams = " + mostDreamsIndex);
+
+    var mostDreamsCategory;
+      if(mostDreamsIndex == 0) {
+        mostDreamsCategory = "neutral";
+      } else if(mostDreamsIndex == 1) {
+        mostDreamsCategory = "positive";
+      } else if(mostDreamsIndex == 2) {
+        mostDreamsCategory = "negative";
+      } else if(mostDreamsIndex == 3) {
+        mostDreamsCategory = "mixed";
+      }
+    
+    console.log("MostDreamsCategory" + mostDreamsCategory);
 
     if(totalDreams > 1) {
       dashboard = 
@@ -76,6 +92,7 @@ class Profile extends Component {
                   <CallToAction user={this.props.user.name} />
                   <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
                 </div>
+                <h2 className="Profile__subhead">Your dreams are overall <span className={mostDreamsCategory}>{mostDreamsCategory}</span>.</h2>
                 <KeywordTrends data={this.state.keywordData}/>
             </div>
     } else if (totalDreams <= 1){
