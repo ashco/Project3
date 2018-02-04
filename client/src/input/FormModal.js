@@ -15,7 +15,9 @@ class FormModal extends React.Component {
 		this.state = {
 			open: true,
 			date: '',
-			content: ''
+			content: '',
+        	content_text: "What do you remember?",
+			disabled: true
 		}
 
 		this.handleDateChange = this.handleDateChange.bind(this);
@@ -23,12 +25,18 @@ class FormModal extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+
+
 	handleOpen = () => {
 		this.setState({open: true});
 	}
 
 	handleClose = () => {
-		this.setState({open: false});
+		this.setState({
+			open: false,
+			date: '',
+			content: '',
+			content_text: "What do you remember?"});
 	}
 
 	handleDateChange = (event, date) => {
@@ -36,24 +44,39 @@ class FormModal extends React.Component {
 	}
 
 	handleContentChange = (event, content) => {
-		this.setState({content: content});
+		if(content.length < 10){
+			this.setState({
+				content_text: "Try to remember a few more things!",
+			})
+		} else {
+			this.setState({
+			content: content,
+			content_text: null
+			})
+		}
 	}
 	
+	componentDidUpdate() {
+		if(this.state.disabled === true && this.state.date && this.state.content){
+			this.setState({ disabled: false });
+		}
+		else if(this.state.disabled === false && !this.state.content){
+			this.setState({ disabled: true });
+		}
+	}
+
 	handleSubmit = (event) => {
 		event.preventDefault();
-		this.props.handleInput(this.state.date, this.state.content)
-		//clear state of date and content
+        this.props.handleInput(this.state.date, this.state.content)
+		this.setState({
+                open: true,
+				date: '',
+				content: ''
+        });
 	}
 
 	render() {
-
-		const styles = {
-			button: {
-				width: 280,
-				height: 60
-			}
-		}
-
+		console.log('this state in form', this.state)
 		const actions = [
 			<FlatButton
         label="Cancel"
@@ -61,21 +84,17 @@ class FormModal extends React.Component {
         onClick={this.handleClose}
       />,
 			<RaisedButton
-				label="Submit"
-				primary={true}
-				// keyboardFocused={true}
-				onClick={this.handleSubmit}
-				// onClick={this.handleClose}
-			/>,
+                label="Submit"
+                primary={true}
+                disabled={this.state.disabled}
+                onClick={this.handleSubmit}
+            />,
 		];
 
 		return (
 			<div>
 				<br />
-				<RaisedButton 
-					label="Analyze Your Dream" 
-					style={styles.button}
-					onClick={this.handleOpen} />
+				<RaisedButton label="Analyze Your Dream" onClick={this.handleOpen} />
 				<Dialog
 					title="Log your dreams"
 					actions={actions}
@@ -84,21 +103,18 @@ class FormModal extends React.Component {
 					onRequestClose={this.handleClose}
 				>
 					<DatePicker hintText="Dream date"
-											name="date"
-											fullWidth={true}
-											// mode="landscape"
-											value={this.state.date}
-											onChange={this.handleDateChange} />
+						name="date"
+						fullWidth={true}
+						// mode="landscape"
+						value={this.state.date}
+						onChange={this.handleDateChange} />
 					<TextField name="content"
-										floatingLabelText="What do you remember?"
-
-										//  errorText="This field is required"
-
-										//  floatingLabelText="Text"
-										multiLine={true}
-										fullWidth={true}
-										rows={10}
-										onChange={this.handleContentChange} />
+						floatingLabelText={this.state.content_text}
+						multiLine={true}
+						fullWidth={true}
+						rows={10}
+						onChange={this.handleContentChange}  
+						/>
 				</Dialog>
 			</div>
 		);
