@@ -40,13 +40,13 @@ class Nav extends Component {
       leftLinks = (
         <span>
           <Link to="/" className="Nav__logo">Dreamstate</Link>
-          <Link to="/analyze" className="Nav__link">Analyze</Link>
+          <Link to="/analyze" className="Nav__link loggedIn">Analyze</Link>
         </span>
       )
       rightLinks = (
         <span>
-          <Link to="/log" className="Nav__link">Dream Log</Link>
-          <Link to="/profile" className="Nav__link">Profile</Link>
+          <Link to="/log" className="Nav__link loggedIn">Dream Log</Link>
+          <Link to="/profile" className="Nav__link loggedIn">Profile</Link>
           {/* <Logout updateUser={this.props.updateUser} /> */}
           {/* <ToolbarSeparator /> */}
 
@@ -64,6 +64,9 @@ class Nav extends Component {
           >
             <MenuItem primaryText={`${this.props.user.name}`} />
             <Divider />
+            <Link to="/analyze" className="Nav__mobile_link"><MenuItem primaryText="Analyze" /></Link>
+            <Link to="/log" className="Nav__mobile_link"><MenuItem primaryText="Dream Log" /></Link>
+            <Link to="/profile" className="Nav__mobile_link"><MenuItem primaryText="Profile" /></Link> 
             <Logout updateUser={this.props.updateUser} />
 
             {/* <MenuItem 

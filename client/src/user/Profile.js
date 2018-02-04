@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Title from '../layout/Title.js';
 // Profile Components 
+import UserGreeting from './profileComponents/UserGreeting.js'
 import SentimentTrends from './profileComponents/sentimentTrends.js'
 import CallToAction from './profileComponents/CallToAction.js'
 import OverallStats from './profileComponents/overallStats.js'
@@ -70,31 +71,36 @@ class Profile extends Component {
       dashboard = 
             <div>
                 <SentimentTrends data={this.state.sentimentData} />
-                <h1>{this.props.user.name}</h1>
-                <CallToAction />
-                <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
+                <div className="Profile__grid">
+                  <UserGreeting name={this.props.user.name} totalDreams={totalDreams}/>
+                  <CallToAction user={this.props.user.name} />
+                  <OverallStats data={this.state.overallStats} totalDreams={totalDreams}/>
+                </div>
                 <KeywordTrends data={this.state.keywordData}/>
             </div>
     } else if (totalDreams <= 1){
       dashboard = 
-          <div>
-            <p> Enter more dreams to see your trends over time! </p>
-            <CallToAction />
-          </div>
+            <div className="Profile__grid">
+              <UserGreeting name={this.props.user.name} totalDreams={totalDreams}/>
+              <CallToAction />
+              <div className="Profile__box">
+                <p> Enter more dreams to see your trends over time.</p>
+              </div>
+            </div>
     }
     
 
     // Logged in with data loaded
     if(this.props.user && this.props.user.name){
       return (
-        <div>
+        <div className="Profile">
           {dashboard}
         </div>
       )
     } 
     else {
       return (
-        <div>
+        <div className="Profile">
           <Title text="Profile" style="Profile__title" />
           <p>You need to be logged in to view this page.</p>
         </div>

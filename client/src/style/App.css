@@ -62,9 +62,15 @@ nav {
   height: inherit;
 }
 
-.Nav__link {
+.Nav__link, #root > div > div > nav > div > div:nth-child(2) > span {
   color: var(--font-color) !important;
+  position: relative;
   bottom: 5px;
+}
+
+/* Only visible on mobile */
+.Nav__mobile_link {
+  display: none;
 }
 
 .Nav__logo {
@@ -112,6 +118,7 @@ nav {
   color: white;
   padding: 10px 25px;
   margin-right: 10px;
+  margin-bottom: 10px;
   outline: 0;
   transition: all 1s;
 }
@@ -124,6 +131,7 @@ nav {
   font-weight: 500;
   padding: 10px 25px;
   margin-right: 10px;
+  margin-bottom: 10px;
   outline: 0;
   transition: all 1s;
 }
@@ -225,9 +233,10 @@ h5.mixed {
   border: 2px solid var(--orange-color);
 }
 
+/* ANALYZE - RESULTS */
 /* KEYWORDS BOX  */
 .DreamResult__box {
-  text-align: left;
+  text-align: center;
   margin: 0;
   display: inline-block;
   box-sizing: border-box;
@@ -295,6 +304,57 @@ h1 span.mixed {
   align-items: stretch;
 }
 
+/* PROFILE */
+.Profile {
+  flex: 1 100%;
+  align-items: stretch;
+}
+
+.Profile__grid {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 80px 30px 80px;
+}
+
+.Profile__box {
+  margin: 10px;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 45%;
+  flex: 45%;
+  padding: 20px;
+  transition: all 2s;
+  align-self: center;
+  text-align: center;
+}
+
+.Profile__box h2 {
+  margin-bottom: 30px;
+  margin-top: 0px;
+}
+
+.dreamTotal {
+  margin-top: -10px;
+  margin-bottom: -10px;
+  font-size: 4em;
+}
+
+.dataBubblesLabel {
+  visibility: hidden;
+  font-size: 26px !important;
+}
+
+.dataBubblesLabel:hover {
+  visibility: visible;
+}
+
+.dataVisualBubbles {
+  font-size: 20em;
+  margin: 0 auto;
+  padding: 0;
+}
+
 /* FORM */
 .Form__box {
   display: flex;
@@ -322,19 +382,22 @@ h1 span.mixed {
   padding: 20px;
 }
 
+.footer-text {
+  display: block;
+  font-size: .75em;
+  color: var(--background-color);
+} 
+
 .footer-text a {
   color: var(--blue-color);
   transition: all 2s;
+  text-decoration: none;
+  font-weight: 700;
 }
 
 .footer-text a:hover {
   color: var(--orange-color);
 }
-
-.footer-text {
-  font-size: .75em;
-  color: var(--background-color);
-} 
 
 /* ALERTS */
 .error {
@@ -375,9 +438,23 @@ h1 span.mixed {
     flex: 100%;
   }
   .DreamResult__box {
-  width: 100%
+    width: 95%;
+    position: inherit;
+    padding-top: inherit;
+    padding: 20px;
   }
   .DreamScore__box {
-  width: 100%
+    width: 100%;
+    text-align: center;
   }
-}
+  #root > div > div > div > div.content__box > div > div.DreamScore__box.box > div > div.recharts-wrapper > svg {
+    max-width: 350px;
+  }
+  .Nav__link.loggedIn {
+    display: none;
+  }
+  .Nav__mobile_link {
+    display: block;
+    text-decoration: none;
+  }
+ }

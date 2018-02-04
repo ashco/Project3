@@ -43,22 +43,20 @@ class OverallStats extends Component {
 		}
 
 		return(
-			<div>
-			<div className="TotalDreams">
-				<h1 className="TotalDreamTitle">Total Dreams Logged: {this.props.totalDreams} </h1>
-			</div>
 			<div className="dataVisualBubbles">
 				<div className="neutralDreams" style={neturalStyle}>
+					<span className="dataBubblesLabel">neutral</span>
 				</div>
 				<div className="positiveDreams" style={positiveStyle}>
+					<span className="dataBubblesLabel">positive</span>
 				</div>
 				<div className="negativeDreams" style={negativeStyle}>
+					<span className="dataBubblesLabel">negative</span>
 				</div>
 				<div className="mixedDreams" style={mixedStyle}>
+					<span className="dataBubblesLabel">mixed</span>
 				</div>
 			</div>
-
-	        </div>
 		)
 	}
 }
