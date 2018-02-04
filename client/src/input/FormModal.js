@@ -32,7 +32,11 @@ class FormModal extends React.Component {
 	}
 
 	handleClose = () => {
-		this.setState({open: false});
+		this.setState({
+			open: false,
+			date: '',
+			content: '',
+			content_text: "What do you remember?"});
 	}
 
 	handleDateChange = (event, date) => {
