@@ -30,21 +30,24 @@ class App extends Component {
       user: {},
       selected_dream_data: {}
     }
+
     this.handleGet = this.handleGet.bind(this);
   }
 
   // FNC POPULATES STATE FOR SELECTED DREAM
   handleGet = (dream_data) => { 
-    this.setState({ 
-      selected_dream_data: dream_data
+    this.setState({ selected_dream_data: dream_data }
+
+    //Start of redirect link
+    , () => {
+      this.props.history.push({
+        pathname: '/analyze',
+      });
     }
-    // , () => {
-    //   this.props.history.push({
-    //     pathname: '/analyze',
-    //   });
-    // }
+
   );
-    console.log('DreamState:', this.state.selected_dream_data);
+
+  console.log('DreamState:', this.state.selected_dream_data);
   }
 
   componentDidMount = () => {
@@ -52,15 +55,16 @@ class App extends Component {
   }
 
   getUser = () => {
-    // If there is a token in localStorage
     let token = localStorage.getItem('dreamToken');
+
     if (token === 'undefined' || token === null || token === '' || token === undefined) {
       localStorage.removeItem('dreamToken');
       this.setState({
         token: '',
         user: null
       });
-    } else {
+    } 
+    else {
       //   Validate the token against the server
       axios.post('/auth/me/from/token', {
         token: token
@@ -79,7 +83,7 @@ class App extends Component {
           token: '',
           user: null
         });
-      })
+      });
     }
   }
 
@@ -96,7 +100,6 @@ class App extends Component {
       flashType: ''
     });
   }
-
 
 
   render() {

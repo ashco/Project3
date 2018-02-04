@@ -11,6 +11,7 @@ class DreamEntry extends Component{
 		this.state = {
 			editing: false
 		}
+
 		this.getDream = this.getDream.bind(this);
 		this.editDream = this.editDream.bind(this);
 		this.deleteDream = this.deleteDream.bind(this);
@@ -22,7 +23,6 @@ class DreamEntry extends Component{
 	}
 
 	editDream = (date, content) => {
-		console.log("Dream entry component edit",date, content);
 		this.props.handleEdit(this.props.dream._id, date, content);
 		this.toggleEditDream();
 	}
@@ -31,35 +31,31 @@ class DreamEntry extends Component{
 		this.props.handleDelete(this.props.dream._id);
 	}
 
-
 	toggleEditDream = () => {
-		console.log("Toggle");
 		if(this.state.editing) {
-			this.setState({
-				editing: false
-			})
+			this.setState({ editing: false });
 		}
 		else {
-			this.setState({
-				editing: true
-			})
-		}		
+			this.setState({ editing: true });
+		}	
 	}
+
 	render(){
 		const dreamDate = moment(this.props.dream.date).format('MMMM D, YYYY');   
-	return(
-		<div className="DreamKey__box box">
-			<h3>{dreamDate}</h3>
-			<h5 className={this.props.dream.sentiment}>{this.props.dream.sentiment}</h5>
-			<p>{this.props.dream.content}</p>
-			<p className="DreamKey__buttons">
-				<button type="button" className="primaryCTA small" onClick={this.getDream}>View</button>
-				<button type="button" className="secondaryCTA small" onClick={this.toggleEditDream}>Edit</button>
-				<button type="button" className="secondaryCTA small" onClick={this.deleteDream}>Delete</button>
-			</p>
-			<EditDream editDream={this.editDream} dream={this.props.dream} editing={this.state.editing} />
-		</div>
-	)
+	
+		return(
+			<div className="DreamKey__box box">
+				<h3>{dreamDate}</h3>
+				<h5 className={this.props.dream.sentiment}>{this.props.dream.sentiment}</h5>
+				<p>{this.props.dream.content}</p>
+				<p className="DreamKey__buttons">
+					<button type="button" className="primaryCTA small" onClick={this.getDream}>View</button>
+					<button type="button" className="secondaryCTA small" onClick={this.toggleEditDream}>Edit</button>
+					<button type="button" className="secondaryCTA small" onClick={this.deleteDream}>Delete</button>
+				</p>
+				<EditDream editDream={this.editDream} dream={this.props.dream} editing={this.state.editing} />
+			</div>
+		);
 	}
 }
 
