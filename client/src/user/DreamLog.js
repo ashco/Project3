@@ -96,8 +96,11 @@ class DreamLog extends Component {
 
   	if(displayState === false ){
   		display = <WaitingState />
-		} 
-		else if (displayState === true ) {
+  	} 
+    else if (displayState === true && this.state.dreams.length < 1) {
+		  display = <p>No dreams to log.</p>
+  	} 
+    else if (displayState === true && this.state.dreams.length >= 1) {
   		display = this.state.dreams.map((dream, index) => {
   			if(dream._id) {
 					return <DreamEntry 
@@ -110,10 +113,11 @@ class DreamLog extends Component {
   			}
     	});
 		}
+                                      
 		// LOGGED IN PAGE
 		if(this.props.user && this.props.user.name){
 			return (
-				<div>
+				<div className="Profile">
 					<Title text="dream log" style="DreamLog__title" />
 					<div className="DreamLog">
 						{display}
@@ -124,7 +128,7 @@ class DreamLog extends Component {
 		// NOT LOGGED IN PAGE
 		else {
       return (
-        <div>
+        <div className="Profile">
           <Title text="dream log" style="DreamLog__title" />
           <p>You need to be logged in to view this page.</p>
         </div>

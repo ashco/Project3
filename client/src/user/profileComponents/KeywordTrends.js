@@ -21,23 +21,23 @@ class KeywordTrends extends Component {
         }
 
 		return(
-    <ResponsiveContainer height={260}>
+    <ResponsiveContainer height={450}>
     	<BarChart 
             data={data}
-            margin={{top: 5, right: 0, left: 0, bottom: 25}}>
+            margin={{top: 5, right: 0, left: 0, bottom: 0}}>
        <XAxis 
            dataKey="Text"
-           fontFamily="sans-serif"
+           fontFamily="Roboto"
            tickSize
            dy='25'/>
        <YAxis hide/>
        <Tooltip  content={renderTooltip}/>
        <Bar 
            dataKey="value" 
-           barSize ={170}
-           fontFamily="sans-serif"
-           fill="#8884d8" >
-           <LabelList dataKey="keyword" fill="#FFFFFF" position="insideBottom" />
+           barSize ={200}
+           fontFamily="Roboto"
+           fill="#A1D4E3" >
+           <LabelList dataKey="keyword" fill="rgba(68, 73, 82, .9)" position="insideBottom" />
         </Bar>
       </BarChart>
       </ResponsiveContainer>

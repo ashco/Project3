@@ -62,9 +62,13 @@ nav {
   height: inherit;
 }
 
-.Nav__link {
+.Nav__link, #root > div > div > nav > div > div:nth-child(2) > span {
   color: var(--font-color) !important;
-  bottom: 5px;
+}
+
+/* Only visible on mobile */
+.Nav__mobile_link {
+  display: none;
 }
 
 .Nav__logo {
@@ -106,12 +110,13 @@ nav {
 /*Rename these*/
 .primaryCTA {
   background: var(--pink-color);
-  border: 3px solid var(--pink-color);
+  border: 2px solid var(--pink-color);
   font-size: 1.25em;
   font-weight: 500;
   color: white;
   padding: 10px 25px;
   margin-right: 10px;
+  margin-bottom: 10px;
   outline: 0;
   transition: all 1s;
 }
@@ -119,11 +124,12 @@ nav {
 .secondaryCTA {
   background: none;
   font-size: 1.25em;
-  border: 3px solid var(--font-color);
+  border: 2px solid var(--font-color);
   color: var(--font-color);
   font-weight: 500;
   padding: 10px 25px;
   margin-right: 10px;
+  margin-bottom: 10px;
   outline: 0;
   transition: all 1s;
 }
@@ -134,7 +140,7 @@ nav {
 
 .secondaryCTA:hover, .primaryCTA:hover {
   outline: none;
-  border: 3px solid var(--purple-color);
+  border: 2px solid var(--purple-color);
   background: var(--purple-color);
   color: white;
 }
@@ -142,7 +148,7 @@ nav {
 .secondaryCTA:active, .primaryCTA:active {
   outline: none;
   background: var(--purple-color);
-  border: 3px solid var(--purple-color);
+  border: 2px solid var(--purple-color);
   color: white;
 }
 
@@ -225,9 +231,10 @@ h5.mixed {
   border: 2px solid var(--orange-color);
 }
 
+/* ANALYZE - RESULTS */
 /* KEYWORDS BOX  */
 .DreamResult__box {
-  text-align: left;
+  text-align: center;
   margin: 0;
   display: inline-block;
   box-sizing: border-box;
@@ -253,20 +260,24 @@ div.DreamResult__box.box > div > button > div {
 }
 
 /* Sentiment color coded scores */
-h1 span.neutral {
+h1 span.neutral, h2 span.neutral {
   color: var(--purple-color);
+  font-size: 1.10em;
 }
 
-h1 span.negative {
+h1 span.negative, h2 span.negative {
   color: var(--pink-color);
+  font-size: 1.10em;
 }
 
-h1 span.positive {
+h1 span.positive, h2 span.positive {
   color: var(--blue-color);
+  font-size: 1.10em;
 }
 
-h1 span.mixed {
+h1 span.mixed, h2 span.mixed {
   color: var(--orange-color);
+  font-size: 1.10em;
 }
 
 /* Legend */
@@ -293,6 +304,106 @@ h1 span.mixed {
   flex: 1 100%;
   justify-content: center;
   align-items: stretch;
+}
+
+/* PROFILE */
+.Profile {
+  flex: 1 100%;
+  align-items: stretch;
+}
+
+.Profile__grid {
+  text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 80px 30px 80px;
+  overflow: hidden;
+}
+
+.Profile__grid h3 {
+  text-align: center;
+}
+
+.Profile__subhead {
+  text-align: center;
+  margin-top: -40px;
+  margin-bottom: 50px;
+  padding: 20px;
+}
+
+.Profile__box {
+  margin: 10px;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 45%;
+  flex: 45%;
+  padding: 20px;
+  transition: all 2s;
+  align-self: center;
+  text-align: center;
+}
+
+.Profile__box h2 {
+  margin-bottom: 30px;
+  margin-top: 0px;
+}
+
+.dreamTotal {
+  margin-top: -10px;
+  margin-bottom: -10px;
+  font-size: 4em;
+}
+
+@keyframes floating {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(0em, -.05em);
+  }
+  100% {
+    transform: translate(-.05em, -.10em);
+    }
+}
+
+.dataBubble {
+  opacity: .7;
+  margin: -5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.dataBubble.neutral {
+    animation: floating 5s infinite alternate-reverse;
+}
+
+.dataBubble.positive {
+    animation: floating 4s infinite alternate;
+}
+
+.dataBubble.negative {
+    animation: floating 5s infinite alternate;
+}
+
+.dataBubble.mixed {
+    animation: floating 4s infinite alternate-reverse;
+}
+
+.dataBubble:hover {
+  transform: scale(1.2);
+}
+
+.dataVisualBubbles {
+  font-size: 25em;
+  line-height: .75em;
+  margin: -20px auto 0 auto;
+  padding: 20px;
+  width: 80%;
+  overflow: hidden;
+}
+
+#root > div > div > div > div.Profile > div > div:nth-child(4) {
+  margin-bottom: -28px;
 }
 
 /* FORM */
@@ -323,9 +434,21 @@ h1 span.mixed {
 }
 
 .footer-text {
+  display: block;
   font-size: .75em;
   color: var(--background-color);
 } 
+
+.footer-text a {
+  color: var(--blue-color);
+  transition: all 2s;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.footer-text a:hover {
+  color: var(--orange-color);
+}
 
 /* ALERTS */
 .error {
@@ -361,14 +484,36 @@ h1 span.mixed {
   .DreamLog {
     padding: 10px;
   }
-  .DreamKey__box { 
+  .DreamKey__box, .Profile__box { 
     width: 100%;
     flex: 100%;
   }
   .DreamResult__box {
-  width: 100%
+    width: 95%;
+    position: inherit;
+    padding-top: inherit;
+    padding: 20px;
+    right: 0;
   }
   .DreamScore__box {
-  width: 100%
+    width: 100%;
+    left: 0;
+    text-align: center;
   }
-}
+  #root > div > div > div > div.content__box > div > div.DreamScore__box.box > div > div.recharts-wrapper > svg {
+    max-width: 350px;
+  }
+  .dataVisualBubbles {
+    font-size: 15em;
+  }
+  .Profile__grid {
+    padding: 10px;
+  }
+  .Nav__link.loggedIn {
+    display: none;
+  }
+  .Nav__mobile_link {
+    display: block;
+    text-decoration: none;
+  }
+ }
