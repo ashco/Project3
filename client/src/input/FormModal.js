@@ -5,10 +5,6 @@ import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
 
-import {orange500, blue500} from 'material-ui/styles/colors';
-
-
-
 
 class FormModal extends React.Component {
 	constructor(props){
@@ -17,16 +13,16 @@ class FormModal extends React.Component {
 			open: true,
 			date: '',
 			content: '',
-        	content_text: "What do you remember?",
-			disabled: true
+    	content_text: "What do you remember?",
+			disabled: true,
+			dateStyle: '#F98285',
+			contentStyle: '#F98285'
 		}
 
 		this.handleDateChange = this.handleDateChange.bind(this);
 		this.handleContentChange = this.handleContentChange.bind(this);
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
-
-
 
 	handleOpen = () => {
 		this.setState({ open: true });
@@ -37,7 +33,9 @@ class FormModal extends React.Component {
 			open: false,
 			date: '',
 			content: '',
-			content_text: "What do you remember?"});
+			content_text: "What do you remember?",
+			contentStyle: '#F98285'
+		});
 	}
 
 	handleDateChange = (event, date) => {
@@ -45,14 +43,24 @@ class FormModal extends React.Component {
 	}
 
 	handleContentChange = (event, content) => {
-		if(content.length < 10){
+		if(content.length === 0){
 			this.setState({
+				content_text: "What do you remember?",
+				contentStyle: '#F98285'
+			});
+		}
+		else if(content.length < 20){
+			this.setState({
+				content: '',
 				content_text: "Try to remember a few more things!",
-			})
-		} else {
+				contentStyle: '#ffdabf',
+			});
+		} 
+		else {
 			this.setState({
-			content: content,
-			content_text: null
+				content: content,
+				content_text: null,
+				contentStyle: '#A1D4E3'
 			})
 		}
 	}
@@ -68,12 +76,12 @@ class FormModal extends React.Component {
 
 	handleSubmit = (event) => {
 		event.preventDefault();
-        this.props.handleInput(this.state.date, this.state.content)
+    this.props.handleInput(this.state.date, this.state.content);
 		this.setState({
-                open: true,
-				date: '',
-				content: ''
-        });
+      open: true,
+			date: '',
+			content: ''
+    });
 	}
 
 	render() {
@@ -82,18 +90,12 @@ class FormModal extends React.Component {
 				width: 280,
 				height: 60
 			},
-			// TEXTBOX COLORS
-			errorStyle: {
-				color: "#A1D4E3",
+			dateStyle: {
+				color: `${this.state.dateStyle}`
 			},
-			underlineStyle: {
-				borderColor: "#BD70B3",
-			},
-			floatingLabelStyle: {
-				color: "#F98285",
-			},
-			floatingLabelFocusStyle: {
-				color: "#ffdabf",
+			contentStyle: {
+				color: `${this.state.contentStyle}`,
+				borderColor: `${this.state.contentStyle}`,
 			}
 		}
 
@@ -106,6 +108,7 @@ class FormModal extends React.Component {
 			<RaisedButton
 				label="Submit"
 				primary={true}
+				backgroundColor="#A1D4E3"
 				disabled={this.state.disabled}
 				onClick={this.handleSubmit}
 			/>
@@ -133,6 +136,7 @@ class FormModal extends React.Component {
 						autoOk={true}
 						hideCalendarDate={true}
 						value={this.state.date}
+						hintStyle={styles.dateStyle}
 						onChange={this.handleDateChange} 
 					/>
 					<TextField 
@@ -141,10 +145,9 @@ class FormModal extends React.Component {
 						multiLine={true}
 						fullWidth={true}
 						rows={10}
-						//Line Color
-						underlineFocusStyle={styles.underlineStyle}
-						floatingLabelStyle={styles.floatingLabelStyle}
-						floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
+						underlineFocusStyle={styles.contentStyle}
+						floatingLabelStyle={styles.contentStyle}
+						floatingLabelFocusStyle={styles.contentStyle}
 						onChange={this.handleContentChange} 
 					/>
 				</Dialog>
@@ -154,3 +157,4 @@ class FormModal extends React.Component {
 }
 
 export default FormModal;
+
