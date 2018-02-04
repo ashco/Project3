@@ -17,6 +17,7 @@ class FormModal extends React.Component {
 			open: true,
 			date: '',
 			content: '',
+        	content_text: "What do you remember?",
 			disabled: true
 		}
 
@@ -25,12 +26,18 @@ class FormModal extends React.Component {
 		this.handleSubmit = this.handleSubmit.bind(this);
 	}
 
+
+
 	handleOpen = () => {
 		this.setState({ open: true });
 	}
 
 	handleClose = () => {
-		this.setState({ open: false });
+		this.setState({
+			open: false,
+			date: '',
+			content: '',
+			content_text: "What do you remember?"});
 	}
 
 	handleDateChange = (event, date) => {
@@ -38,15 +45,18 @@ class FormModal extends React.Component {
 	}
 
 	handleContentChange = (event, content) => {
-		this.setState({ content: content });
+		if(content.length < 10){
+			this.setState({
+				content_text: "Try to remember a few more things!",
+			})
+		} else {
+			this.setState({
+			content: content,
+			content_text: null
+			})
+		}
 	}
 	
-
-	handleSubmit = (event) => {
-		event.preventDefault();
-		this.props.handleInput(this.state.date, this.state.content);
-	}
-
 	componentDidUpdate() {
 		if(this.state.disabled === true && this.state.date && this.state.content){
 			this.setState({ disabled: false });
@@ -56,12 +66,23 @@ class FormModal extends React.Component {
 		}
 	}
 
+	handleSubmit = (event) => {
+		event.preventDefault();
+        this.props.handleInput(this.state.date, this.state.content)
+		this.setState({
+                open: true,
+				date: '',
+				content: ''
+        });
+	}
+
 	render() {
 		const styles = {
 			button: {
 				width: 280,
 				height: 60
 			},
+			// TEXTBOX COLORS
 			errorStyle: {
 				color: "#A1D4E3",
 			},
@@ -116,7 +137,7 @@ class FormModal extends React.Component {
 					/>
 					<TextField 
 						name="content"
-						floatingLabelText="What do you remember?"
+						floatingLabelText={this.state.content_text}
 						multiLine={true}
 						fullWidth={true}
 						rows={10}
