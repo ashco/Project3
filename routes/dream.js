@@ -15,7 +15,6 @@ router.post('/', async function(req, res, next){
 	
 	let content = req.body.content;
 	let user = req.body.user;
-
 	let params = {
 		LanguageCode: 'en',
 		Text: content
@@ -32,15 +31,16 @@ router.post('/', async function(req, res, next){
 			content: content
 		}
 		let database = await databaseAddition.addEntry(postData, sentiment, keywords[1]);
-	} else {
+	} 
+	else {
 		console.log("No user to add to datbase");
 	}
 	
 	let dreamAnalysis = [];
+
 	dreamAnalysis.push(sentiment, descriptions);
-
+	
 	res.send(dreamAnalysis);
-
 });
 
 //DELETE ROUTE
@@ -58,7 +58,6 @@ router.delete('/:id', function(req, res){
 
 //EDIT PUT ROUTE - load form to edit dream
 router.put('/edit/:id', function(req, res){
-	console.log("Reached edit put route");
 	Dream.update(
 		{ _id: req.body.id, user_id: req.body.user.id }, {$set: { 
 			date: req.body.date, 
@@ -68,9 +67,9 @@ router.put('/edit/:id', function(req, res){
 				console.log(err);
 				res.send(500);
 			}
-			console.log("edited in db",dream);
+			console.log("edited in db", dream);
 			res.send(200);
-	})
+	});
 });
 
 module.exports = router;

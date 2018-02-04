@@ -22,7 +22,6 @@ module.exports = {
 	 		});
 
 	 		resolve(dataBaseEntry);
-
 		});
 	}
 }

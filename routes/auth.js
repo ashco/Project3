@@ -8,7 +8,6 @@ var jwt = require('jsonwebtoken');
 
 // POST /auth/login route - returns a JWT
 router.post('/login', function(req, res, next) {
-  console.log('/auth/login post route', req.body);
   var hashedPass = '';
   var passwordMatch = false;
   // look up user
@@ -43,7 +42,6 @@ router.post('/login', function(req, res, next) {
 
 /* POST /auth/signup route */
 router.post('/signup', function(req, res, next) {
-  console.log('/auth/signup post route', req.body);
   // Find by email
   User.findOne({ email: req.body.email }, function(err, user) {
     if (user) {

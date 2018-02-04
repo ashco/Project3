@@ -12,9 +12,6 @@ module.exports = {
 			var descriptions = [];
 
 			async.forEach(keywords, function(searchTerm, callback){
-				console.log('search term', searchTerm.keyword)
-				console.log('search score', searchTerm.score)
-
 				var searchUrl = 'http://www.dreambible.com/search.php?q=' + searchTerm.keyword
 
 				request(searchUrl, function(error, response, data){
@@ -24,7 +21,8 @@ module.exports = {
 
 					if(searchTermMeaning.length < 5){
 						searchDescription = null;
-					} else {
+					} 
+					else {
 						searchDescription = searchTermMeaning.split('\n')[0]
 					}
 								
@@ -33,20 +31,18 @@ module.exports = {
 						score: searchTerm.score,
 						description: searchDescription
 					});
-
-					
 					callback(null);
-				})
+				});
 			}, function() {
-
 				// remove descriptions containing links to other descriptions
 				var finalDescriptions = []
 				var substring = '*Please see '
+
 				descriptions.forEach(function(item){
-				if(!String(item.description).includes(substring)){
+					if(!String(item.description).includes(substring)){
 				    finalDescriptions.push(item)
 				  }
-				})
+				});
 
 				// sort descriptions by confidence score of keyword
 				finalDescriptions.sort(function(a, b) {
@@ -60,6 +56,6 @@ module.exports = {
 
 				resolve(finalDescriptions);
 			});
-		})
+		});
 	}
 }
