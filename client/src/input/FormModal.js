@@ -5,6 +5,10 @@ import RaisedButton from 'material-ui/RaisedButton';
 import DatePicker from 'material-ui/DatePicker';
 import TextField from 'material-ui/TextField';
 
+import {orange500, blue500} from 'material-ui/styles/colors';
+
+
+
 
 class FormModal extends React.Component {
 	constructor(props){
@@ -12,7 +16,8 @@ class FormModal extends React.Component {
 		this.state = {
 			open: true,
 			date: '',
-			content: ''
+			content: '',
+			disabled: true
 		}
 
 		this.handleDateChange = this.handleDateChange.bind(this);
@@ -36,9 +41,19 @@ class FormModal extends React.Component {
 		this.setState({ content: content });
 	}
 	
+
 	handleSubmit = (event) => {
 		event.preventDefault();
 		this.props.handleInput(this.state.date, this.state.content);
+	}
+
+	componentDidUpdate() {
+		if(this.state.disabled === true && this.state.date && this.state.content){
+			this.setState({ disabled: false });
+		}
+		else if(this.state.disabled === false && !this.state.content){
+			this.setState({ disabled: true });
+		}
 	}
 
 	render() {
@@ -46,6 +61,18 @@ class FormModal extends React.Component {
 			button: {
 				width: 280,
 				height: 60
+			},
+			errorStyle: {
+				color: "#A1D4E3",
+			},
+			underlineStyle: {
+				borderColor: "#BD70B3",
+			},
+			floatingLabelStyle: {
+				color: "#F98285",
+			},
+			floatingLabelFocusStyle: {
+				color: "#ffdabf",
 			}
 		}
 
@@ -58,6 +85,7 @@ class FormModal extends React.Component {
 			<RaisedButton
 				label="Submit"
 				primary={true}
+				disabled={this.state.disabled}
 				onClick={this.handleSubmit}
 			/>
 		];
@@ -81,6 +109,8 @@ class FormModal extends React.Component {
 						hintText="Dream date"
 						name="date"
 						fullWidth={true}
+						autoOk={true}
+						hideCalendarDate={true}
 						value={this.state.date}
 						onChange={this.handleDateChange} 
 					/>
@@ -90,6 +120,10 @@ class FormModal extends React.Component {
 						multiLine={true}
 						fullWidth={true}
 						rows={10}
+						//Line Color
+						underlineFocusStyle={styles.underlineStyle}
+						floatingLabelStyle={styles.floatingLabelStyle}
+						floatingLabelFocusStyle={styles.floatingLabelFocusStyle}
 						onChange={this.handleContentChange} 
 					/>
 				</Dialog>
