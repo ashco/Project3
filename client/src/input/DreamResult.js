@@ -14,7 +14,6 @@ class DreamResult extends Component {
 			<div className="DreamResult">
 				<DreamScore data={sentiment} />
 				<div className="DreamResult__box box">
-					<h3>Key symbols</h3>
 					{keywords}
 				</div>
 			</div>

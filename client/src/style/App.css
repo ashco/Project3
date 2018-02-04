@@ -42,6 +42,14 @@ h1 {
   display: block;
 }
 
+.content__box {
+  display: flex;
+  justify-content: center;
+  flex: 1 100%;
+  align-items: stretch;
+}
+
+
 /* NAV */
 nav {
   margin: 0 auto;
@@ -66,9 +74,9 @@ nav {
   color: var(--font-color) !important;
 }
 
-/* Only visible on mobile */
-.Nav__mobile_link {
-  display: none;
+#root > div > div > nav > div > div:nth-child(2) > span {
+  position: relative;
+  bottom: 3px;
 }
 
 .Nav__logo {
@@ -84,11 +92,9 @@ nav {
   top: 6px;
 }
 
-.content__box {
-  display: flex;
-  justify-content: center;
-  flex: 1 100%;
-  align-items: stretch;
+/* Gets toggled on in mobile view */
+.Nav__mobile_link {
+  display: none;
 }
 
 /* HOME PAGE */
@@ -242,10 +248,18 @@ h5.mixed {
   padding-top: 150px;
   left: 100px;
   position: relative;
+  overflow: hidden;
 }
 
-div.DreamResult__box.box > div > button > div {
+.Keyword__enabled, .Keyword__disabled {
+    padding: 10px 30px;
+    margin: 10px;
+    width: 90%;
+    font-size: 1.5em;
+}
 
+.Keyword__disabled {
+  
 }
 
 /* DONUT CHART */
@@ -289,8 +303,6 @@ h1 span.mixed, h2 span.mixed {
   padding: 200px;
   margin-top: -60px;
   text-align: center;
-  background: url('../img/pexels-photo-691668.jpeg') no-repeat;
-  background-size: cover;
   display: flex;
   flex: 1 100%;
   justify-content: center;
@@ -481,12 +493,22 @@ h1 span.mixed, h2 span.mixed {
 /* RESPONSIVE */
 
 @media all and (max-width: 600px) {
+  .home {
+    padding: 40px;
+  }
+  .Home__title {
+    font-size: 3em;
+    padding-top: 120px;
+  }
   .DreamLog {
     padding: 10px;
   }
   .DreamKey__box, .Profile__box { 
     width: 100%;
     flex: 100%;
+  }
+  .DreamKey__box {
+    margin: 10px !important;
   }
   .DreamResult__box {
     width: 95%;
@@ -495,13 +517,28 @@ h1 span.mixed, h2 span.mixed {
     padding: 20px;
     right: 0;
   }
+  .DreamResult__box h3 {
+    margin: 20px auto 40px auto;
+    width: 110px;
+  }
   .DreamScore__box {
     width: 100%;
     left: 0;
     text-align: center;
   }
-  #root > div > div > div > div.content__box > div > div.DreamScore__box.box > div > div.recharts-wrapper > svg {
+  .DreamScore__box h1 {
+    font-size: 1.5em;
+    margin: 40px auto;
+  }
+  .DreamScore__box.box > div > div.recharts-wrapper > svg {
     max-width: 350px;
+    padding: 20px;
+    position: relative;
+    left: 20px;
+  }
+.DreamScore__box.box > div > div.recharts-wrapper > div.recharts-legend-wrapper {
+    position: relative;
+    left: 20px;
   }
   .dataVisualBubbles {
     font-size: 15em;
@@ -515,5 +552,8 @@ h1 span.mixed, h2 span.mixed {
   .Nav__mobile_link {
     display: block;
     text-decoration: none;
+  }
+  .primaryCTA.small, .secondaryCTA.small {
+    font-size: .5em;
   }
  }

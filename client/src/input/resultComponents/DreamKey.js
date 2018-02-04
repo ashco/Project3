@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 // MATERIAL UI
 import Dialog from 'material-ui/Dialog';
-import FlatButton from 'material-ui/FlatButton';
 import RaisedButton from 'material-ui/RaisedButton';
 
 class DreamKey extends Component{
@@ -33,13 +32,30 @@ class DreamKey extends Component{
         onClick={this.handleClose}
       />
 		];
-		
+
+	var buttonClass;
+	if(this.state.disabled === true) {
+		buttonClass = "Keyword__disabled"
 		return(
 			<div>
-				<FlatButton 
-					label={this.props.keys.name} 
+				<button 
+					type="button" 
+					className={buttonClass}
+					disabled>
+					{this.props.keys.name} 
+				</button>
+			</div>
+		);
+	} else if (this.state.disabled === false) {
+		buttonClass = "Keyword__enabled"
+		return(
+			<div>
+				<button 
+					type="button"
 					onClick={this.handleOpen} 
-					disabled={this.state.disabled} />
+					className={buttonClass}>
+					{this.props.keys.name} 
+				</button>
 				<Dialog
 					title={this.props.keys.name}
 					actions={actions}
@@ -51,6 +67,11 @@ class DreamKey extends Component{
 				</Dialog>
 			</div>
 		);
+	}
+		
+
+
+
 	}
 }
 
