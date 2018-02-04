@@ -1,7 +1,16 @@
 // REQUIRE AWS API
+require('dotenv').config();
 var AWS = require('aws-sdk');
-// AWS.config.update({region: 'us-west-2'});
-AWS.config.loadFromPath('./awsconfig.json');
+// AWS.config.loadFromPath('./awsconfig.json');
+AWS.config.update({
+	region: 'us-west-2',
+	accessKeyId: process.env.AWS_KEY_ID,
+	secretAccessKey: process.env.AWS_SECRET_KEY
+});
+// new AWS.Credentials(process.env.AWS_KEY_ID, process.env.AWS_SECRET_KEY);
+
+
+
 var comprehend = new AWS.Comprehend();
 // REQUIRE HELPER FUNCTIONS
 var dataCleanse = require('./dataCleanse.js');

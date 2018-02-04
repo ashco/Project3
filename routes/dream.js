@@ -20,7 +20,7 @@ router.post('/', async function(req, res, next){
 		LanguageCode: 'en',
 		Text: content
 	}
-
+	
 	let keywords = await textAnalysis.keyPhrase(params);
 	let sentiment = await textAnalysis.detectSentiment(params);
 	let descriptions = await dreamScraper.scrapeData(keywords[0]);

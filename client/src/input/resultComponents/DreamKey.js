@@ -12,9 +12,7 @@ class DreamKey extends Component{
 
 	componentDidMount() {
 		if(this.props.keys.description == null){
-			this.setState({disabled: true});
-			console.log('#####################################', this.props.keys.name);
-			console.log('#####################################', this.state.disabled);
+			this.setState({disabled: true}); //disable button when no definition
 		}
 	}
 

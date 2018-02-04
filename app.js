@@ -5,6 +5,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
 var app = express();
+//Heroku requirement
+
+
 
 // Mongoose stuff
 var mongoose = require('mongoose');
@@ -34,3 +37,6 @@ app.get('*', function(req, res, next) {
 });
 
 module.exports = app;
+
+
+var server = app.listen(process.env.PORT || 4000);

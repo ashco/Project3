@@ -8,13 +8,12 @@ class DreamResult extends Component {
 
   render(){
  
-  	const sentiment = this.props.analysis.data[0]
-  	const overallSentiment = this.props.analysis.data[1].sentiment
+		const sentiment = this.props.analysis.data[0]
+  	const overallSentiment = this.props.analysis.data[1].sentiment //this seems like this should be checking data[0]
 		
-		
-	const keywords = this.props.analysis.data[1].map(word => {
-  		return(<DreamKey keys={word} className="DreamKey__box box" />)
-  	})
+		const keywords = this.props.analysis.data[1].map(word => {
+				return(<DreamKey keys={word} className="DreamKey__box box" />)
+			})
 
     return(
 			<div className="DreamResult">

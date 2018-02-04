@@ -9,17 +9,19 @@ import {sortbyDate} from '../scripts/profileDataCleansing.js'
 class DreamLog extends Component {
 	constructor(props){
 		super(props);
-        this.state = {
-          dreams: [],
-          dreamState: false
-        }
-        this.handleEdit = this.handleEdit.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
+		this.state = {
+			dreams: [],
+			dreamState: false
+		}
+		
+		this.handleEdit = this.handleEdit.bind(this);
+		this.handleDelete = this.handleDelete.bind(this);
 	}
 
 	fetchDreams = () => {
 		let userId= this.props.user.id;
-      	let base = this;	
+		let base = this;	
+		
 		axios({
 			method: 'get',
 			url: '/user/log',
@@ -27,33 +29,31 @@ class DreamLog extends Component {
 				user: userId
 			}
 		}).then((result) => {
-			console.log(result);
 			let rawData = result.data.concat([result]);
 			let foundDreams = sortbyDate(rawData);
 			
 			base.setState({
 				dreams: foundDreams,
 				dreamState: true
-			})
-			console.log("State",base.state.dreams);
+			});
+			console.log("State: ",base.state.dreams);
 		}).catch((error) => {
 			console.log("An error occured",error.response.data);
-		})
+		});
 	}
 
-    componentDidMount() {
-			if(!this.props.user || !this.props.user.id){
-				return;
-			}
-      this.fetchDreams();
+	componentDidMount() {
+		if(!this.props.user || !this.props.user.id){
+			return;
+		}
+		this.fetchDreams();
 	}
 
-	
 	handleEdit = (dream_id, date, content) => {
 		//Add content, date in here
-		console.log("Got to main level dreamlog edit component",dream_id,date,content);
 		let dreamUrl = '/dream/edit/' + dream_id;
 		let base = this;
+
 		axios({
 			method: 'put',
 			url: dreamUrl,
@@ -72,9 +72,9 @@ class DreamLog extends Component {
 	}
 	
 	handleDelete = (dream_id) => {
-		console.log(dream_id,"is the info we got from the dreamentry component");
 		let dreamUrl = '/dream/' + dream_id;
 		let base = this;
+
 		axios({
 			method: 'delete',
 			url: dreamUrl,
@@ -96,9 +96,11 @@ class DreamLog extends Component {
 
   	if(displayState === false ){
   		display = <WaitingState />
-  	} else if (displayState === true && this.state.dreams.length < 1) {
-		display = <p>No dreams to log.</p>
-  	} else if (displayState === true && this.state.dreams.length >= 1) {
+  	} 
+    else if (displayState === true && this.state.dreams.length < 1) {
+		  display = <p>No dreams to log.</p>
+  	} 
+    else if (displayState === true && this.state.dreams.length >= 1) {
   		display = this.state.dreams.map((dream, index) => {
   			if(dream._id) {
 					return <DreamEntry 
@@ -109,9 +111,9 @@ class DreamLog extends Component {
 						handleDelete={this.handleDelete} 
 					/>
   			}
-    	})
-	}
-
+    	});
+		}
+                                      
 		// LOGGED IN PAGE
 		if(this.props.user && this.props.user.name){
 			return (
@@ -121,7 +123,7 @@ class DreamLog extends Component {
 						{display}
 					</div>
 				</div>
-			)
+			);
 		}
 		// NOT LOGGED IN PAGE
 		else {

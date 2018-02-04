@@ -46,6 +46,14 @@ class FormModal extends React.Component {
 	}
 
 	render() {
+
+		const styles = {
+			button: {
+				width: 280,
+				height: 60
+			}
+		}
+
 		const actions = [
 			<FlatButton
         label="Cancel"
@@ -64,7 +72,10 @@ class FormModal extends React.Component {
 		return (
 			<div>
 				<br />
-				<RaisedButton label="Analyze Your Dream" onClick={this.handleOpen} />
+				<RaisedButton 
+					label="Analyze Your Dream" 
+					style={styles.button}
+					onClick={this.handleOpen} />
 				<Dialog
 					title="Log your dreams"
 					actions={actions}
