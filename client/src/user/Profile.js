@@ -81,26 +81,26 @@ class Profile extends Component {
 
     if(totalDreams > 1) {
       dashboard = 
-            <div>
-                <SentimentTrends data={this.state.sentimentData} />
-                <div className="Profile__grid">
-                  <UserGreeting name={this.props.user.name} totalDreams={totalDreams} />
-                  <CallToAction user={this.props.user.name} />
-                  <OverallStats data={this.state.overallStats} totalDreams={totalDreams} />
-                </div>
-                <h2 className="Profile__subhead">Your dreams are overall <span className={mostDreamsCategory}>{mostDreamsCategory}</span>.</h2>
-                <KeywordTrends data={this.state.keywordData} />
-            </div>
+      <div>
+        <SentimentTrends data={this.state.sentimentData} />
+        <div className="Profile__grid">
+          <UserGreeting name={this.props.user.name} totalDreams={totalDreams} />
+          <CallToAction user={this.props.user.name} />
+          <OverallStats data={this.state.overallStats} totalDreams={totalDreams} />
+        </div>
+        <h2 className="Profile__subhead">Your dreams are overall <span className={mostDreamsCategory}>{mostDreamsCategory}</span>.</h2>
+        <KeywordTrends data={this.state.keywordData} />
+      </div>
     } 
     else if (this.props.user && this.props.user.name && totalDreams <= 1){
       dashboard = 
-            <div className="Profile__grid">
-              <UserGreeting name={this.props.user.name} totalDreams={totalDreams} />
-              <CallToAction />
-              <div className="Profile__box">
-                <p> Enter more dreams to see your trends over time.</p>
-              </div>
-            </div>
+      <div className="Profile__grid">
+        <UserGreeting name={this.props.user.name} totalDreams={totalDreams} />
+        <CallToAction />
+        <div className="Profile__box">
+          <p> Enter more dreams to see your trends over time.</p>
+        </div>
+      </div>
     }
 
     // Logged in with data loaded

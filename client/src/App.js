@@ -11,8 +11,6 @@ import Profile from './user/Profile.js';
 import Nav from './layout/Nav.js';
 import Footer from './layout/Footer.js';
 // AUTH
-// import Login from './auth/Login.js';
-// import Signup from './auth/Signup.js';
 import UserAuth from './auth/UserAuth.js';
 // CUSTOM ROUTES
 import Analyze from './input/Analyze.js';
@@ -44,7 +42,6 @@ class App extends Component {
         pathname: '/analyze',
       });
     }
-
   );
 
   console.log('DreamState:', this.state.selected_dream_data);
@@ -111,17 +108,11 @@ class App extends Component {
               <Nav user={this.state.user} updateUser={this.getUser} />
               <div className="space">
                 <Flash flashType={this.state.flashType} flash={this.state.flash} setFlash={this.setFlash} cancelFlash={this.cancelFlash} />
-              
                 <Route exact path="/" component={Home} />
-                {/* <Route path="/login" component={
-                  () => (<Login user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} /> */}
                 <Route path="/userauth" component={
                   () => (<UserAuth user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
-                {/* <Route path="/signup" component={
-                  () => (<Signup user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} /> */}
                 <Route path="/profile" component={
                   () => (<Profile user={this.state.user} setFlash={this.setFlash} />)} />
-                {/* CUSTOM ROUTES */}
                 <Route path="/analyze" component={
                   () => (<Analyze user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
                 <Route path="/log" component={
