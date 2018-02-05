@@ -120,12 +120,13 @@ class App extends Component {
                 <Route path="/log" component={
                   () => (<DreamLog user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} handleGet={this.handleGet} />)} />
                 <Footer />
+                </div>
               </div>
-            </div>
-          </Router>
-        </MuiThemeProvider>
-      </div>
-    );
+            </Router>
+          </MuiThemeProvider>
+        </div>
+      );
+    }
   }
 }
 
