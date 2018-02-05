@@ -72,7 +72,8 @@ The target user for this app is the ever curious dreamer who is interested in un
 
 ##### 1. Choose CSS Framework
 ##### 2. Developed Moodboards and choose theme
-![](https://github.com/antonia-villa/Project3/blob/master/moodboard-light.jpg)
+
+![](/client//public/img/moodboard-light.jpg)
 
 ##### 3. Component Planning and assignment to individual team members  
 ##### 4. Completed routes with get, post, put, and delete functionality
