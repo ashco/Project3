@@ -29,7 +29,7 @@ class App extends Component {
       selected_dream_data: {}
     }
 
-    this.handleGet = this.handleGet.bind(this);
+
   }
 
   // FNC POPULATES STATE FOR SELECTED DREAM

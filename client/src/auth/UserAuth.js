@@ -106,7 +106,7 @@ export default class UserAuth extends Component {
         <div className="UserAuth__box box">
           <Tabs
             value={this.state.value}
-            style={styles.tab}
+            // style={styles.tab}
             onChange={this.handleTabChange}
             inkBarStyle={{background: blueColor}}
           >
