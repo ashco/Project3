@@ -82,7 +82,8 @@ export default class UserAuth extends Component {
       tab:{
         // color: pinkColor,
         backgroundColor: pinkColor,
-        fontWeight: 400,
+        fontWeight: 600,
+        color: '#FDFFFE'
       },
       // active_tab:{
       //   color: blueColor,
