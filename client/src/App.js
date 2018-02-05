@@ -44,9 +44,6 @@ class App extends Component {
     }
   );
 
-  console.log('DreamState:', this.state.selected_dream_data);
-  }
-
   componentDidMount = () => {
     this.getUser();
   }
@@ -84,6 +81,10 @@ class App extends Component {
     }
   }
 
+  updateUser = () => {
+    this.getUser();
+  }
+
   setFlash = (t, msg) => {
     this.setState({
       flash: msg,
@@ -111,7 +112,7 @@ class App extends Component {
                 <Route exact path="/" component={
                   () => (<Home user={this.state.user} />)} />
                 <Route path="/userauth" component={
-                  () => (<UserAuth user={this.state.user} setFlash={this.setFlash} updateUser={this.getUser} />)} />
+                  () => (<UserAuth user={this.state.user} setFlash={this.setFlash} updateUser={this.updateUser} />)} />
                 <Route path="/profile" component={
                   () => (<Profile user={this.state.user} setFlash={this.setFlash} />)} />
                 <Route path="/analyze" component={
