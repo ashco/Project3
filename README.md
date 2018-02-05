@@ -1,5 +1,5 @@
 # Dreamstate
-##https://dream-state-app.herokuapp.com/
+https://dream-state-app.herokuapp.com/
 
 Uncover the true meaning of your subconcious dreams and discover what your  consious mind has learned to repress. Dreamstate is an interactive application enabling users to understand the meaning of their dreams and view an overall sentiment based on keyword analysis. 
 
@@ -47,15 +47,14 @@ The target user for this app is the ever curious dreamer who is interested in un
 ##### Share, Brainstorm and Choose idea
 ##### 1. Planned out features and functionality
 ##### 2. Developed Wireframes
-![](/public/img/wireframes_v1.jpg)
+![](../public/img/wireframes_v1.jpg)
 
-![](/public/img/wireframes_profile_v1.jpg)
+![](../public/img/wireframes_profile_v1.jpg)
 
 ##### 3. Indetify and check functionality of APIs
 ##### 4. Identify Data Scraping sites to use
-
 ##### 5. Setup Trello Board
-![](/public/img/TrelloBoard.png)
+![](../public/img/TrelloBoard.png)
 
 ##### 6. Setup Authentication
 ##### 7. Stubbed out Routes and Set up Mongo Database Models
@@ -66,20 +65,17 @@ The target user for this app is the ever curious dreamer who is interested in un
 ### Sprint 2
 
 ##### 1. Choose CSS Framework
-
 ##### 2. Developed Moodboards and choose theme
-##https://github.com/antonia-villa/Project3/blob/master/moodboard-light.jpg
+https://github.com/antonia-villa/Project3/blob/master/moodboard-light.jpg
 
-##### 2. Component Planning and assignment to individual team members  
-##### 3. Completed routes with get, post, put, and delete functionality
-   * Users can add/edit/delete dreams
+##### 3. Component Planning and assignment to individual team members  
+##### 4. Completed routes with get, post, put, and delete functionality
+ *Users can add/edit/delete dreams
 
-##### 4. Implement data cleansing to reformat raw data returned form API & data scraping functionality
-
-##### 5. Error handling
-* Raw Data
-* User entries
-
+##### 5. Implement data cleansing to reformat raw data returned form API & data scraping functionality
+##### 6. Error handling
+ * Raw Data
+ * User entries
 
 ##### 7. Basic styling completed MVP level functionality
 
@@ -87,19 +83,16 @@ The target user for this app is the ever curious dreamer who is interested in un
 ##### 1. Finalize data visualizations
 * Add functionality for tooltips
 
-##### 2. Add conditional rendering to render appropriate data visuals for varying user account status 
-
+##### 2. Add conditional rendering to render appropriate data visuals for varying user account status
 ##### 3. Update user-facing terminology
-
 ##### 4. Re-factor layout for improved userflow
-
 ##### 5. Final CSS and Mobile Comptability
 
-![](/public/img/live-screenshot-1.png)
+![](../public/img/live-screenshot-1.png)
 
-![](/public/img/live-screenshot-3.png)
+![](../public/img/live-screenshot-3.png)
 
-![](/public/img/live-screenshot-2.png)
+![](../public/img/live-screenshot-2.png)
 
 #### Backlog
   * More robust options for keyword analysis - this may include scraping other sites to retrieve keyword content or rescraping the initial site for references to other keywords
@@ -139,11 +132,10 @@ If you'd like to set this project up on your own local server:
   * Use `nodemon` to run the application in the main project folder
 * Setup your database (this app utilizes one MongoDB  model)
 * Create .env file, which will need to include:
-  * `SESSION_SECRET` (you determine this)
-  * `BASE_URL` (where you will deploy the site)
-  * `CLOUDINARY_URL` (from your Cloudinary account)
-* Review database setup file
-  * Follow directions in `dbSetup.js` to scrape data and add tags
+  * `JWT_SECRET` (you determine this for user token creation)
+* Review database setup and check mongoDB to confirm data
+ *If needed, use MongoDB Compass to view data entries
+
 
 ## Sources
 * Dream Analysis 
