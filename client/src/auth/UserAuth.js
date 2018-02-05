@@ -6,6 +6,13 @@ import axios from 'axios';
 import TextField from 'material-ui/TextField';
 import RaisedButton from 'material-ui/RaisedButton';
 
+const greyColor = '#dddddd';
+const blueColor = '#A1D4E3';
+const pinkColor = '#F98285';
+const purpleColor = '#BD70B3';
+const orangeColor = '#ffdabf';
+
+
 const styles = {
   headline: {
     fontSize: 24,
@@ -83,6 +90,9 @@ export default class UserAuth extends Component {
 				className="UserAuth__box"
         value={this.state.value}
         onChange={this.handleTabChange}
+        //Style
+        tabItemContainerStyle={{color: orangeColor}}
+        inkBarStyle={{background: pinkColor}}
       >
         <Tab label="Login" value="login">
           <div>
@@ -109,7 +119,8 @@ export default class UserAuth extends Component {
 						</div>
             <RaisedButton 
               label="Login" 
-              primary={true} 
+              primary={true}
+              backgroundColor={orangeColor} 
               onClick={this.handleLoginSubmit} 
             />
           </div>
@@ -150,6 +161,8 @@ export default class UserAuth extends Component {
             <RaisedButton 
               label="Login" 
               primary={true} 
+              backgroundColor='#ffdabf'
+              // backgroundColor={orangeColor}
               onClick={this.handleSignupSubmit} 
             />
           </div>

@@ -19,18 +19,16 @@ class Nav extends Component {
     }
   }
   
+  
   render(){
-    let leftLinks = <span />;
-    let rightLinks = <span />;
-    
+    let rightLinks = (
+      <span>
+        <Link to="/userauth" className="Nav__link">Login</Link>
+      </span>
+    );
+
     // YES USER
     if(this.props.user){
-      leftLinks = (
-        <span>
-          <Link to="/" className="Nav__logo">Dreamstate</Link>
-          <Link to="/analyze" className="Nav__link loggedIn">Analyze</Link>
-        </span>
-      )
       rightLinks = (
         <span>
           <Link to="/log" className="Nav__link loggedIn">Dream Log</Link>
@@ -51,26 +49,15 @@ class Nav extends Component {
         </span>
       );
     }
-    // NO USER
-    else {
-      leftLinks = (
-        <span>
-          <Link to="/" className="Nav__logo">Dreamstate</Link>
-          <Link to="/analyze" className="Nav__link">Analyze</Link>
-        </span>
-      );
-      rightLinks = (
-        <span>
-          <Link to="/userauth" className="Nav__link">Login</Link>
-        </span>
-      );
-    }
 
     return(
       <nav>
         <Toolbar>
           <ToolbarGroup firstChild={true}>
-            {leftLinks}
+            <span>
+              <Link to="/" className="Nav__logo">Dreamstate</Link>
+              <Link to="/analyze" className="Nav__link loggedIn">Analyze</Link>
+            </span>
           </ToolbarGroup>
           <ToolbarGroup lastChild={true}>
             {rightLinks}
