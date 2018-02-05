@@ -99,11 +99,18 @@ nav {
 /* HOME PAGE */
 .home {
   margin-top: -60px;
-  flex: 1 100%;
-  padding: 150px;
-  align-items: stretch;
   background: url('../img/home_background.jpg') no-repeat;
   background-size: cover;
+  padding: 150px;
+}
+
+.auth-container, .home {
+  flex: 1 100%;
+  align-items: stretch;
+}
+
+.auth-container {
+  padding: 20px;
 }
 
 .Home__title {
@@ -188,7 +195,7 @@ nav {
   flex: 45%;
   padding: 40px;
   transition: all 2s;
-  background: rgba(256, 256, 256, .8);
+  background: rgba(256, 256, 256, .6);
   border: 1px solid var(--light-grey-color);
   box-shadow: 5px 5px var(--light-grey-color);
 }
@@ -205,7 +212,6 @@ nav {
 
 .DreamKey__box h5 {
   display: inline-block;
-  background: var(--background-color);
   padding: 8px;
   margin: 0;
   margin-left: 20px;
@@ -300,22 +306,22 @@ h5.mixed {
 
 /* Sentiment color coded scores */
 h1 span.neutral, h2 span.neutral {
-  color: var(--purple-color);
+  border-bottom: 5px solid var(--purple-color);
   font-size: 1.10em;
 }
 
 h1 span.negative, h2 span.negative {
-  color: var(--pink-color);
+  border-bottom: 5px solid var(--pink-color);
   font-size: 1.10em;
 }
 
 h1 span.positive, h2 span.positive {
-  color: var(--blue-color);
+  border-bottom: 5px solid var(--blue-color);
   font-size: 1.10em;
 }
 
 h1 span.mixed, h2 span.mixed {
-  color: var(--orange-color);
+  border-bottom: 5px solid var(--orange-color);
   font-size: 1.10em;
 }
 
@@ -349,7 +355,7 @@ h1 span.mixed, h2 span.mixed {
 }
 
 /* PROFILE */
-.Profile {
+.Profile, .Logs {
   flex: 1 100%;
   align-items: stretch;
 }
@@ -444,7 +450,7 @@ h1 span.mixed, h2 span.mixed {
   overflow: hidden;
 }
 
-#root > div > div > div > div.Profile > div > div:nth-child(4) {
+.Profile > div > div:nth-child(4) {
   margin-bottom: -28px;
   opacity: .7;
 }
@@ -469,6 +475,21 @@ h1 span.mixed, h2 span.mixed {
 .UserAuth__box, .Login__box, .Signup__box {
   max-width: 600px;
 }
+
+.UserAuth__box {
+  text-align: center;
+  margin: 10px !important;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 45%;
+  flex: 45%;
+  padding: 40px;
+  transition: all 2s;
+  background: white;
+  border: 1px solid var(--light-grey-color);
+  box-shadow: 5px 5px var(--light-grey-color);
+ }
+
 
 /* FOOTER */
  .footer {
@@ -525,32 +546,10 @@ h1 span.mixed, h2 span.mixed {
   justify-content: center;
 }
 
-.UserAuth__box {
-  text-align: center;
-  margin: 10px !important;
-  display: inline-block;
-  box-sizing: border-box;
-  width: 45%;
-  flex: 45%;
-  padding: 40px;
-  transition: all 2s;
-  background: rgba(256, 256, 256, .8);
-  border: 1px solid var(--light-grey-color);
-  box-shadow: 5px 5px var(--light-grey-color);
- }
-
-@media all and (max-width: 960px){
-  .UserAuth__box { 
-    width: 90%;
-    flex: 90%;
-  }
-}
-
-
 /* RESPONSIVE */
 
 @media all and (max-width: 600px) {
-  .home {
+  .home, .auth-container {
     padding: 40px;
   }
   .Home__title {
@@ -620,3 +619,10 @@ h1 span.mixed, h2 span.mixed {
     right: 20px;
   }
  }
+
+ @media all and (max-width: 960px){
+  .UserAuth__box { 
+    width: 90%;
+    flex: 90%;
+  }
+}

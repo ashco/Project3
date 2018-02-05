@@ -116,7 +116,7 @@ class DreamLog extends Component {
 		// LOGGED IN PAGE
 		if(this.props.user && this.props.user.name){
 			return (
-				<div className="Profile">
+				<div className="Logs">
 					<Title text="dream log" style="DreamLog__title" />
 					<div className="DreamLog">
 						{display}
@@ -127,7 +127,7 @@ class DreamLog extends Component {
 		// NOT LOGGED IN PAGE
 		else {
       return (
-        <div className="Profile">
+        <div className="Logs">
           <Title text="dream log" style="DreamLog__title" />
           <p>You need to be logged in to view this page.</p>
         </div>

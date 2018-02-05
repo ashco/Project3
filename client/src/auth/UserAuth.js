@@ -80,17 +80,22 @@ export default class UserAuth extends Component {
         fontWeight: 400,
       },
       tab:{
-        // color: pinkColor,
-        backgroundColor: pinkColor,
-        fontWeight: 400,
+        backgroundColor: 'white',
+        fontWeight: 900,
+        textTransform: 'capitalize'
       },
-      // active_tab:{
-      //   color: blueColor,
-      // },
+      active_tab:{
+        backgroundColor: blueColor
+      },
       contentStyle: {
 				color: pinkColor,
 				borderColor: pinkColor,
-			}
+			},
+      button: {
+        color: '444952',
+        textTransform: 'capitalize',
+        fontWeight: 400
+      }
     };
 
 
@@ -103,11 +108,9 @@ export default class UserAuth extends Component {
         <div className="UserAuth__box box">
           <Tabs
             value={this.state.value}
+            style={styles.tab}
             onChange={this.handleTabChange}
-            //Style
-            // style={{backgroundColor: orangeColor}}
-            tabItemContainerStyle={{color: orangeColor}}
-            inkBarStyle={{background: purpleColor}}
+            inkBarStyle={{background: blueColor}}
           >
             <Tab label="Login" value="login" style={styles.tab}>
               <div>
@@ -119,9 +122,9 @@ export default class UserAuth extends Component {
                     floatingLabelText="Email"
                     fullWidth={true}
                     value={this.state.email}
-                    // underlineFocusStyle={styles.contentStyle}
-                    // floatingLabelStyle={styles.contentStyle}
-                    // floatingLabelFocusStyle={styles.contentStyle}
+                    underlineFocusStyle={styles.contentStyle}
+                    floatingLabelStyle={styles.contentStyle}
+                    floatingLabelFocusStyle={styles.contentStyle}
                     onChange={this.handleEmailChange}/>
                   <br/>
                 </div>
@@ -132,17 +135,19 @@ export default class UserAuth extends Component {
                     floatingLabelText="Password"
                     fullWidth={true}
                     value={this.state.password}
-                    // underlineFocusStyle={styles.contentStyle}
-                    // floatingLabelStyle={styles.contentStyle}
-                    // floatingLabelFocusStyle={styles.contentStyle}
+                    underlineFocusStyle={styles.contentStyle}
+                    floatingLabelStyle={styles.contentStyle}
+                    floatingLabelFocusStyle={styles.contentStyle}
                     onChange={this.handlePasswordChange}
                   />
                   <br/>
                 </div>
+                <br /><br />
                 <RaisedButton 
                   label="Login" 
-                  primary={true}
-                  backgroundColor='#ffdabf'
+                  primary={false}
+                  backgroundColor={blueColor}
+                  style={styles.button} 
                   onClick={this.handleLoginSubmit} 
                 />
               </div>
@@ -157,9 +162,11 @@ export default class UserAuth extends Component {
                     floatingLabelText="Name"
                     fullWidth={true}
                     value={this.state.name}
-                    // underlineFocusStyle={styles.contentStyle}
-                    // floatingLabelStyle={styles.contentStyle}
-                    // floatingLabelFocusStyle={styles.contentStyle}
+                    floatingLabelStyle={styles.contentStyle}
+                    floatingLabelFocusStyle={styles.contentStyle}
+                    underlineFocusStyle={styles.contentStyle}
+                    floatingLabelStyle={styles.contentStyle}
+                    floatingLabelFocusStyle={styles.contentStyle}
                     onChange={this.handleNameChange}/><br 
                   />
                 </div>
@@ -170,11 +177,11 @@ export default class UserAuth extends Component {
                     floatingLabelText="Email"
                     fullWidth={true}
                     value={this.state.email}
-                    // underlineFocusStyle={styles.contentStyle}
-                    // floatingLabelStyle={styles.contentStyle}
-                    // floatingLabelFocusStyle={styles.contentStyle}
-                    onChange={this.handleEmailChange}/><br 
-                  />
+                    underlineFocusStyle={styles.contentStyle}
+                    floatingLabelStyle={styles.contentStyle}
+                    floatingLabelFocusStyle={styles.contentStyle}
+                    onChange={this.handleEmailChange}/>
+                    <br />
                 </div>
                 <div>
                   <TextField 
@@ -183,16 +190,18 @@ export default class UserAuth extends Component {
                     floatingLabelText="Password"
                     fullWidth={true}
                     value={this.state.password}
-                    // underlineFocusStyle={styles.contentStyle}
-                    // floatingLabelStyle={styles.contentStyle}
-                    // floatingLabelFocusStyle={styles.contentStyle}
-                    onChange={this.handlePasswordChange}/><br 
-                  />
+                    underlineFocusStyle={styles.contentStyle}
+                    floatingLabelStyle={styles.contentStyle}
+                    floatingLabelFocusStyle={styles.contentStyle}
+                    onChange={this.handlePasswordChange}/>
+                  <br />
                 </div>
+                <br /><br />
                 <RaisedButton 
-                  label="Login" 
-                  primary={true} 
-                  backgroundColor={pinkColor}
+                  label="Sign Up" 
+                  primary={false} 
+                  backgroundColor={blueColor}
+                  style={styles.button} 
                   onClick={this.handleSignupSubmit} 
                 />
               </div>

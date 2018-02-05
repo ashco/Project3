@@ -24,10 +24,11 @@ class KeywordTrends extends Component {
     <ResponsiveContainer height={450}>
     	<BarChart 
             data={data}
-            margin={{top: 5, right: 0, left: 0, bottom: 0}}>
+            margin={{top: 0, right: 0, left: 0, bottom: 0}}>
        <XAxis 
            dataKey="Text"
            fontFamily="Roboto"
+           fontWeight="900" 
            tickSize
            dy='25'/>
        <YAxis hide/>
@@ -37,7 +38,7 @@ class KeywordTrends extends Component {
            barSize ={200}
            fontFamily="Roboto"
            fill="#A1D4E3" >
-           <LabelList dataKey="keyword" fill="rgba(68, 73, 82, 1)" position="insideBottom" />
+           <LabelList dataKey="keyword" fill="rgba(68, 73, 82, 1)" position="top" />
         </Bar>
       </BarChart>
       </ResponsiveContainer>
