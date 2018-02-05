@@ -49,12 +49,10 @@ The target user for this app is the ever curious dreamer who is interested in un
 ##### 2. Developed Wireframes
 ![](/client//public/img/wireframes_v1.jpg)
 
-![](/client//public/img/wireframes_profile_v1.jpg)
-
 ##### 3. Indetify and check functionality of APIs
 ##### 4. Identify Data Scraping sites to use
 ##### 5. Setup Trello Board
-![](../public/img/TrelloBoard.png)
+![](/client//public/img/TrelloBoard.png)
 
 ##### 6. Setup Authentication
 ##### 7. Stubbed out Routes and Set up Mongo Database Models
@@ -88,11 +86,6 @@ https://github.com/antonia-villa/Project3/blob/master/moodboard-light.jpg
 ##### 4. Re-factor layout for improved userflow
 ##### 5. Final CSS and Mobile Comptability
 
-![](/client/public/img/live-screenshot-1.png)
-
-![](/client//public/img/live-screenshot-3.png)
-
-![](/client/public/img/live-screenshot-2.png)
 
 #### Backlog
   * More robust options for keyword analysis - this may include scraping other sites to retrieve keyword content or rescraping the initial site for references to other keywords
