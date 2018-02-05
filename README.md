@@ -146,15 +146,6 @@ If you'd like to set this project up on your own local server:
   * Follow directions in `dbSetup.js` to scrape data and add tags
 
 ## Sources
-* Plant Data
-  * Plant Care Rankings - http://extension.uga.edu/publications/detail.html?number=B1318
-  * Individual Plant Images - https://www.wikipedia.org/
-* Supporting Icons and Imagery
-  * Stock Photos - Pexels
-    * https://www.pexels.com/photo/summer-branches-leaves-tree-92733/
-  * Icons - Noun
-    * https://thenounproject.com/term/houseplant/321363/
-    * https://thenounproject.com/term/drop/1372766/
-    * https://thenounproject.com/term/fog/19882/
-    * https://thenounproject.com/term/sun/1241046/
-    * https://thenounproject.com/term/temperature/399436
+* Dream Analysis 
+  * Sentiment Analysis and Keyword Analysis - https://aws.amazon.com/comprehend/ 
+  * Individual Keyword Descriptions and Meanings - http://www.dreambible.com/search.php
