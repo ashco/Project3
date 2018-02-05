@@ -1,11 +1,11 @@
 import React from 'react';
 import LinearProgress from 'material-ui/LinearProgress';
-
+import CircularProgress from 'material-ui/CircularProgress';
 
 const Loading = () => {
 	return(
 		<div className="Loading__box">
-			<LinearProgress mode="indeterminate" />
+			<CircularProgress size={80} thickness={10} />
 		</div>
 	);
 }

@@ -37,7 +37,7 @@ class KeywordTrends extends Component {
            barSize ={200}
            fontFamily="Roboto"
            fill="#A1D4E3" >
-           <LabelList dataKey="keyword" fill="rgba(68, 73, 82, .9)" position="insideBottom" />
+           <LabelList dataKey="keyword" fill="rgba(68, 73, 82, 1)" position="insideBottom" />
         </Bar>
       </BarChart>
       </ResponsiveContainer>
