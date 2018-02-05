@@ -22,7 +22,7 @@ class Home extends Component {
     return (
       <div className="home">
         <Title text="dreamstate" style="Home__title" />
-        <h2>Lorem ipsum about analyzing your dreams.</h2>
+        <h2>Uncover the true meaning of your dreams.</h2>
         {buttons}
       </div>
     );
