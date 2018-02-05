@@ -375,7 +375,7 @@ h1 span.mixed, h2 span.mixed {
 .Profile__subhead {
   text-align: center;
   margin-top: -80px;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   padding: 20px;
 }
 
@@ -444,7 +444,7 @@ h1 span.mixed, h2 span.mixed {
 .dataVisualBubbles {
   font-size: 25em;
   line-height: .75em;
-  margin: -20px auto 0 auto;
+  margin: -50px auto 0 auto;
   padding: 20px;
   width: 80%;
   overflow: hidden;
@@ -554,7 +554,7 @@ h1 span.mixed, h2 span.mixed {
   }
   .Home__title {
     font-size: 3em;
-    padding-top: 120px;
+    padding-top: 90px;
   }
   .DreamLog {
     padding: 10px;
@@ -596,7 +596,7 @@ h1 span.mixed, h2 span.mixed {
     padding: 10px;
   }
   .Profile__subhead {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
   }
   .Nav__link.loggedIn {
     display: none;

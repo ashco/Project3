@@ -1,7 +1,13 @@
 # Dreamstate
 https://dream-state-app.herokuapp.com/
 
-Uncover the true meaning of your subconcious dreams and discover what your  consious mind has learned to repress. Dreamstate is an interactive application enabling users to understand the meaning of their dreams and view an overall sentiment based on keyword analysis. 
+Uncover the true meaning of your subconscious dreams and discover what your conscious mind has learned to repress. Dreamstate is an interactive application enabling users to understand the meaning of their dreams and view an overall sentiment based on keyword analysis.
+
+The final website is responsive and mobile-friendly:
+![](/client//public/img/screenshot1.png) 
+![](/client//public/img/screenshot2.png) 
+![](/client//public/img/screenshot3.png) 
+![](/client//public/img/screenshot4.png) 
 
 ## Requirements
 * Build a full-stack application
@@ -64,7 +70,7 @@ The target user for this app is the ever curious dreamer who is interested in un
 
 ##### 1. Choose CSS Framework
 ##### 2. Developed Moodboards and choose theme
-https://github.com/antonia-villa/Project3/blob/master/moodboard-light.jpg
+![](https://github.com/antonia-villa/Project3/blob/master/moodboard-light.jpg)
 
 ##### 3. Component Planning and assignment to individual team members  
 ##### 4. Completed routes with get, post, put, and delete functionality
@@ -85,7 +91,6 @@ https://github.com/antonia-villa/Project3/blob/master/moodboard-light.jpg
 ##### 3. Update user-facing terminology
 ##### 4. Re-factor layout for improved userflow
 ##### 5. Final CSS and Mobile Comptability
-
 
 #### Backlog
   * More robust options for keyword analysis - this may include scraping other sites to retrieve keyword content or rescraping the initial site for references to other keywords
@@ -134,3 +139,5 @@ If you'd like to set this project up on your own local server:
 * Dream Analysis 
   * Sentiment Analysis and Keyword Analysis - https://aws.amazon.com/comprehend/ 
   * Individual Keyword Descriptions and Meanings - http://www.dreambible.com/search.php
+* Stock Photo
+  * Pexel - https://www.pexels.com/photo/rocky-mountain-671658/
