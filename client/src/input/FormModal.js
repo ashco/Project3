@@ -110,7 +110,7 @@ class FormModal extends React.Component {
       />,
 			<RaisedButton
 				label="Submit"
-				primary={true}
+				primary={false}
 				backgroundColor={completeColor}
 				disabled={this.state.disabled}
 				onClick={this.handleSubmit}
@@ -161,4 +161,3 @@ class FormModal extends React.Component {
 }
 
 export default FormModal;
-

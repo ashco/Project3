@@ -40,7 +40,7 @@ class SentimentTrends extends Component {
 		if(data.length>1){
 			return(
 				
-				<ResponsiveContainer  height={400}>
+				<ResponsiveContainer  height={350}>
 					<AreaChart data={data} stackOffset="expand"
 			            margin={{top: 10, right: 0, left: 0, bottom: 0}} >
 				        <XAxis dataKey="dateText" tickLine={false} axisLine={false}/>
