@@ -47,9 +47,9 @@ The target user for this app is the ever curious dreamer who is interested in un
 ##### Share, Brainstorm and Choose idea
 ##### 1. Planned out features and functionality
 ##### 2. Developed Wireframes
-![](../public/img/wireframes_v1.jpg)
+![](/client//public/img/wireframes_v1.jpg)
 
-![](../public/img/wireframes_profile_v1.jpg)
+![](/client//public/img/wireframes_profile_v1.jpg)
 
 ##### 3. Indetify and check functionality of APIs
 ##### 4. Identify Data Scraping sites to use
@@ -88,11 +88,11 @@ https://github.com/antonia-villa/Project3/blob/master/moodboard-light.jpg
 ##### 4. Re-factor layout for improved userflow
 ##### 5. Final CSS and Mobile Comptability
 
-![](../public/img/live-screenshot-1.png)
+![](/client/public/img/live-screenshot-1.png)
 
-![](../public/img/live-screenshot-3.png)
+![](/client//public/img/live-screenshot-3.png)
 
-![](../public/img/live-screenshot-2.png)
+![](/client/public/img/live-screenshot-2.png)
 
 #### Backlog
   * More robust options for keyword analysis - this may include scraping other sites to retrieve keyword content or rescraping the initial site for references to other keywords
