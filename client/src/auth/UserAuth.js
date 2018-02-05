@@ -13,15 +13,6 @@ const purpleColor = '#BD70B3';
 const orangeColor = '#ffdabf';
 
 
-const styles = {
-  headline: {
-    fontSize: 24,
-    paddingTop: 16,
-    marginBottom: 12,
-    fontWeight: 400,
-  },
-};
-
 export default class UserAuth extends Component {
   constructor(props) {
     super(props);
@@ -81,93 +72,134 @@ export default class UserAuth extends Component {
   }
 
   render() {
+    const styles = {
+      headline: {
+        fontSize: 24,
+        paddingTop: 16,
+        marginBottom: 12,
+        fontWeight: 400,
+      },
+      tab:{
+        // color: pinkColor,
+        backgroundColor: pinkColor,
+        fontWeight: 400,
+      },
+      // active_tab:{
+      //   color: blueColor,
+      // },
+      contentStyle: {
+				color: pinkColor,
+				borderColor: pinkColor,
+			}
+    };
+
+
 		if(this.props.user){
       return (<Redirect to="/profile" />);
     }
 		
 		return (
-      <Tabs
-				className="UserAuth__box"
-        value={this.state.value}
-        onChange={this.handleTabChange}
-        //Style
-        tabItemContainerStyle={{color: orangeColor}}
-        inkBarStyle={{background: pinkColor}}
-      >
-        <Tab label="Login" value="login">
-          <div>
-            <h2 style={styles.headline}>Login</h2>
-            <div>
-              <TextField 
-                name="email"
-								type="email"
-								floatingLabelText="Email"
-								fullWidth={true}
-								value={this.state.email}
-								onChange={this.handleEmailChange}/><br 
-              />
-						</div>
-						<div>
-              <TextField 
-                name="password"
-								type="password"
-								floatingLabelText="Password"
-								fullWidth={true}
-								value={this.state.password}
-								onChange={this.handlePasswordChange}/><br 
-              />
-						</div>
-            <RaisedButton 
-              label="Login" 
-              primary={true}
-              backgroundColor={orangeColor} 
-              onClick={this.handleLoginSubmit} 
-            />
-          </div>
-        </Tab>
-        <Tab label="Sign Up" value="signup">
-          <div>
-            <h2 style={styles.headline}>Sign Up</h2>
-            <div>
-              <TextField 
-                name="name"
-								type="text"
-								floatingLabelText="Name"
-								fullWidth={true}
-								value={this.state.name}
-								onChange={this.handleNameChange}/><br 
-              />
-						</div>
-						<div>
-              <TextField 
-                name="email"
-								type="email"
-								floatingLabelText="Email"
-								fullWidth={true}
-								value={this.state.email}
-								onChange={this.handleEmailChange}/><br 
-              />
-						</div>
-						<div>
-              <TextField 
-                name="password"
-								type="password"
-								floatingLabelText="Password"
-								fullWidth={true}
-								value={this.state.password}
-								onChange={this.handlePasswordChange}/><br 
-              />
-						</div>
-            <RaisedButton 
-              label="Login" 
-              primary={true} 
-              backgroundColor='#ffdabf'
-              // backgroundColor={orangeColor}
-              onClick={this.handleSignupSubmit} 
-            />
-          </div>
-        </Tab>
-      </Tabs>
+      <div className="auth-container">
+        <div className="UserAuth__box box">
+          <Tabs
+            value={this.state.value}
+            onChange={this.handleTabChange}
+            //Style
+            // style={{backgroundColor: orangeColor}}
+            tabItemContainerStyle={{color: orangeColor}}
+            inkBarStyle={{background: purpleColor}}
+          >
+            <Tab label="Login" value="login" style={styles.tab}>
+              <div>
+                <h2 style={styles.headline}>Login</h2>
+                <div>
+                  <TextField 
+                    name="email"
+                    type="email"
+                    floatingLabelText="Email"
+                    fullWidth={true}
+                    value={this.state.email}
+                    // underlineFocusStyle={styles.contentStyle}
+                    // floatingLabelStyle={styles.contentStyle}
+                    // floatingLabelFocusStyle={styles.contentStyle}
+                    onChange={this.handleEmailChange}/>
+                  <br/>
+                </div>
+                <div>
+                  <TextField 
+                    name="password"
+                    type="password"
+                    floatingLabelText="Password"
+                    fullWidth={true}
+                    value={this.state.password}
+                    // underlineFocusStyle={styles.contentStyle}
+                    // floatingLabelStyle={styles.contentStyle}
+                    // floatingLabelFocusStyle={styles.contentStyle}
+                    onChange={this.handlePasswordChange}
+                  />
+                  <br/>
+                </div>
+                <RaisedButton 
+                  label="Login" 
+                  primary={true}
+                  backgroundColor='#ffdabf'
+                  onClick={this.handleLoginSubmit} 
+                />
+              </div>
+            </Tab>
+            <Tab label="Sign Up" value="signup" style={styles.tab}>
+              <div>
+                <h2 style={styles.headline}>Sign Up</h2>
+                <div>
+                  <TextField 
+                    name="name"
+                    type="text"
+                    floatingLabelText="Name"
+                    fullWidth={true}
+                    value={this.state.name}
+                    // underlineFocusStyle={styles.contentStyle}
+                    // floatingLabelStyle={styles.contentStyle}
+                    // floatingLabelFocusStyle={styles.contentStyle}
+                    onChange={this.handleNameChange}/><br 
+                  />
+                </div>
+                <div>
+                  <TextField 
+                    name="email"
+                    type="email"
+                    floatingLabelText="Email"
+                    fullWidth={true}
+                    value={this.state.email}
+                    // underlineFocusStyle={styles.contentStyle}
+                    // floatingLabelStyle={styles.contentStyle}
+                    // floatingLabelFocusStyle={styles.contentStyle}
+                    onChange={this.handleEmailChange}/><br 
+                  />
+                </div>
+                <div>
+                  <TextField 
+                    name="password"
+                    type="password"
+                    floatingLabelText="Password"
+                    fullWidth={true}
+                    value={this.state.password}
+                    // underlineFocusStyle={styles.contentStyle}
+                    // floatingLabelStyle={styles.contentStyle}
+                    // floatingLabelFocusStyle={styles.contentStyle}
+                    onChange={this.handlePasswordChange}/><br 
+                  />
+                </div>
+                <RaisedButton 
+                  label="Login" 
+                  primary={true} 
+                  backgroundColor={pinkColor}
+                  onClick={this.handleSignupSubmit} 
+                />
+              </div>
+            </Tab>
+          </Tabs>
+        </div>
+      </div>
     );
   }
 }

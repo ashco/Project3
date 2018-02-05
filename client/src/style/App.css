@@ -520,6 +520,32 @@ h1 span.mixed, h2 span.mixed {
   float: right;
 }
 
+.auth-container {
+  display: flex;
+  justify-content: center;
+}
+
+.UserAuth__box {
+  text-align: center;
+  margin: 10px !important;
+  display: inline-block;
+  box-sizing: border-box;
+  width: 45%;
+  flex: 45%;
+  padding: 40px;
+  transition: all 2s;
+  background: rgba(256, 256, 256, .8);
+  border: 1px solid var(--light-grey-color);
+  box-shadow: 5px 5px var(--light-grey-color);
+ }
+
+@media all and (max-width: 960px){
+  .UserAuth__box { 
+    width: 90%;
+    flex: 90%;
+  }
+}
+
 
 /* RESPONSIVE */
 
