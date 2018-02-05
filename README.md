@@ -3,9 +3,11 @@ https://dream-state-app.herokuapp.com/
 
 Uncover the true meaning of your subconscious dreams and discover what your conscious mind has learned to repress. Dreamstate is an interactive application enabling users to understand the meaning of their dreams and view an overall sentiment based on keyword analysis.
 
-The final website is responsive and mobile-friendly:
+The final website is responsive to multiple screen sizes:
+
 ![](/client//public/img/screenshot1.png) 
 ![](/client//public/img/screenshot2.png) 
+
 ![](/client//public/img/screenshot3.png) 
 ![](/client//public/img/screenshot4.png) 
 
