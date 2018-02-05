@@ -25,7 +25,6 @@ The final website is responsive to multiple screen sizes:
  	* Key modules:
      * Cheerio - Dream Analysis data scraping
      * Passport / Bcrypt - Authentication and password hashing
-     * Cloudinary / Multer - Profile photo uploading through Cloudinary API
    * Key APIs:
    	 * AWS - detectKeyPhrases for keyword analysis
    	 * AWS - detectSentiment for sentiment analysis
