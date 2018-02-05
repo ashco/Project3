@@ -19,8 +19,23 @@ class Profile extends Component {
       sentimentData: [],
       overallStats: [],
       keywordData: [],
+      mostDreams: '',
       dataState: false
     }
+  }
+
+  findMostDreams = (overallStats) => {
+    var mostDreamsArray = [];
+    let dreamsToReview = overallStats.concat([overallStats]);
+    //foreach didn't work, end up with one undefined at the end
+    for (var i=0; i <= 3; i++) {
+      mostDreamsArray.push(dreamsToReview[i].percentOfTotal);
+    }
+    let mostDreamsIndex = mostDreamsArray.indexOf(Math.max(...mostDreamsArray));
+    let mostDreams = dreamsToReview[mostDreamsIndex].sentiment;
+    this.setState({
+      mostDreams: mostDreams
+    })
   }
 
   componentDidMount(){
@@ -47,6 +62,7 @@ class Profile extends Component {
       let sentimentData = sentimentByDate(userData);
       let overallStats = overallTrends(userData);
       let keywordData = keywordStats(userData);
+      base.findMostDreams(overallStats);
 
       base.setState({
         data: userData,
@@ -55,30 +71,18 @@ class Profile extends Component {
         keywordData: keywordData,
         dataState: true
       });
+
+      console.log("overallStats",this.state.overallStats);
+
     }).catch((error) => {
       console.log("An error occured while fetching data from databse", error.response ? error.response.data : 'No error.response.data');
     });
   }
 
   render(){
-    const totalDreams = (this.state.data.length)
+    const totalDreams = (this.state.data.length);
     let dashboard = null; 
-    var mostDreamsIndex = this.state.overallStats.reduce((iMax, x, i, arr) => x > arr[iMax] ? i : iMax, 0);
-    var mostDreamsCategory;
-    
-    if(mostDreamsIndex == 0) {
-      mostDreamsCategory = "neutral";
-    } 
-    else if(mostDreamsIndex == 1) {
-      mostDreamsCategory = "positive";
-    } 
-    else if(mostDreamsIndex == 2) {
-      mostDreamsCategory = "negative";
-    } 
-    else if(mostDreamsIndex == 3) {
-      mostDreamsCategory = "mixed";
-    }
-
+   
     if(totalDreams > 1) {
       dashboard = 
       <div>
@@ -88,7 +92,7 @@ class Profile extends Component {
           <CallToAction user={this.props.user.name} />
           <OverallStats data={this.state.overallStats} totalDreams={totalDreams} />
         </div>
-        <h2 className="Profile__subhead">Your dreams are overall <span className={mostDreamsCategory}>{mostDreamsCategory}</span>.</h2>
+        <h2 className="Profile__subhead">Your dreams are overall <span className={this.state.mostDreams}>{this.state.mostDreams}</span>.</h2>
         <KeywordTrends data={this.state.keywordData} />
       </div>
     } 

@@ -39,26 +39,41 @@ class EditDream extends Component{
 	}
 
 	render(){
+		const styles = {
+      		contentStyle: {
+				color: '#F98285',
+				borderColor: '#F98285',
+			},
+			dateStyle: {
+				color: '#F98285'
+			}
+		}
 		if(this.props.editing) {
 			return(
 				<div className="Form">
-					<div className="Form__box box">
+					<div className="Form__box box edit">
 						{/* DATE */}
 						<DatePicker hintText="Dream date"
-												name="date"
-												// mode="landscape"
-												fullWidth={true}
+										name="date"
+										// mode="landscape"
+										fullWidth={true}
 										onChange={this.handleDateChange} 
+										autoOk={true}
+										hintStyle={styles.dateStyle}
+										hideCalendarDate={true}
 	        							value={this.state.date} />
 						{/* TEXT */}
 						<TextField name="content"
-											floatingLabelText="Text"
-											multiLine={true}
-											fullWidth={true}
-	      							 		rows={10}
-	      							 		onChange={this.handleContentChange} 
-	      							 		value={this.state.content} />
-						<RaisedButton label="Edit" primary={true} onClick={this.editDream} />
+										floatingLabelText="Edit your dream"
+										multiLine={true}
+										fullWidth={true}
+	      							 	rows={5}
+	      							 	underlineFocusStyle={styles.contentStyle}
+                    					floatingLabelStyle={styles.contentStyle}
+                    					floatingLabelFocusStyle={styles.contentStyle}
+	      							 	onChange={this.handleContentChange} 
+	      							 	value={this.state.content} />
+						<RaisedButton label="Edit" primary={false} backgroundColor="#A1D4E3" onClick={this.editDream} />
 					</div>
 				</div>
 			)
