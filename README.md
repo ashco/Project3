@@ -77,7 +77,7 @@ The target user for this app is the ever curious dreamer who is interested in un
 
 ##### 3. Component Planning and assignment to individual team members  
 ##### 4. Completed routes with get, post, put, and delete functionality
- *Users can add/edit/delete dreams
+ * Users can add/edit/delete dreams
 
 ##### 5. Implement data cleansing to reformat raw data returned form API & data scraping functionality
 ##### 6. Error handling
