@@ -33,16 +33,16 @@ class App extends Component {
   }
 
   // FNC POPULATES STATE FOR SELECTED DREAM
-  handleGet = (dream_data) => { 
-    this.setState({ selected_dream_data: dream_data }
+  // handleGet = (dream_data) => { 
+  //   this.setState({ selected_dream_data: dream_data }
 
-    //Start of redirect link
-    , () => {
-      this.props.history.push({
-        pathname: '/analyze',
-      });
-    }
-  );
+  //   //Start of redirect link
+  //   , () => {
+  //     this.props.history.push({
+  //       pathname: '/analyze',
+  //     });
+  //   }
+  // );
 
   componentDidMount = () => {
     this.getUser();
@@ -96,11 +96,11 @@ class App extends Component {
     this.setState({
       flash: '',
       flashType: ''
-    });
+    })
   }
 
 
-  render() {
+  render(){
     return (
       <div className="App">
         <MuiThemeProvider>
@@ -128,6 +128,6 @@ class App extends Component {
       );
     }
   }
-}
+
 
 export default App;
