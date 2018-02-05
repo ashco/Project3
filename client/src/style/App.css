@@ -463,6 +463,9 @@ h1 span.mixed, h2 span.mixed {
   width: 500px;
 }
 
+.Form__box.edit {
+  width: 100%;
+}
 
 .Loading {
   display: inline-block;
