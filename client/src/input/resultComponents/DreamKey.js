@@ -37,19 +37,17 @@ class DreamKey extends Component{
 	if(this.state.disabled === true) {
 		buttonClass = "Keyword__disabled"
 		return(
-			<div>
-				<button 
-					type="button" 
-					className={buttonClass}
-					disabled>
-					{this.props.keys.name} 
-				</button>
-			</div>
+			<button 
+				type="button" 
+				className={buttonClass}
+				disabled>
+				{this.props.keys.name} 
+			</button>
 		);
 	} else if (this.state.disabled === false) {
 		buttonClass = "Keyword__enabled"
 		return(
-			<div>
+			<span>
 				<button 
 					type="button"
 					onClick={this.handleOpen} 
@@ -65,13 +63,9 @@ class DreamKey extends Component{
 				>
 					{this.props.keys.description}
 				</Dialog>
-			</div>
+			</span>
 		);
 	}
-		
-
-
-
 	}
 }
 
