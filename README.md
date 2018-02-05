@@ -65,21 +65,19 @@ The target user for this app is the ever curious dreamer who is interested in un
 ##### 1. Choose CSS Framework
 ##### 2. Developed Moodboards and choose theme
 https://github.com/antonia-villa/Project3/blob/master/moodboard-light.jpg
-
-##### 3. Component Planning and assignment to individual team members  
+##### 3. Component Planning and assignment to individual team members 
+![](/client//public/img/wireframes_profile_v1.jpg) 
 ##### 4. Completed routes with get, post, put, and delete functionality
  *Users can add/edit/delete dreams
-
 ##### 5. Implement data cleansing to reformat raw data returned form API & data scraping functionality
 ##### 6. Error handling
  * Raw Data
  * User entries
-
 ##### 7. Basic styling completed MVP level functionality
 
 ### Sprint 3
 ##### 1. Finalize data visualizations
-* Add functionality for tooltips
+ * Add functionality for tooltips
 
 ##### 2. Add conditional rendering to render appropriate data visuals for varying user account status
 ##### 3. Update user-facing terminology

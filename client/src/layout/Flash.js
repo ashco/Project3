@@ -6,6 +6,7 @@ class Flash extends Component {
   }
 
   render() {
+    console.log('props inside of flash component', this.props)
     let flashType = 'error';
     if(this.props && this.props.flashType){
       flashType = this.props.flashType;
