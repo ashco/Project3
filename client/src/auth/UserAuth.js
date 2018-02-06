@@ -81,16 +81,17 @@ export default class UserAuth extends Component {
       },
       tab:{
         // color: pinkColor,
-        backgroundColor: pinkColor,
+        backgroundColor: 'white',
         fontWeight: 600,
-        color: '#FDFFFE'
+        color: '#FDFFFE',
+        textTransform: 'capitalize'
       },
       contentStyle: {
 				color: pinkColor,
 				borderColor: pinkColor,
 			},
       button: {
-        color: '444952',
+        color: '#444952',
         textTransform: 'capitalize',
         fontWeight: 400
       }
