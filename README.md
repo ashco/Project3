@@ -132,6 +132,9 @@ If you'd like to set this project up on your own local server:
 * Setup your database (this app utilizes one MongoDB  model)
 * Create .env file, which will need to include:
   * `JWT_SECRET` (you determine this for user token creation)
+    AWS Access Keys - Only needs ComprehendFullAccess permissions
+  * `AWS_KEY_ID` 
+  * `AWS_SECRET_KEY` 
 * Review database setup and check mongoDB to confirm data
  *If needed, use MongoDB Compass to view data entries
 
