@@ -1,61 +1,64 @@
 //SCRAPING
-var request = require('request');
-var cheerio = require('cheerio');
-var async = require('async');
+var request = require("request");
+var cheerio = require("cheerio");
+var async = require("async");
 
 module.exports = {
+  scrapeData: function (keywords) {
+    return new Promise((resolve, reject) => {
+      var descriptions = [];
 
-	scrapeData: function(keywords) {
+      async.forEach(
+        keywords,
+        function (searchTerm, callback) {
+          var searchUrl =
+            "http://www.dreambible.com/search.php?q=" + searchTerm.keyword;
 
-		return new Promise((resolve, reject) => {
+          request(searchUrl, function (error, response, data) {
+            var $ = cheerio.load(data);
+            var searchTermMeaning = $(
+              "body > table > tbody > tr > td:nth-child(1) > blockquote > p:nth-child(2) > font"
+            ).text();
+            var searchDescription;
 
-			var descriptions = [];
+            if (searchTermMeaning.length < 5) {
+              searchDescription = null;
+            } else {
+              searchDescription = searchTermMeaning.split("\n")[0];
+            }
 
-			async.forEach(keywords, function(searchTerm, callback){
-				var searchUrl = 'http://www.dreambible.com/search.php?q=' + searchTerm.keyword
+            descriptions.push({
+              name: searchTerm.keyword,
+              score: searchTerm.score,
+              description: searchDescription,
+            });
+            callback(null);
+          });
+        },
+        function () {
+          // remove descriptions containing links to other descriptions
+          var finalDescriptions = [];
+          var substring = "*Please see ";
 
-				request(searchUrl, function(error, response, data){
-					var $ = cheerio.load(data);
-					var searchTermMeaning = $('body > table > tbody > tr > td:nth-child(1) > blockquote > p:nth-child(2) > font').text();					
-					var searchDescription;
+          descriptions.forEach(function (item) {
+            if (!String(item.description).includes(substring)) {
+              finalDescriptions.push(item);
+            }
+          });
 
-					if(searchTermMeaning.length < 5){
-						searchDescription = null;
-					} 
-					else {
-						searchDescription = searchTermMeaning.split('\n')[0]
-					}
-								
-					descriptions.push({
-						name: searchTerm.keyword,
-						score: searchTerm.score,
-						description: searchDescription
-					});
-					callback(null);
-				});
-			}, function() {
-				// remove descriptions containing links to other descriptions
-				var finalDescriptions = []
-				var substring = '*Please see '
+          // sort descriptions by confidence score of keyword
+          finalDescriptions.sort(function (a, b) {
+            return b.Score - a.Score;
+          });
 
-				descriptions.forEach(function(item){
-					if(!String(item.description).includes(substring)){
-				    finalDescriptions.push(item)
-				  }
-				});
+          // limit descriptions to only return 5
+          if (finalDescriptions.length > 5) {
+            finalDescriptions = finalDescriptions.splice(0, 5);
+          }
 
-				// sort descriptions by confidence score of keyword
-				finalDescriptions.sort(function(a, b) {
-					return b.Score - a.Score ;
-				});
-
-				// limit descriptions to only return 5
-				if (finalDescriptions.length > 5){
-					finalDescriptions = finalDescriptions.splice(0, 5);
-				}	
-
-				resolve(finalDescriptions);
-			});
-		});
-	}
-}
+          resolve(finalDescriptions);
+        }
+      );
+    });
+  },
+};
