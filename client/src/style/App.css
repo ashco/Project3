@@ -109,6 +109,10 @@ nav {
   top: 6px;
 }
 
+button {
+  cursor: pointer;
+}
+
 /* HOME PAGE */
 .home {
   margin-top: -60px;
@@ -564,16 +568,21 @@ h2 span.mixed {
 }
 
 /* ALERTS */
+.flash {
+  color: white;
+  position: absolute;
+  top: 56px;
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+}
+
 .error {
   background-color: var(--pink-color);
-  color: white;
-  padding: 10px 30px;
 }
 
 .success {
   background-color: var(--blue-color);
-  color: white;
-  padding: 10px 30px;
 }
 
 .no-flash {
@@ -584,10 +593,15 @@ h2 span.mixed {
 }
 
 .x-button {
-  background-color: var(--font-color);
-  color: var(--background-color);
-  border-radius: 10px;
-  float: right;
+  background-color: transparent;
+  color: var(--font-color);
+  border: none;
+  font-size: 18px;
+  font-weight: 600;
+  /* background-color: var(--font-color); */
+  /* color: var(--background-color); */
+  /* border-radius: 10px; */
+  /* float: right; */
 }
 
 /* RESPONSIVE */
