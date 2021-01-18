@@ -13,7 +13,7 @@
   "dependencies": {
     "async": "^2.6.0",
     "aws-sdk": "^2.188.0",
-    "bcrypt": "^1.0.3",
+    "bcrypt": "^5.0.0",
     "body-parser": "~1.18.2",
     "cheerio": "^1.0.0-rc.2",
     "connect-flash": "^0.1.1",
