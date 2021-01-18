@@ -64,7 +64,7 @@ class App extends Component {
         })
         .catch((err) => {
           // Both the JWT and db errors will be caught here
-          console.log("cdm", err);
+          // console.log("cdm", err);
           this.setState({
             token: "",
             user: null,

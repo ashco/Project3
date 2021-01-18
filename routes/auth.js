@@ -56,7 +56,7 @@ router.post("/signup", function (req, res, next) {
         },
         function (err, user) {
           if (err) {
-            console.log("DB error", err);
+            // console.log("DB error", err);
             res.status(500).send({
               error: true,
               message: "Database Error - " + err.message,

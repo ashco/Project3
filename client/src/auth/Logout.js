@@ -1,34 +1,30 @@
-import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
-import MenuItem from 'material-ui/MenuItem';
-
+import React, { Component } from "react";
+import { Redirect } from "react-router-dom";
+import MenuItem from "material-ui/MenuItem";
 
 class Logout extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      redirect: false
-    }
+      redirect: false,
+    };
   }
-  
+
   handleLogout = (e) => {
     e.preventDefault();
-    console.log('handle logout reached');
+    // console.log('handle logout reached');
     //Delete token from local storage
-    localStorage.removeItem('dreamToken');
+    localStorage.removeItem("dreamToken");
     //Go back to home page
     this.props.updateUser();
     this.setState({ redirect: true });
-  }
+  };
 
   render() {
-    if(this.state.redirect){
-      return (<Redirect to="/" />);
-    }
-    else {
-      return(
-        <MenuItem primaryText="Logout" onClick={this.handleLogout} />
-      );
+    if (this.state.redirect) {
+      return <Redirect to="/" />;
+    } else {
+      return <MenuItem primaryText="Logout" onClick={this.handleLogout} />;
     }
   }
 }
