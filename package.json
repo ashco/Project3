@@ -11,7 +11,7 @@
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "dependencies": {
-    "async": "^2.6.0",
+    "async": "^2.6.4",
     "aws-sdk": "^2.188.0",
     "bcrypt": "^1.0.3",
     "body-parser": "~1.18.2",
